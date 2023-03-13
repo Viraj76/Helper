@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginStart="@dimen/_10sdp"
+    android:layout_marginEnd="@dimen/_10sdp"
+    android:layout_marginTop="@dimen/_8sdp"
+    android:layout_marginBottom="@dimen/_10sdp"
+    android:elevation="@dimen/_16sdp"
+    app:cardCornerRadius="@dimen/_10sdp"
+    app:cardBackgroundColor="#CCCFCF">
+
+    <LinearLayout
+        android:id="@+id/post"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/postName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Soumya Rayast"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_16sdp"
+            android:textStyle="bold"/>
+
+<!--        <TextView-->
+<!--            android:id="@+id/postContact"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:hint="+918756487367"-->
+<!--            android:textColor="@color/black"-->
+<!--            android:layout_marginTop="@dimen/_2sdp"-->
+<!--            android:textStyle="bold"/>-->
+
+        <TextView
+            android:id="@+id/postAddress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_2sdp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:text="Raipur,Chhattisgarh pin:4088874 post:Raipur"/>
+
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/description"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:layout_marginBottom="@dimen/_20sdp"
+            android:layout_width="wrap_content"
+            android:elevation="@dimen/_16sdp"
+            app:cardCornerRadius="@dimen/_10sdp"
+            android:background="@color/white"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/postDescription"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:layout_marginBottom="@dimen/_10sdp"
+                android:text="Lorem Ipsum is simply dummy text
+                simply dummy textsimply dummy text
+                 Aldus PageMaker including versions of Lorem Ipsum."/>
+
+            
+
+
+        </androidx.cardview.widget.CardView>
+
+
+
+
+
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>
