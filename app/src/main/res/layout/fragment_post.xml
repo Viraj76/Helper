@@ -6,6 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".PostFragment">
 
+
     <LinearLayout
         android:id="@+id/llHeader"
         android:layout_width="match_parent"
@@ -17,27 +18,25 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         >
-
         <TextView
             android:id="@+id/tvHome"
             android:layout_weight="3"
             android:layout_width="0dp"
-
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/_10sdp"
             android:layout_gravity="center"
             android:fontFamily="@font/myfont"
             android:text="Post"
-            android:textColor="@color/black"
-
-            android:textSize="@dimen/_20ssp"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
+            android:textSize="@dimen/_23ssp"
             />
     </LinearLayout>
 
     <ImageView
         android:id="@+id/ivPost"
-        android:layout_width="@dimen/_250sdp"
-        android:layout_height="@dimen/_200sdp"
+        android:layout_width="@dimen/_280sdp"
+        android:layout_height="@dimen/_160sdp"
         app:layout_constraintTop_toBottomOf="@id/llHeader"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginTop="@dimen/_10sdp"
@@ -55,8 +54,9 @@
         android:layout_marginTop="@dimen/_10sdp"
         android:letterSpacing="0.03"
         android:text="Welcome CLIENTNAME Post your Need!"
-        android:textSize="@dimen/_13sdp"
+        android:textSize="@dimen/_15sdp"
         android:textStyle="bold"
+
         android:textColor="@color/HardGreen"
         />
 
@@ -65,210 +65,93 @@
         android:layout_height="0dp"
         android:overScrollMode="never"
         android:scrollbars="vertical"
-        app:layout_constraintTop_toBottomOf="@id/tvWelcomeClient"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+
         app:layout_constraintBottom_toBottomOf="parent"
-        >
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="@dimen/_10sdp"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvWelcomeClient"
+        app:layout_constraintVertical_bias="0.0">
+
         <LinearLayout
             android:id="@+id/llDetail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            >
+            android:orientation="vertical">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Name:"
-                android:textStyle="bold"
-                android:textSize="@dimen/_18ssp"
                 android:layout_marginStart="@dimen/_10sdp"
-                android:textColor="@color/HardGreen"
                 android:layout_marginTop="@dimen/_20sdp"
-                />
+                android:text="Name:"
+                android:textColor="@color/HardGreen"
+                android:textSize="@dimen/_18ssp"
+                android:textStyle="bold" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical"
                 android:layout_marginStart="@dimen/_10sdp"
                 android:layout_marginTop="@dimen/_10sdp"
                 android:layout_marginEnd="@dimen/_10sdp"
-                >
-
+                android:orientation="vertical">
+                <!--                First name-->
                 <com.google.android.material.textfield.TextInputLayout
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:hint="First Name"
-                    app:hintTextColor="@color/HardGreen"
-                    app:hintAnimationEnabled="true"
-                    app:helperText="Required*"
-                    app:helperTextTextColor="@color/red"
+                    android:focusableInTouchMode="true"
+                    android:clickable="true"
+                    android:focusable="true"
+                    app:boxStrokeColor="@color/HardGreen"
+                    android:hint="First Name(Required)*"
+                    android:touchscreenBlocksFocus="false"
                     app:endIconMode="clear_text"
                     app:endIconTint="@color/HardGreen"
-                    android:touchscreenBlocksFocus="false"
-                    android:focusableInTouchMode="false"
-                    android:focusable="true"
-                   >
+
+                    app:hintAnimationEnabled="true"
+                    app:hintTextColor="@color/HardGreen">
+
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/text_fields_bkg"
-                        />
+                        android:background="@drawable/text_fields_bkg" />
                 </com.google.android.material.textfield.TextInputLayout>
+                <!--                middle Name-->
                 <com.google.android.material.textfield.TextInputLayout
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:layout_marginBottom="@dimen/_10sdp"
+                    android:focusable="true"
+                    android:focusableInTouchMode="false"
                     android:hint="Middle Name"
-                    app:hintTextColor="@color/HardGreen"
-                    app:hintAnimationEnabled="true"
+                    android:touchscreenBlocksFocus="false"
                     app:endIconMode="clear_text"
                     app:endIconTint="@color/HardGreen"
-                    android:touchscreenBlocksFocus="false"
-                    android:focusableInTouchMode="false"
-                    android:focusable="true"
-                    android:layout_marginBottom="@dimen/_10sdp"
-                    >
+                    app:hintAnimationEnabled="true"
+                    app:hintTextColor="@color/HardGreen">
+
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/text_fields_bkg"
-                        />
+                        android:background="@drawable/text_fields_bkg" />
                 </com.google.android.material.textfield.TextInputLayout>
-                <com.google.android.material.textfield.TextInputLayout
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:hint="Last Name"
-                    app:hintTextColor="@color/HardGreen"
-                    app:hintAnimationEnabled="true"
-                    app:helperText="Required*"
-                    app:helperTextTextColor="@color/red"
-                    app:endIconMode="clear_text"
-                    app:endIconTint="@color/HardGreen"
-                    android:touchscreenBlocksFocus="false"
-                    android:focusableInTouchMode="false"
-                    android:focusable="true"
-                    >
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/text_fields_bkg"
-                        />
-                </com.google.android.material.textfield.TextInputLayout>
-
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Address:"
-                    android:textStyle="bold"
-                    android:textSize="@dimen/_18ssp"
-                    android:layout_marginStart="@dimen/_10sdp"
-                    android:textColor="@color/HardGreen"
-                    android:layout_marginTop="@dimen/_20sdp"
-                    />
-
-
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal"
-                    android:layout_marginTop="@dimen/_10sdp"
-                    >
-                    <com.google.android.material.textfield.TextInputLayout
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:hint="Pincode(Required)*"
-                        app:hintTextColor="@color/HardGreen"
-                        app:hintAnimationEnabled="true"
-                        app:endIconMode="clear_text"
-                        android:layout_marginEnd="@dimen/_5sdp"
-                        app:endIconTint="@color/HardGreen"
-                        android:touchscreenBlocksFocus="false"
-                        android:focusableInTouchMode="false"
-                        android:focusable="true"
-                        android:layout_marginBottom="@dimen/_10sdp"
-                        >
-
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:background="@drawable/text_fields_bkg" />
-                    </com.google.android.material.textfield.TextInputLayout>
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal"
-                    >
-                    <com.google.android.material.textfield.TextInputLayout
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:hint="State(Required)*"
-                        app:hintTextColor="@color/HardGreen"
-                        app:hintAnimationEnabled="true"
-                        android:layout_weight="0.5"
-                        app:endIconMode="clear_text"
-                        android:layout_marginEnd="@dimen/_5sdp"
-                        app:endIconTint="@color/HardGreen"
-                        android:touchscreenBlocksFocus="false"
-                        android:focusableInTouchMode="false"
-                        android:focusable="true"
-                        android:layout_marginBottom="@dimen/_10sdp"
-                        >
-
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:background="@drawable/text_fields_bkg" />
-                    </com.google.android.material.textfield.TextInputLayout>
-                    <com.google.android.material.textfield.TextInputLayout
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:hint="City(Required)*"
-                        app:hintTextColor="@color/HardGreen"
-                        app:hintAnimationEnabled="true"
-                        android:layout_weight="0.5"
-                        app:endIconMode="clear_text"
-                        android:layout_marginEnd="@dimen/_5sdp"
-                        app:endIconTint="@color/HardGreen"
-                        android:touchscreenBlocksFocus="false"
-                        android:focusableInTouchMode="false"
-                        android:focusable="true"
-                        android:layout_marginBottom="@dimen/_10sdp"
-                        >
-
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:background="@drawable/text_fields_bkg" />
-                    </com.google.android.material.textfield.TextInputLayout>
-
-                </LinearLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:hint="Road Number, Area Colony(Required)*"
-                    app:hintTextColor="@color/HardGreen"
-                    app:hintAnimationEnabled="true"
-                    app:endIconMode="clear_text"
-                    android:layout_marginEnd="@dimen/_5sdp"
-                    app:endIconTint="@color/HardGreen"
-                    android:touchscreenBlocksFocus="false"
-                    android:focusableInTouchMode="false"
                     android:focusable="true"
-                    android:layout_marginBottom="@dimen/_10sdp"
+                    android:focusableInTouchMode="false"
+                    android:hint="Last Name(Required)*"
+                    android:touchscreenBlocksFocus="false"
+                    app:endIconMode="clear_text"
+                    app:endIconTint="@color/HardGreen"
+                    app:hintTextColor="@color/HardGreen"
+
                     >
 
                     <com.google.android.material.textfield.TextInputEditText
@@ -277,44 +160,164 @@
                         android:background="@drawable/text_fields_bkg" />
                 </com.google.android.material.textfield.TextInputLayout>
 
-                <TextView
 
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Description of Your Requirements:"
-                    android:textStyle="bold"
-                    android:textSize="@dimen/_18ssp"
-                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:text="Address:"
                     android:textColor="@color/HardGreen"
+                    android:textSize="@dimen/_18ssp"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:layout_marginTop="@dimen/_10sdp"
-                    />
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginEnd="@dimen/_5sdp"
+                        android:layout_marginBottom="@dimen/_10sdp"
+                        android:focusable="true"
+                        android:focusableInTouchMode="false"
+                        android:hint="Pincode(Required)*"
+                        android:touchscreenBlocksFocus="false"
+                        app:endIconMode="clear_text"
+                        app:endIconTint="@color/HardGreen"
+                        app:hintAnimationEnabled="true"
+                        app:hintTextColor="@color/HardGreen">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/text_fields_bkg" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginEnd="@dimen/_5sdp"
+                        android:layout_marginBottom="@dimen/_10sdp"
+                        android:layout_weight="0.5"
+                        android:focusable="true"
+                        android:focusableInTouchMode="false"
+                        android:hint="State(Required)*"
+                        android:touchscreenBlocksFocus="false"
+                        app:endIconMode="clear_text"
+                        app:endIconTint="@color/HardGreen"
+                        app:hintAnimationEnabled="true"
+                        app:hintTextColor="@color/HardGreen">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/text_fields_bkg" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginEnd="@dimen/_5sdp"
+                        android:layout_marginBottom="@dimen/_10sdp"
+                        android:layout_weight="0.5"
+                        android:focusable="true"
+                        android:focusableInTouchMode="false"
+                        android:hint="City(Required)*"
+                        android:touchscreenBlocksFocus="false"
+                        app:endIconMode="clear_text"
+                        app:endIconTint="@color/HardGreen"
+                        app:hintAnimationEnabled="true"
+                        app:hintTextColor="@color/HardGreen">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/text_fields_bkg" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                </LinearLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:hint="Specify your needs in Brief"
-                    app:hintTextColor="@color/HardGreen"
-                    app:hintAnimationEnabled="true"
-                    app:endIconMode="clear_text"
-                    android:gravity="top"
                     android:layout_marginEnd="@dimen/_5sdp"
-                    app:endIconTint="@color/HardGreen"
-                    android:touchscreenBlocksFocus="false"
-                    android:focusableInTouchMode="false"
-                    android:focusable="true"
                     android:layout_marginBottom="@dimen/_10sdp"
-                    >
+                    android:focusable="true"
+                    android:focusableInTouchMode="false"
+                    android:hint="Road Number, Area Colony(Required)*"
+                    android:touchscreenBlocksFocus="false"
+                    app:endIconMode="clear_text"
+                    app:endIconTint="@color/HardGreen"
+                    app:hintAnimationEnabled="true"
+                    app:hintTextColor="@color/HardGreen">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/text_fields_bkg" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:text="Description of Your Requirements:"
+                    android:textColor="@color/HardGreen"
+                    android:textSize="@dimen/_18ssp"
+                    android:textStyle="bold" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="@dimen/_5sdp"
+                    android:layout_marginBottom="@dimen/_10sdp"
+                    android:focusable="true"
+                    android:focusableInTouchMode="false"
+                    android:gravity="top"
+                    android:hint="Specify your needs in Brief"
+                    android:touchscreenBlocksFocus="false"
+                    app:endIconMode="clear_text"
+                    app:endIconTint="@color/HardGreen"
+                    app:hintAnimationEnabled="true"
+                    app:hintTextColor="@color/HardGreen">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/_100sdp"
-                        android:gravity="top"
-                        android:background="@drawable/text_fields_bkg" />
+                        android:background="@drawable/text_fields_bkg"
+                        android:gravity="top" />
                 </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.button.MaterialButton
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_50sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:text="Post"
+                    android:textAllCaps="false"
+                    android:letterSpacing="0.2"
+                    android:textSize="@dimen/_15sdp"
+                    android:textStyle="bold"
+                    app:cornerRadius="@dimen/_8sdp"
+
+                    >
+
+                </com.google.android.material.button.MaterialButton>
             </LinearLayout>
-
-
         </LinearLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

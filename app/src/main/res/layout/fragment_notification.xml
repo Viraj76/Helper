@@ -27,9 +27,9 @@
             android:text="Notification"
             android:layout_marginStart="@dimen/_10sdp"
             android:layout_gravity="center"
-            android:textColor="@color/black"
-
-            android:textSize="@dimen/_20ssp"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
+            android:textSize="@dimen/_23ssp"
             />
 
     </LinearLayout>

@@ -1,87 +1,106 @@
-<?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mainConstraints"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_marginStart="@dimen/_10sdp"
-    android:layout_marginEnd="@dimen/_10sdp"
-    android:layout_marginTop="@dimen/_8sdp"
-    android:layout_marginBottom="@dimen/_10sdp"
-    android:elevation="@dimen/_16sdp"
-    app:cardCornerRadius="@dimen/_10sdp"
-    app:cardBackgroundColor="#CCCFCF">
+    >
 
     <LinearLayout
-        android:id="@+id/post"
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/_10sdp"
-        android:layout_marginEnd="@dimen/_10sdp"
-        android:orientation="vertical">
+        android:background="@drawable/card"
+        android:orientation="vertical"
+        android:paddingStart="@dimen/_16sdp"
+        android:paddingTop="0dp"
+        android:paddingEnd="@dimen/_16sdp"
+        android:paddingBottom="@dimen/_10sdp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/postName"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Soumya Rayast"
-            android:textColor="@color/black"
-            android:textSize="@dimen/_16sdp"
-            android:textStyle="bold"/>
+            android:layout_marginTop="@dimen/_10sdp"
+            android:orientation="horizontal"
+            >
 
-<!--        <TextView-->
-<!--            android:id="@+id/postContact"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:hint="+918756487367"-->
-<!--            android:textColor="@color/black"-->
-<!--            android:layout_marginTop="@dimen/_2sdp"-->
-<!--            android:textStyle="bold"/>-->
+            <ImageView
+                android:layout_width="@dimen/_40sdp"
+                android:layout_height="@dimen/_40sdp"
+                android:src="@drawable/ic_baseline_account_circle_24"
+                app:tint="#FFFFFF" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:letterSpacing="0.05"
+                android:text="Elon Musk"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_20ssp"
+                android:textStyle="bold"
+
+                />
+        </LinearLayout>
 
         <TextView
-            android:id="@+id/postAddress"
-            android:layout_width="match_parent"
+            android:id="@+id/tvText"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_2sdp"
+            android:layout_marginStart="@dimen/_50sdp"
             android:textStyle="bold"
-            android:textColor="@color/black"
-            android:text="Raipur,Chhattisgarh pin:4088874 post:Raipur"/>
-
+            android:text=" 497883,C.G.,NayaRaipur,Sector 27\n near jalebi shop "
+            android:textColor="#F8FBFD"
+            android:textSize="@dimen/_11ssp" />
 
         <androidx.cardview.widget.CardView
             android:id="@+id/description"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
             android:layout_marginStart="@dimen/_10sdp"
             android:layout_marginEnd="@dimen/_10sdp"
             android:layout_marginTop="@dimen/_8sdp"
             android:layout_marginBottom="@dimen/_20sdp"
-            android:layout_width="wrap_content"
             android:elevation="@dimen/_16sdp"
             app:cardCornerRadius="@dimen/_10sdp"
-            android:background="@color/white"
-            android:layout_height="wrap_content">
+            app:cardBackgroundColor="@color/lightGreen"
+            >
 
             <TextView
-                android:id="@+id/postDescription"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:textColor="@color/black"
-                android:textStyle="bold"
-                android:layout_marginStart="@dimen/_10sdp"
-                android:layout_marginEnd="@dimen/_10sdp"
-                android:layout_marginBottom="@dimen/_10sdp"
-                android:text="Lorem Ipsum is simply dummy text
-                simply dummy textsimply dummy text
-                 Aldus PageMaker including versions of Lorem Ipsum."/>
-
-            
-
-
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/_5sdp"
+                android:text="I have a requirements of some material for home Burj Khalifa, below are the materials \n 1. Glasses \n 2. Rhodes \n 3.Cement \n 4.Some People.
+"
+                android:textSize="@dimen/_11sdp" />
         </androidx.cardview.widget.CardView>
-
-
-
-
-
-
     </LinearLayout>
 
-</androidx.cardview.widget.CardView>
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floatingActionButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/_24sdp"
+        android:clickable="true"
+        android:foregroundTint="#FFF"
+        app:tint="#FFFFFF"
+        android:backgroundTint="@color/status"
+        app:maxImageSize="@dimen/_25sdp"
+        app:layout_constraintBottom_toBottomOf="@+id/linearLayout"
+        app:layout_constraintEnd_toEndOf="@+id/linearLayout"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        app:srcCompat="@drawable/ic_baseline_message_24"
+        tools:ignore="OnClick" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+

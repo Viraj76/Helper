@@ -24,10 +24,12 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/myfont"
             android:text="Chat"
-            android:textColor="@color/black"
+
             android:layout_marginStart="@dimen/_10sdp"
             android:layout_gravity="center"
-            android:textSize="@dimen/_20ssp"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
+            android:textSize="@dimen/_23ssp"
             />
 
     </LinearLayout>
