@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "886551740889",
+    "project_id": "helper-workzera",
+    "storage_bucket": "helper-workzera.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:886551740889:android:5cadb5ec77108ef09219c8",
+        "android_client_info": {
+          "package_name": "com.example.bottomnavigation"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "886551740889-kgt5s3ddlt56m7dp260r7p7tochlul4s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCORoi8qgmS-sAMhOmkdAcaD9hcInfRA8s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "886551740889-kgt5s3ddlt56m7dp260r7p7tochlul4s.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

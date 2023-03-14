@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".PostFragment">
+    tools:context=".fragments.PostFragment">
 
 
     <LinearLayout
@@ -110,11 +110,11 @@
                     android:touchscreenBlocksFocus="false"
                     app:endIconMode="clear_text"
                     app:endIconTint="@color/HardGreen"
-
                     app:hintAnimationEnabled="true"
                     app:hintTextColor="@color/HardGreen">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/tvIFirstName"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/text_fields_bkg" />
@@ -135,6 +135,7 @@
                     app:hintTextColor="@color/HardGreen">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/tvMiddleName"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/text_fields_bkg" />
@@ -155,6 +156,7 @@
                     >
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/tvLastName"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/text_fields_bkg" />
@@ -192,6 +194,7 @@
                         app:hintTextColor="@color/HardGreen">
 
                         <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/tvPinCode"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:background="@drawable/text_fields_bkg" />
@@ -221,6 +224,7 @@
                         app:hintTextColor="@color/HardGreen">
 
                         <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/tvState"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:background="@drawable/text_fields_bkg" />
@@ -243,6 +247,7 @@
                         app:hintTextColor="@color/HardGreen">
 
                         <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/tvCity"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:background="@drawable/text_fields_bkg" />
@@ -266,6 +271,7 @@
                     app:hintTextColor="@color/HardGreen">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/tvBriefDetail"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/text_fields_bkg" />
@@ -297,6 +303,7 @@
                     app:hintTextColor="@color/HardGreen">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/tvDescription"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/_100sdp"
                         android:background="@drawable/text_fields_bkg"
@@ -304,6 +311,7 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnPost"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_50sdp"
                     android:layout_marginTop="@dimen/_10sdp"

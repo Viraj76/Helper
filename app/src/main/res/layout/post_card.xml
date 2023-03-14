@@ -17,7 +17,9 @@
         android:paddingStart="@dimen/_16sdp"
         android:paddingTop="0dp"
         android:paddingEnd="@dimen/_16sdp"
-        android:paddingBottom="@dimen/_10sdp"
+        android:paddingBottom="@dimen/_7sdp"
+        android:layout_marginStart="@dimen/_5sdp"
+        android:layout_marginEnd="@dimen/_5sdp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -55,10 +57,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/_50sdp"
-            android:textStyle="bold"
             android:text=" 497883,C.G.,NayaRaipur,Sector 27\n near jalebi shop "
             android:textColor="#F8FBFD"
-            android:textSize="@dimen/_11ssp" />
+            android:layout_marginBottom="@dimen/_5sdp"
+            android:textSize="@dimen/_11ssp"
+            android:textStyle="bold" />
 
         <androidx.cardview.widget.CardView
             android:id="@+id/description"
@@ -66,7 +69,7 @@
             android:layout_width="wrap_content"
             android:layout_marginStart="@dimen/_10sdp"
             android:layout_marginEnd="@dimen/_10sdp"
-            android:layout_marginTop="@dimen/_8sdp"
+            android:layout_marginTop="@dimen/_1sdp"
             android:layout_marginBottom="@dimen/_20sdp"
             android:elevation="@dimen/_16sdp"
             app:cardCornerRadius="@dimen/_10sdp"
