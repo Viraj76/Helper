@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.navigation.Navigation
 import com.example.bottomnavigation.ClientDetails
 import com.example.bottomnavigation.R
 import com.example.bottomnavigation.databinding.FragmentPostBinding
@@ -48,6 +49,7 @@ class PostFragment : Fragment() {
                     .child(name)
                     .setValue(clientDetail)
                     .addOnSuccessListener {
+
                         binding.tvIFirstName.text?.clear()
                         binding.tvMiddleName.text?.clear()
                         binding.tvLastName.text?.clear()
@@ -57,10 +59,12 @@ class PostFragment : Fragment() {
                         binding.tvBriefDetail.text?.clear()
                         binding.tvDescription.text?.clear()
                         Toast.makeText(requireContext(),"Your Need is Posted!", Toast.LENGTH_SHORT).show()
+                        Navigation.findNavController(binding.root).navigate(R.id.action_postFragment_to_homeFragment)
                     }
                     .addOnFailureListener {
                         Toast.makeText(requireContext(),it.message.toString(), Toast.LENGTH_SHORT).show()
                     }
+
             }
         return binding.root
     }
