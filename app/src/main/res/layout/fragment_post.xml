@@ -295,7 +295,7 @@
                     android:focusable="true"
                     android:focusableInTouchMode="false"
                     android:gravity="top"
-                    android:hint="Specify your needs in Brief"
+                    android:hint="Specify your needs in Brief(Required)*"
                     android:touchscreenBlocksFocus="false"
                     app:endIconMode="clear_text"
                     app:endIconTint="@color/HardGreen"

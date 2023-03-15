@@ -41,7 +41,6 @@ class HomeFragment : Fragment() {
 
         databaseReference.addValueEventListener(object :ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
-
                 if(snapshot.exists()){
                     for(allClientsData in snapshot.children){
                         val clientsData = allClientsData.getValue(ClientDetails::class.java)

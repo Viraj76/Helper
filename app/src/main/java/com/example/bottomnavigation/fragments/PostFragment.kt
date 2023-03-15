@@ -42,14 +42,16 @@ class PostFragment : Fragment() {
                 val description = binding.tvDescription.text.toString()
 
                 databaseReference = FirebaseDatabase.getInstance().getReference("Client Detail")
-
                 val clientDetail = ClientDetails(name,address,description)
 
+                if(firstName.isNotEmpty() && lastName.isNotEmpty()
+                && pinCode.isNotEmpty()   &&  state.isNotEmpty()
+                && city.isNotEmpty()      &&  description.isNotEmpty()
+                && description.isNotEmpty()) {
                 databaseReference
                     .child(name)
                     .setValue(clientDetail)
                     .addOnSuccessListener {
-
                         binding.tvIFirstName.text?.clear()
                         binding.tvMiddleName.text?.clear()
                         binding.tvLastName.text?.clear()
@@ -64,7 +66,14 @@ class PostFragment : Fragment() {
                     .addOnFailureListener {
                         Toast.makeText(requireContext(),it.message.toString(), Toast.LENGTH_SHORT).show()
                     }
-
+            }
+            else {
+                    Toast.makeText(
+                        requireContext(),
+                        "Please Fill All Required Fields",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
             }
         return binding.root
     }
