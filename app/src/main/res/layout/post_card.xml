@@ -8,6 +8,7 @@
     android:layout_height="wrap_content"
     >
 
+
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
@@ -98,7 +99,7 @@
         android:clickable="true"
         android:foregroundTint="#FFF"
         app:tint="#FFFFFF"
-        android:backgroundTint="@color/HardGreen"
+        android:theme="@style/messageBackground"
         app:maxImageSize="@dimen/_25sdp"
         app:layout_constraintBottom_toBottomOf="@+id/linearLayout"
         app:layout_constraintEnd_toEndOf="@+id/linearLayout"

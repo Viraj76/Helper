@@ -3,37 +3,52 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_margin="@dimen/_20sdp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
         <TextView
-            android:id="@+id/tvName"
+            android:id="@+id/textViewSelectUser"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Name"
-            android:textSize="@dimen/_20ssp"
-            android:textStyle="bold" />
-        <TextView
-            android:id="@+id/tvAddress"
+            android:text="Select User Type:"
+            android:textSize="20sp"
+            android:padding="10dp"/>
+
+        <RadioGroup
+            android:id="@+id/radioGroupUserType"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Address"
-            android:textSize="@dimen/_20ssp"
-            android:textStyle="bold" />
-        <TextView
-            android:id="@+id/tvDescription"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <RadioButton
+                android:id="@+id/radioButtonType1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="User Type 1"/>
+
+            <RadioButton
+                android:id="@+id/radioButtonType2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="User Type 2"/>
+
+            <RadioButton
+                android:id="@+id/radioButtonType3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="User Type 3"/>
+        </RadioGroup>
+
+        <Button
+            android:id="@+id/buttonSelect"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Description"
-            android:textSize="@dimen/_20ssp"
-            android:textStyle="bold" />
+            android:text="Select"/>
+
     </LinearLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -7,11 +7,6 @@
         android:icon="@drawable/ic_baseline_home_24"
         />
     <item
-        android:title="Chat"
-        android:icon="@drawable/ic_baseline_chat_24"
-        android:id="@+id/chatFragment"
-        />
-    <item
         android:title="Post"
         android:icon="@drawable/ic_baseline_add_circle_outline_24"
         android:id="@+id/postFragment"
