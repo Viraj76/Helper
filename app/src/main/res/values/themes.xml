@@ -17,6 +17,9 @@
     <style name="messageBackground">
         <item name="colorSecondary">@color/HardGreen</item>
     </style>
+    <style name="messageBackgroundForShimmer">
+        <item name="colorSecondary">@color/lightGreen</item>
+    </style>
 
     <style name="LoginTextInputOuterFieldStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
         <item name="android:layout_width">match_parent</item>
