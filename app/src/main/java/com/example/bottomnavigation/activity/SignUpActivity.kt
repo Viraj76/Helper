@@ -1,13 +1,19 @@
 package com.example.bottomnavigation.activity
 
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.widget.RadioButton
 import android.widget.RadioGroup
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.bottomnavigation.R
+import com.example.bottomnavigation.ClientID
+import com.example.bottomnavigation.ContractorID
 import com.example.bottomnavigation.databinding.ActivitySignUpBinding
+import com.google.android.gms.common.internal.Objects.ToStringHelper
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 
 
 class SignUpActivity : AppCompatActivity() {
@@ -15,18 +21,22 @@ class SignUpActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySignUpBinding
     private lateinit var firebaseAuth: FirebaseAuth
     private lateinit var radioGroup: RadioGroup
+    private lateinit var databaseReference: DatabaseReference
+    private lateinit var sharedPreferences: SharedPreferences
+    private  var userPreferences: String?=null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySignUpBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
+        firebaseAuth = FirebaseAuth.getInstance()
         binding.apply {
             radioGroup.setOnCheckedChangeListener { _, checkedId -> storingUserTypeInSharedReferences(checkedId) }
             btnRegister.setOnClickListener { createNewUser() }
             tvSignIn.setOnClickListener { goingToSignInActivity() }
         }
+
 
 
     }
@@ -39,11 +49,76 @@ class SignUpActivity : AppCompatActivity() {
         editor.apply()
     }
     private fun goingToSignInActivity() {
+
         val intent = Intent(this, SIgnInActivity::class.java)
         startActivity(intent)
     }
     private fun createNewUser() {
-        val intent = Intent(this, SIgnInActivity::class.java)
-        startActivity(intent)
+
+        val name = binding.etName.text.toString()
+        val email = binding.etEmail.text.toString()
+        val password = binding.etPassword.text.toString()
+        val confirmPassword = binding.etConfirmPassword.text.toString()
+
+        sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE)
+        userPreferences = sharedPreferences.getString("user_preference","")
+
+        if(userPreferences.equals("Client")){
+            if(name.isNotEmpty() && email.isNotEmpty() && password.isNotEmpty() && confirmPassword.isNotEmpty()){
+               if(password == confirmPassword){
+                   databaseReference = FirebaseDatabase.getInstance().getReference("Clients Id's")
+
+                   firebaseAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener { task->
+                       if(task.isSuccessful){
+                           Toast.makeText(this,"Signed Up Successfully!",Toast.LENGTH_SHORT).show()
+                           val intent = Intent(this, SIgnInActivity::class.java)
+                           startActivity(intent)
+                           val uId = task.result.user?.uid.toString()
+                           val userClient = ClientID(name,email,password,uId)
+                           databaseReference.child(name).setValue(userClient)
+                       }
+                   }
+               }
+                else{
+                   Toast.makeText(this,"Password is not matching",Toast.LENGTH_SHORT).show()
+               }
+            }
+            else{
+                Toast.makeText(this,"Empty fields are not allowed",Toast.LENGTH_SHORT).show()
+            }
+        }
+
+        if(userPreferences.equals("Contractor")){
+            if(name.isNotEmpty() && email.isNotEmpty() && password.isNotEmpty() && confirmPassword.isNotEmpty()){
+                if(password == confirmPassword){
+                    databaseReference = FirebaseDatabase.getInstance().getReference("Contractor Id's")
+
+                    firebaseAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener { task->
+                        if(task.isSuccessful){
+                            Toast.makeText(this,"Signed Up Successfully!",Toast.LENGTH_SHORT).show()
+                            val intent = Intent(this, SIgnInActivity::class.java)
+                            startActivity(intent)
+                            val uId = task.result.user?.uid.toString()
+                            val userContractor = ContractorID(name,email,password,uId)
+//                            databaseReference.child(name).setValue(userContractor)
+                            databaseReference.child(uId).setValue(userContractor)
+                        }
+                        else{
+                            Toast.makeText(this,task.exception.toString(),Toast.LENGTH_SHORT).show()
+                        }
+                    }
+                }
+                else{
+                    Toast.makeText(this,"Password is not matching",Toast.LENGTH_SHORT).show()
+                }
+            }
+            else{
+                Toast.makeText(this,"Empty fields are not allowed",Toast.LENGTH_SHORT).show()
+            }
+        }
+
+
+
+
     }
 }

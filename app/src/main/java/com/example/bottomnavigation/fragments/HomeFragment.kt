@@ -58,7 +58,6 @@ class HomeFragment : Fragment() {
                     postAdapter.setPostList(allClientsDataList)
                 }
             }
-
             override fun onCancelled(error: DatabaseError) {
                 Toast.makeText(requireContext(), error.message, Toast.LENGTH_SHORT).show()
             }
