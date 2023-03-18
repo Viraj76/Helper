@@ -5,8 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activity.SignUpActivity">
-
     <TextView
+        android:id="@+id/tvSignUp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
@@ -21,18 +21,18 @@
         android:textColor="@color/HardGreen"
         android:textStyle="bold"
         />
-
     <ImageView
         android:id="@+id/ivIllus"
-        android:layout_width="@dimen/_300sdp"
-        android:layout_height="@dimen/_150sdp"
-        android:layout_marginTop="92dp"
+        android:layout_width="@dimen/_280sdp"
+        android:layout_height="@dimen/_130sdp"
+        android:layout_marginTop="10dp"
         android:scaleType="fitCenter"
         android:src="@drawable/sign_up_illlus"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.476"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/tvSignUp"
+         />
 
     <TextView
         android:id="@+id/tvWelcome"
@@ -105,6 +105,33 @@
                 />
         </RadioGroup>
     </LinearLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tvNameLL"
+        style="@style/LoginTextInputOuterFieldStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/_16sdp"
+        app:boxStrokeColor="@color/HardGreen"
+        app:hintTextColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:endIconMode="clear_text"
+        app:endIconTint="@color/HardGreen"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/llUserSelection"
+        app:layout_constraintBottom_toTopOf="@id/tvEmailLL"
+        >
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etName"
+            style="@style/LoginTextInputInnerFieldStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/login_fields"
+            android:hint="Enter your Name"
+            android:inputType="textEmailAddress" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/tvEmailLL"
@@ -114,13 +141,12 @@
         android:layout_marginHorizontal="@dimen/_16sdp"
         app:boxStrokeColor="@color/HardGreen"
         app:hintTextColor="@color/black"
-        android:layout_marginTop="@dimen/_10sdp"
         app:layout_constraintEnd_toEndOf="parent"
         app:endIconMode="clear_text"
         app:endIconTint="@color/HardGreen"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/llUserSelection"
+        app:layout_constraintTop_toBottomOf="@id/tvNameLL"
         >
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/etEmail"
@@ -129,7 +155,6 @@
             android:layout_height="wrap_content"
             android:background="@drawable/login_fields"
             android:hint="Enter your email"
-
             android:inputType="textEmailAddress" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -188,7 +213,7 @@
         android:id="@+id/btnRegister"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_50sdp"
-        android:layout_marginTop="@dimen/_25sdp"
+        android:layout_marginTop="@dimen/_20sdp"
         android:text="Resiter"
         android:textAllCaps="false"
         android:letterSpacing="0.1"
@@ -209,7 +234,7 @@
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@id/btnRegister">
 
         <TextView
