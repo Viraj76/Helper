@@ -12,10 +12,9 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 
 
+
 class SIgnInActivity : AppCompatActivity() {
-
     private lateinit var binding: ActivitySignInBinding
-
     private lateinit var firebaseAuth: FirebaseAuth
     private lateinit var databaseReference: DatabaseReference
     private lateinit var existedContractorId : String
@@ -26,12 +25,9 @@ class SIgnInActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivitySignInBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
         progressBar = binding.progressBar
         binding.btnLogin.setOnClickListener { loggingUser() }
         binding.tvSignUp.setOnClickListener { goingToSignUpActivity() }
-
-
     }
 
     private fun goingToSignUpActivity() {
@@ -40,15 +36,17 @@ class SIgnInActivity : AppCompatActivity() {
     }
 
     private fun loggingUser() {
+
+
         firebaseAuth = FirebaseAuth.getInstance()
         val email = binding.etEmail.text.toString()
         val password = binding.etPassword.text.toString()
+
+
         if (email.isNotEmpty() && password.isNotEmpty()) {
             progressBar.visibility = View.VISIBLE
             firebaseAuth.signInWithEmailAndPassword(email, password)
-
                 .addOnCompleteListener { task ->
-
                     if (task.isSuccessful) {
 
                         // just current user id who wants to log in
@@ -78,13 +76,12 @@ class SIgnInActivity : AppCompatActivity() {
                                     TODO("Not yet implemented")
                                 }
                             })
-                        val list = ArrayList<String>()
+
                         val contractorsRef = FirebaseDatabase.getInstance().getReference("Contractor Id's")
                         contractorsRef.addListenerForSingleValueEvent(object : ValueEventListener {
                             override fun onDataChange(dataSnapshot: DataSnapshot) {
                                 for (childSnapshot in dataSnapshot.children) {
                                     val contractorIds = childSnapshot.child("contractorId").value.toString()
-                                   list.add(contractorIds)
                                     if(contractorIds == currentUserId){
                                         existedContractorId=contractorIds
                                         break
@@ -102,12 +99,13 @@ class SIgnInActivity : AppCompatActivity() {
                             }
                         })
                     }
-                    else Toast.makeText(this, task.exception?.message.toString(), Toast.LENGTH_SHORT).show()
+                    else{
+                        progressBar.visibility = View.GONE
+                        Toast.makeText(this, task.exception?.message.toString(), Toast.LENGTH_SHORT).show()
+                    }
                 }
         }
         else Toast.makeText(this, "Empty fields are not allowed", Toast.LENGTH_SHORT).show()
-
-
     } }
 
 

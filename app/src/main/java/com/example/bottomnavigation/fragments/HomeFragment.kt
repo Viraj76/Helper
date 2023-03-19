@@ -45,7 +45,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun showingPostInTheRecyclerView() {
-        databaseReference = FirebaseDatabase.getInstance().getReference("Client Detail")
+        databaseReference = FirebaseDatabase.getInstance().getReference("All Posts")
         databaseReference.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 shimmer.stopShimmer()

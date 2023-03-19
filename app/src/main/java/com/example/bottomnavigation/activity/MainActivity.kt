@@ -12,7 +12,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-
         // Here in the xml file you should use <fragment> then only it will work otherwise app will crash
         val bottomNavigation = findViewById<BottomNavigationView>(R.id.btmNav)
         val navController = Navigation.findNavController(this, R.id.hostFragment)

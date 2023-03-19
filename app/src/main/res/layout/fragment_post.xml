@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".client.fragments.PostFragment">
 
@@ -33,22 +34,22 @@
             />
     </LinearLayout>
 
-    <ImageView
-        android:id="@+id/ivPost"
-        android:layout_width="@dimen/_280sdp"
-        android:layout_height="@dimen/_160sdp"
-        app:layout_constraintTop_toBottomOf="@id/llHeader"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="@dimen/_10sdp"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:src="@drawable/post"
-        android:scaleType="fitXY"
-        />
+<!--    <ImageView-->
+<!--        android:id="@+id/ivPost"-->
+<!--        android:layout_width="@dimen/_280sdp"-->
+<!--        android:layout_height="@dimen/_160sdp"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/llHeader"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        android:layout_marginTop="@dimen/_10sdp"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        android:src="@drawable/post"-->
+<!--        android:scaleType="fitXY"-->
+<!--        />-->
     <TextView
         android:id="@+id/tvWelcomeClient"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/ivPost"
+        app:layout_constraintTop_toBottomOf="@id/llHeader"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginStart="@dimen/_10sdp"
         android:layout_marginTop="@dimen/_10sdp"

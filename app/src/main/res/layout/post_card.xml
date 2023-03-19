@@ -7,8 +7,6 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     >
-
-
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
@@ -21,6 +19,8 @@
         android:paddingBottom="@dimen/_7sdp"
         android:layout_marginStart="@dimen/_5sdp"
         android:layout_marginEnd="@dimen/_5sdp"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:layout_marginBottom="@dimen/_5sdp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -90,22 +90,6 @@
         </androidx.cardview.widget.CardView>
     </LinearLayout>
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-
-        android:id="@+id/fabChat"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="@dimen/_24sdp"
-        android:clickable="true"
-        android:foregroundTint="#FFF"
-        app:tint="#FFFFFF"
-        android:theme="@style/messageBackground"
-        app:maxImageSize="@dimen/_25sdp"
-        app:layout_constraintBottom_toBottomOf="@+id/linearLayout"
-        app:layout_constraintEnd_toEndOf="@+id/linearLayout"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-        app:srcCompat="@drawable/ic_baseline_message_24"
-        tools:ignore="OnClick" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

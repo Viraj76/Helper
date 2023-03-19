@@ -1,6 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-             xmlns:app="http://schemas.android.com/apk/res-auto"
-             android:id="@+id/contractor_nav_graph">
-
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/contractor_nav_graph"
+    app:startDestination="@id/homeFragment3">
+    <fragment
+        android:id="@+id/homeFragment3"
+        android:name="com.example.bottomnavigation.contractor.ContractorHomeFragment"
+        android:label="fragment_home2"
+        tools:layout="@layout/fragment_home2" />
+    <fragment
+        android:id="@+id/chatFragment2"
+        android:name="com.example.bottomnavigation.contractor.ChatFragment"
+        android:label="fragment_chat"
+        tools:layout="@layout/fragment_chat" />
+    <fragment
+        android:id="@+id/historyFragment3"
+        android:name="com.example.bottomnavigation.contractor.HistoryFragment"
+        android:label="fragment_history2"
+        tools:layout="@layout/fragment_history2" />
 </navigation>
