@@ -1,5 +1,5 @@
 
-package com.example.bottomnavigation.fragments
+package com.example.bottomnavigation.client.fragments
 
 import android.os.Bundle
 
