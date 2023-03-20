@@ -22,10 +22,12 @@ class ContractorPostAdapter:RecyclerView.Adapter<ContractorPostAdapter.Contracto
     }
 
     override fun onBindViewHolder(holder: ContractorPostViewHolder, position: Int) {
+
         val  data = contractorPostList[position]
         holder.binding.tvName.text = data.name
         holder.binding.tvAddress.text = data.address
         holder.binding.tvDescription.text = data.description
+
     }
 
     override fun getItemCount(): Int {

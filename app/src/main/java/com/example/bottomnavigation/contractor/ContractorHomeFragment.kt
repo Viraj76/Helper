@@ -15,7 +15,6 @@ import com.example.bottomnavigation.databinding.FragmentHomeBinding
 import com.google.firebase.database.*
 
 class ContractorHomeFragment : Fragment() {
-    
     private lateinit var binding:FragmentHome2Binding
     private lateinit var contractorPostAdapter: ContractorPostAdapter
     private lateinit var databaseReference: DatabaseReference
