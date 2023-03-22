@@ -1,6 +1,5 @@
-package com.example.bottomnavigation.contractor
+package com.example.bottomnavigation.contractor.fragments
 
-import android.os.Binder
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -8,10 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.bottomnavigation.ClientDetails
-import com.example.bottomnavigation.R
+import com.example.bottomnavigation.contractor.adapter.ContractorPostAdapter
+import com.example.bottomnavigation.data_classes.ClientDetails
 import com.example.bottomnavigation.databinding.FragmentHome2Binding
-import com.example.bottomnavigation.databinding.FragmentHomeBinding
 import com.google.firebase.database.*
 
 class ContractorHomeFragment : Fragment() {
@@ -25,7 +23,6 @@ class ContractorHomeFragment : Fragment() {
     ): View {
         // Inflate the layout for this fragment
         binding = FragmentHome2Binding.inflate(inflater)
-
         retrievedPosts =  ArrayList()
         prepareContractorPostRecyclerView()
         showingPostsToContractor()

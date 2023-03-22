@@ -8,8 +8,8 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
-import com.example.bottomnavigation.ClientDetails
 import com.example.bottomnavigation.R
+import com.example.bottomnavigation.data_classes.ClientDetails
 import com.example.bottomnavigation.databinding.FragmentPostBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference

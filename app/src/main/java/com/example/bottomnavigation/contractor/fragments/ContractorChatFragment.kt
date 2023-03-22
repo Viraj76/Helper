@@ -1,4 +1,4 @@
-package com.example.bottomnavigation.contractor
+package com.example.bottomnavigation.contractor.fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

@@ -1,15 +1,13 @@
-package com.example.bottomnavigation.client
+package com.example.bottomnavigation.client.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
-import com.example.bottomnavigation.ClientDetails
+import com.example.bottomnavigation.data_classes.ClientDetails
 import com.example.bottomnavigation.databinding.HistoryCardBinding
-import java.sql.ClientInfoStatus
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
-import kotlin.contracts.contract
 
 class HistoryAdapter:RecyclerView.Adapter<HistoryAdapter.HistoryViewHolder>() {
 

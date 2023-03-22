@@ -1,10 +1,10 @@
-package com.example.bottomnavigation.contractor
+package com.example.bottomnavigation.contractor.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
-import com.example.bottomnavigation.ClientDetails
+import com.example.bottomnavigation.data_classes.ClientDetails
 import com.example.bottomnavigation.databinding.PostCardContractorBinding
 
 class ContractorPostAdapter:RecyclerView.Adapter<ContractorPostAdapter.ContractorPostViewHolder>() {

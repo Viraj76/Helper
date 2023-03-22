@@ -1,4 +1,4 @@
-package com.example.bottomnavigation
+package com.example.bottomnavigation.data_classes
 data class ClientDetails(
     val userId: String ?=null,
     val name : String?=null,

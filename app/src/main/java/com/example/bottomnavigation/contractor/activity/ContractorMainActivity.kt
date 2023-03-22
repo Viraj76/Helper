@@ -1,4 +1,4 @@
-package com.example.bottomnavigation.contractor
+package com.example.bottomnavigation.contractor.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

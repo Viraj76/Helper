@@ -7,9 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.bottomnavigation.ClientDetails
-import com.example.bottomnavigation.R
-import com.example.bottomnavigation.client.HistoryAdapter
+import com.example.bottomnavigation.client.adapter.HistoryAdapter
+import com.example.bottomnavigation.data_classes.ClientDetails
 import com.example.bottomnavigation.databinding.FragmentHistoryBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*

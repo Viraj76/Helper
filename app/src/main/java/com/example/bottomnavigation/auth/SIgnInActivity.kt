@@ -1,4 +1,4 @@
-package com.example.bottomnavigation.activity
+package com.example.bottomnavigation.activity.auth
 
 import android.content.Intent
 import android.os.Bundle
@@ -6,7 +6,8 @@ import android.view.View
 import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.bottomnavigation.contractor.ContractorMainActivity
+import com.example.bottomnavigation.client.activity.ClientMainActivity
+import com.example.bottomnavigation.contractor.activity.ContractorMainActivity
 import com.example.bottomnavigation.databinding.ActivitySignInBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
@@ -66,7 +67,7 @@ class SIgnInActivity : AppCompatActivity() {
                                         }
                                     }
                                     if(existedClientId == currentUserId) {
-                                        val intent = Intent(this@SIgnInActivity, MainActivity::class.java)
+                                        val intent = Intent(this@SIgnInActivity, ClientMainActivity::class.java)
                                         startActivity(intent)
                                         progressBar.visibility = View.GONE
                                         Toast.makeText(this@SIgnInActivity, "Signed In Successfully!", Toast.LENGTH_SHORT).show()

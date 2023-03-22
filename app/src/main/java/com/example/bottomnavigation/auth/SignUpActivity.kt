@@ -1,4 +1,4 @@
-package com.example.bottomnavigation.activity
+package com.example.bottomnavigation.activity.auth
 
 import android.content.Intent
 import android.content.SharedPreferences
@@ -7,10 +7,9 @@ import android.widget.RadioButton
 import android.widget.RadioGroup
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.bottomnavigation.ClientID
-import com.example.bottomnavigation.ContractorID
+import com.example.bottomnavigation.data_classes.ClientID
+import com.example.bottomnavigation.data_classes.ContractorID
 import com.example.bottomnavigation.databinding.ActivitySignUpBinding
-import com.google.android.gms.common.internal.Objects.ToStringHelper
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase

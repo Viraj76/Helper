@@ -6,17 +6,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Adapter
-import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.bottomnavigation.ClientDetails
-import com.example.bottomnavigation.PostAdapter
+import com.example.bottomnavigation.client.adapter.PostAdapter
 import com.example.bottomnavigation.R
+import com.example.bottomnavigation.data_classes.ClientDetails
 import com.example.bottomnavigation.databinding.FragmentHomeBinding
-import com.example.bottomnavigation.databinding.PostCardBinding
 import com.facebook.shimmer.ShimmerFrameLayout
 import com.google.firebase.database.*
 

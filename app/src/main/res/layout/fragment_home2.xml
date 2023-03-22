@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".contractor.ContractorHomeFragment">
+    tools:context=".contractor.fragments.ContractorHomeFragment">
 
     <LinearLayout
         android:id="@+id/llHeaderCon"
