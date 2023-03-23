@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.bottomnavigation.contractor.adapter.ContractorPostAdapter
-import com.example.bottomnavigation.data_classes.ClientDetails
+import com.example.bottomnavigation.models.ClientPosts
 import com.example.bottomnavigation.databinding.FragmentHome2Binding
 import com.google.firebase.database.*
 
@@ -16,7 +16,7 @@ class ContractorHomeFragment : Fragment() {
     private lateinit var binding:FragmentHome2Binding
     private lateinit var contractorPostAdapter: ContractorPostAdapter
     private lateinit var databaseReference: DatabaseReference
-    private lateinit var  retrievedPosts : ArrayList<ClientDetails>
+    private lateinit var  retrievedPosts : ArrayList<ClientPosts>
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -38,7 +38,7 @@ class ContractorHomeFragment : Fragment() {
 
                 if (snapshot.exists()) {
                     for (allClientsData in snapshot.children) {
-                        val clientsData = allClientsData.getValue(ClientDetails::class.java)
+                        val clientsData = allClientsData.getValue(ClientPosts::class.java)
                         retrievedPosts.add(clientsData!!)
                     }
                     contractorPostAdapter.setPosts(retrievedPosts)

@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.bottomnavigation.client.adapter.HistoryAdapter
-import com.example.bottomnavigation.data_classes.ClientDetails
+import com.example.bottomnavigation.models.ClientPosts
 import com.example.bottomnavigation.databinding.FragmentHistoryBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
@@ -19,7 +19,7 @@ class HistoryFragment : Fragment() {
     private lateinit var firebaseAuth: FirebaseAuth
     private lateinit var currentClientDatabaseReference: DatabaseReference
     private lateinit var clientPostHistoryAdapter: HistoryAdapter
-    private lateinit var clientPostHistoryList : ArrayList<ClientDetails>
+    private lateinit var clientPostHistoryList : ArrayList<ClientPosts>
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -41,14 +41,13 @@ class HistoryFragment : Fragment() {
     }
 
     private fun gettingCurrentClientPostHistory() {
-
         val currentClientId = firebaseAuth.currentUser?.uid
         currentClientDatabaseReference.addListenerForSingleValueEvent(object : ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
                 for(clientPost in snapshot.children){
                     val clientId  = clientPost.child("userId").value.toString()
                     if(clientId == currentClientId){
-                        clientPost.getValue(ClientDetails::class.java)
+                        clientPost.getValue(ClientPosts::class.java)
                             ?.let { clientPostHistoryList.add(it) }
                     }
                 }

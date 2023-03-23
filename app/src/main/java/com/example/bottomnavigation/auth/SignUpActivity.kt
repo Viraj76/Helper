@@ -7,8 +7,8 @@ import android.widget.RadioButton
 import android.widget.RadioGroup
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.bottomnavigation.data_classes.ClientID
-import com.example.bottomnavigation.data_classes.ContractorID
+import com.example.bottomnavigation.models.ClientID
+import com.example.bottomnavigation.models.ContractorID
 import com.example.bottomnavigation.databinding.ActivitySignUpBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference

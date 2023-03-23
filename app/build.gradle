@@ -37,10 +37,11 @@ android {
 }
 
 dependencies {
+    def nav_version = "2.5.3"
+
     implementation 'com.google.firebase:firebase-database-ktx:20.1.0'
     implementation 'com.google.gms:google-services:4.3.15'
     implementation 'com.google.firebase:firebase-auth-ktx:21.1.0'
-    def nav_version = "2.5.3"
     implementation 'androidx.core:core-ktx:1.9.0'
     implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'com.google.android.material:material:1.8.0'
@@ -59,4 +60,10 @@ dependencies {
 
     //shimmer effects
     implementation 'com.facebook.shimmer:shimmer:0.5.0'
+
+    // Lifecycle components
+    implementation "androidx.lifecycle:lifecycle-extensions:2.2.0"
+    implementation "androidx.lifecycle:lifecycle-common-java8:2.6.1"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1"
+
 }

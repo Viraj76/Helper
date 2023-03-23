@@ -1,4 +1,4 @@
-package com.example.bottomnavigation.data_classes
+package com.example.bottomnavigation.models
 
 data class ClientID(
     val name :String? ="",

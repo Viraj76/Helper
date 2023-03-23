@@ -31,28 +31,28 @@
                     android:textSize="@dimen/_23ssp"
                     />
         </LinearLayout>
-        <com.facebook.shimmer.ShimmerFrameLayout
-            android:id="@+id/shimmer_view_container"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/llHeader"
-            >
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                        android:orientation="vertical"
-                        >
-                        <include layout="@layout/post_card_shimmer_effects"/>
-                        <include layout="@layout/post_card_shimmer_effects"/>
-                        <include layout="@layout/post_card_shimmer_effects"/>
-                        <include layout="@layout/post_card_shimmer_effects"/>
-                        <include layout="@layout/post_card_shimmer_effects"/>
-                        <include layout="@layout/post_card_shimmer_effects"/>
-                        <include layout="@layout/post_card_shimmer_effects"/>
-                </LinearLayout>
-        </com.facebook.shimmer.ShimmerFrameLayout>
+<!--        <com.facebook.shimmer.ShimmerFrameLayout-->
+<!--            android:id="@+id/shimmer_view_container"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@id/llHeader"-->
+<!--            >-->
+<!--                <LinearLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                        android:orientation="vertical"-->
+<!--                        >-->
+<!--                        <include layout="@layout/post_card_shimmer_effects"/>-->
+<!--                        <include layout="@layout/post_card_shimmer_effects"/>-->
+<!--                        <include layout="@layout/post_card_shimmer_effects"/>-->
+<!--                        <include layout="@layout/post_card_shimmer_effects"/>-->
+<!--                        <include layout="@layout/post_card_shimmer_effects"/>-->
+<!--                        <include layout="@layout/post_card_shimmer_effects"/>-->
+<!--                        <include layout="@layout/post_card_shimmer_effects"/>-->
+<!--                </LinearLayout>-->
+<!--        </com.facebook.shimmer.ShimmerFrameLayout>-->
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/postRecyclerView"
             android:layout_width="0dp"

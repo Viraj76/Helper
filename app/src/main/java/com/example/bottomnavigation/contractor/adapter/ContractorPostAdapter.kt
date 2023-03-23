@@ -4,13 +4,13 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
-import com.example.bottomnavigation.data_classes.ClientDetails
+import com.example.bottomnavigation.models.ClientPosts
 import com.example.bottomnavigation.databinding.PostCardContractorBinding
 
 class ContractorPostAdapter:RecyclerView.Adapter<ContractorPostAdapter.ContractorPostViewHolder>() {
-    private  var contractorPostList=ArrayList<ClientDetails>()
+    private  var contractorPostList=ArrayList<ClientPosts>()
 
-    fun setPosts(contractorSidePostList : ArrayList<ClientDetails>){
+    fun setPosts(contractorSidePostList : ArrayList<ClientPosts>){
         this.contractorPostList = contractorSidePostList
         notifyDataSetChanged()
     }

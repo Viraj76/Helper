@@ -4,16 +4,16 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
-import com.example.bottomnavigation.data_classes.ClientDetails
+import com.example.bottomnavigation.models.ClientPosts
 import com.example.bottomnavigation.databinding.HistoryCardBinding
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
 class HistoryAdapter:RecyclerView.Adapter<HistoryAdapter.HistoryViewHolder>() {
 
-    private  var clientPostHistoryList = ArrayList<ClientDetails>()
+    private  var clientPostHistoryList = ArrayList<ClientPosts>()
 
-    fun setClientHistory(clientHistory: ArrayList<ClientDetails>){
+    fun setClientHistory(clientHistory: ArrayList<ClientPosts>){
         this.clientPostHistoryList= clientHistory
         notifyDataSetChanged()
     }

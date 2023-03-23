@@ -1,5 +1,5 @@
-package com.example.bottomnavigation.data_classes
-data class ClientDetails(
+package com.example.bottomnavigation.models
+data class ClientPosts(
     val userId: String ?=null,
     val name : String?=null,
     val address : String ?=null,

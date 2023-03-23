@@ -9,7 +9,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import com.example.bottomnavigation.R
-import com.example.bottomnavigation.data_classes.ClientDetails
+import com.example.bottomnavigation.models.ClientPosts
 import com.example.bottomnavigation.databinding.FragmentPostBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
@@ -46,7 +46,7 @@ class PostFragment : Fragment() {
             val currentUserId = firebaseAuth.currentUser?.uid
 
             databaseReference = FirebaseDatabase.getInstance().getReference("All Posts")
-            val clientDetail = ClientDetails(currentUserId,name, address, description)
+            val clientDetail = ClientPosts(currentUserId,name, address, description)
             if (firstName.isNotEmpty() && lastName.isNotEmpty()
                 && pinCode.isNotEmpty() && state.isNotEmpty()
                 && city.isNotEmpty() && description.isNotEmpty()
