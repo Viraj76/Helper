@@ -6,4 +6,57 @@
     android:layout_height="match_parent"
     tools:context=".ChatActivity">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/chatToolBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@color/status"
+        />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/messageLL"
+        app:layout_constraintTop_toBottomOf="@id/chatToolBar"
+        />
+
+    <LinearLayout
+        android:id="@+id/messageLL"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="100"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="@dimen/_12sdp"
+        >
+        <EditText
+            android:id="@+id/tvMessage"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_40sdp"
+            android:hint="Message.."
+            android:background="@drawable/chat_box_back"
+            android:paddingStart="@dimen/_17sdp"
+            android:layout_weight="90"
+            android:layout_marginStart="@dimen/_5sdp"
+             />
+
+        <ImageView
+            android:id="@+id/ivSendChat"
+            android:layout_width="@dimen/_40sdp"
+            android:layout_height="@dimen/_40sdp"
+            android:layout_weight="10"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:src="@drawable/ic_baseline_send_24"
+            android:layout_marginEnd="@dimen/_5sdp"
+            />
+
+    </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
