@@ -3,32 +3,35 @@ package com.example.bottomnavigation.activity.auth
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.view.View
+import android.widget.ProgressBar
 import android.widget.RadioButton
 import android.widget.RadioGroup
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.bottomnavigation.databinding.ActivitySignUpBinding
 import com.example.bottomnavigation.models.ClientID
 import com.example.bottomnavigation.models.ContractorID
-import com.example.bottomnavigation.databinding.ActivitySignUpBinding
+
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 
 
 class SignUpActivity : AppCompatActivity() {
-
-    private lateinit var binding: ActivitySignUpBinding
+    private lateinit var binding:ActivitySignUpBinding
     private lateinit var firebaseAuth: FirebaseAuth
     private lateinit var radioGroup: RadioGroup
     private lateinit var databaseReference: DatabaseReference
     private lateinit var sharedPreferences: SharedPreferences
     private  var userPreferences: String?=null
+    private lateinit var progressBar: ProgressBar
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySignUpBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
+//        progressBar.visibility = View.GONE
         firebaseAuth = FirebaseAuth.getInstance()
         binding.apply {
             radioGroup.setOnCheckedChangeListener { _, checkedId -> storingUserTypeInSharedReferences(checkedId) }
@@ -48,12 +51,12 @@ class SignUpActivity : AppCompatActivity() {
         editor.apply()
     }
     private fun goingToSignInActivity() {
-
         val intent = Intent(this, SIgnInActivity::class.java)
         startActivity(intent)
     }
-    private fun createNewUser() {
 
+    private fun createNewUser() {
+//        progressBar.visibility = View.VISIBLE
         val name = binding.etName.text.toString()
         val email = binding.etEmail.text.toString()
         val password = binding.etPassword.text.toString()
@@ -66,7 +69,6 @@ class SignUpActivity : AppCompatActivity() {
             if(name.isNotEmpty() && email.isNotEmpty() && password.isNotEmpty() && confirmPassword.isNotEmpty()){
                if(password == confirmPassword){
                    databaseReference = FirebaseDatabase.getInstance().getReference("Clients Id's")
-
                    firebaseAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener { task->
                        if(task.isSuccessful){
                            Toast.makeText(this,"Signed Up Successfully!",Toast.LENGTH_SHORT).show()
@@ -74,7 +76,11 @@ class SignUpActivity : AppCompatActivity() {
                            startActivity(intent)
                            val uId = task.result.user?.uid.toString()
                            val userClient = ClientID(name,email,password,uId)
-                           databaseReference.child(name).setValue(userClient)
+                           databaseReference.child(uId).setValue(userClient)
+
+                       }
+                       else{
+                           Toast.makeText(this,task.exception.toString(),Toast.LENGTH_SHORT).show()
                        }
                    }
                }
@@ -86,6 +92,7 @@ class SignUpActivity : AppCompatActivity() {
                 Toast.makeText(this,"Empty fields are not allowed",Toast.LENGTH_SHORT).show()
             }
         }
+
 
         if(userPreferences.equals("Contractor")){
             if(name.isNotEmpty() && email.isNotEmpty() && password.isNotEmpty() && confirmPassword.isNotEmpty()){

@@ -34,8 +34,6 @@ class ContractorHomeFragment : Fragment() {
         databaseReference = FirebaseDatabase.getInstance().getReference("All Posts")
         databaseReference.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-
-
                 if (snapshot.exists()) {
                     for (allClientsData in snapshot.children) {
                         val clientsData = allClientsData.getValue(ClientPosts::class.java)

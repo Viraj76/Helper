@@ -40,7 +40,7 @@ class PostFragment : Fragment() {
             val city = binding.tvCity.text.toString()
             val briefDetail = binding.tvBriefDetail.text.toString()
 
-            val name = "$firstName $middleName $lastName"
+            val name = "${firstName.trim()} ${middleName.trim()} ${lastName.trim()}"
             val address = "$pinCode, $state, $city, $briefDetail"
             val description = binding.tvDescription.text.toString()
             val currentUserId = firebaseAuth.currentUser?.uid
@@ -54,7 +54,7 @@ class PostFragment : Fragment() {
             ) {
                 if (currentUserId != null) {
                     databaseReference
-                        .child(name)
+                        .push()
                         .setValue(clientDetail)
                         .addOnSuccessListener {
                             binding.tvIFirstName.text?.clear()

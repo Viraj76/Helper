@@ -10,11 +10,11 @@
     <item
         android:title="Chat"
         android:icon="@drawable/ic_baseline_chat_24"
-        android:id="@+id/chatFragment2"
+        android:id="@+id/contractorChatFragment"
         />
     <item
         android:title="History"
         android:icon="@drawable/ic_baseline_history_24"
-        android:id="@+id/historyFragment3"
+        android:id="@+id/contractorHistoryFragment"
         />
 </menu>

@@ -10,7 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.bottomnavigation.client.adapter.PostAdapter
-import com.example.bottomnavigation.client.fragments.viewModel.HomeViewModel
+import com.example.bottomnavigation.client.viewModel.HomeViewModel
 import com.example.bottomnavigation.models.ClientPosts
 import com.example.bottomnavigation.databinding.FragmentHomeBinding
 import com.facebook.shimmer.ShimmerFrameLayout

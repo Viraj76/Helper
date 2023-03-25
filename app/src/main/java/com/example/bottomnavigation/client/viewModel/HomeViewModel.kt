@@ -1,4 +1,4 @@
-package com.example.bottomnavigation.client.fragments.viewModel
+package com.example.bottomnavigation.client.viewModel
 
 import android.util.Log
 import androidx.lifecycle.LiveData

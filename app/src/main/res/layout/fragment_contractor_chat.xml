@@ -1,12 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".contractor.HistoryFragment">
+    tools:context=".contractor.fragments.ContractorChatFragment">
 
-
+<!--    <androidx.appcompat.widget.Toolbar-->
+<!--        android:id="@+id/historyToolBar"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        android:background="@color/HardGreen"-->
+<!--        />-->
     <LinearLayout
         android:id="@+id/llHeaderCon"
         android:layout_width="match_parent"
@@ -16,20 +24,21 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         >
-
         <TextView
             android:id="@+id/tvHome"
-            android:layout_width="match_parent"
+            android:layout_weight="3"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:fontFamily="@font/myfont"
-            android:text="History"
+            android:text="Chat"
             android:layout_marginStart="@dimen/_10sdp"
             android:layout_gravity="center"
             android:textColor="#FFFFFF"
             android:textStyle="bold"
             android:textSize="@dimen/_23ssp"
             />
-
     </LinearLayout>
 
-</FrameLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

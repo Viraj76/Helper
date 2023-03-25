@@ -10,13 +10,13 @@
         android:label="fragment_home2"
         tools:layout="@layout/fragment_home2" />
     <fragment
-        android:id="@+id/chatFragment2"
-        android:name="com.example.bottomnavigation.contractor.ChatFragment"
-        android:label="fragment_chat"
-        tools:layout="@layout/fragment_chat" />
+        android:id="@+id/contractorHistoryFragment"
+        android:name="com.example.bottomnavigation.contractor.fragments.ContractorHistoryFragment"
+        android:label="fragment_contractor_history"
+        tools:layout="@layout/fragment_contractor_history" />
     <fragment
-        android:id="@+id/historyFragment3"
-        android:name="com.example.bottomnavigation.contractor.HistoryFragment"
-        android:label="fragment_history2"
-        tools:layout="@layout/fragment_history2" />
+        android:id="@+id/contractorChatFragment"
+        android:name="com.example.bottomnavigation.contractor.fragments.ContractorChatFragment"
+        android:label="fragment_contractor_chat"
+        tools:layout="@layout/fragment_contractor_chat" />
 </navigation>
