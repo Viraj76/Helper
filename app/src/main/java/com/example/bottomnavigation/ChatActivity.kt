@@ -1,10 +1,13 @@
 package com.example.bottomnavigation
 
+import android.content.Intent
 import android.graphics.PorterDuff
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MenuItem
 import androidx.appcompat.widget.Toolbar
 import androidx.core.content.ContextCompat
+import com.example.bottomnavigation.contractor.activity.ContractorMainActivity
 import com.example.bottomnavigation.databinding.ActivityChatBinding
 
 class ChatActivity : AppCompatActivity() {
@@ -37,6 +40,18 @@ class ChatActivity : AppCompatActivity() {
             setHomeAsUpIndicator(backArrow)
 
 
+        }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when(item.itemId){
+            android.R.id.home ->{
+                val intent  = Intent(this,ContractorMainActivity::class.java)
+                startActivity(intent)
+                finish()
+                true
+            }
+            else ->super.onOptionsItemSelected(item)
         }
     }
 }
