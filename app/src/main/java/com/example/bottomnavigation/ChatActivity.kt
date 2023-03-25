@@ -14,18 +14,20 @@ class ChatActivity : AppCompatActivity() {
 
     private lateinit var binding:ActivityChatBinding
     private lateinit var chatToolbar: Toolbar
+    private lateinit var clientName : String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityChatBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+         clientName = intent.getStringExtra("name").toString()
         settingUpToolBar()
 
     }
 
     private fun settingUpToolBar() {
-        binding.chatToolBar.title = "NAME"
+        binding.chatToolBar.title = clientName
         binding.chatToolBar.setTitleTextColor(resources.getColor(R.color.white))
 
 
@@ -38,8 +40,6 @@ class ChatActivity : AppCompatActivity() {
             val backArrow = ContextCompat.getDrawable(this@ChatActivity, R.drawable.back)
             backArrow?.setColorFilter(color, PorterDuff.Mode.SRC_ATOP)
             setHomeAsUpIndicator(backArrow)
-
-
         }
     }
 

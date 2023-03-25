@@ -35,6 +35,7 @@ class ContractorPostAdapter(val context: Context):RecyclerView.Adapter<Contracto
 
         holder.binding.fabChat.setOnClickListener {
             val intent = Intent(context,ChatActivity::class.java)
+            intent.putExtra("name",data.name)
             context.startActivity(intent)
         }
 
