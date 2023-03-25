@@ -1,5 +1,7 @@
 package com.example.bottomnavigation.contractor.fragments
 
+
+import android.app.Activity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -13,10 +15,13 @@ import com.example.bottomnavigation.databinding.FragmentHome2Binding
 import com.google.firebase.database.*
 
 class ContractorHomeFragment : Fragment() {
+
     private lateinit var binding:FragmentHome2Binding
     private lateinit var contractorPostAdapter: ContractorPostAdapter
     private lateinit var databaseReference: DatabaseReference
     private lateinit var  retrievedPosts : ArrayList<ClientPosts>
+    private lateinit var context:Activity
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -26,7 +31,6 @@ class ContractorHomeFragment : Fragment() {
         retrievedPosts =  ArrayList()
         prepareContractorPostRecyclerView()
         showingPostsToContractor()
-
         return binding.root
     }
 
@@ -49,12 +53,13 @@ class ContractorHomeFragment : Fragment() {
     }
 
     private fun prepareContractorPostRecyclerView() {
-        contractorPostAdapter = ContractorPostAdapter()
+        contractorPostAdapter = ContractorPostAdapter(requireContext())
         binding.rvContractorPost.apply {
             layoutManager  = LinearLayoutManager(context,LinearLayoutManager.VERTICAL,false)
             adapter = contractorPostAdapter
         }
     }
+
 
 
 }
