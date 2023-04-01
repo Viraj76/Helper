@@ -4,19 +4,25 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/contractor_nav_graph"
     app:startDestination="@id/homeFragment3">
+
     <fragment
         android:id="@+id/homeFragment3"
         android:name="com.example.bottomnavigation.contractor.fragments.ContractorHomeFragment"
         android:label="fragment_home2"
-        tools:layout="@layout/fragment_home2" />
-    <fragment
-        android:id="@+id/contractorHistoryFragment"
-        android:name="com.example.bottomnavigation.contractor.fragments.ContractorHistoryFragment"
-        android:label="fragment_contractor_history"
-        tools:layout="@layout/fragment_contractor_history" />
+        tools:layout="@layout/fragment_home2">
+        <action
+            android:id="@+id/action_homeFragment3_to_contractorChatFragment"
+            app:destination="@id/contractorChatFragment" />
+    </fragment>
     <fragment
         android:id="@+id/contractorChatFragment"
         android:name="com.example.bottomnavigation.contractor.fragments.ContractorChatFragment"
         android:label="fragment_contractor_chat"
         tools:layout="@layout/fragment_contractor_chat" />
+    <fragment
+        android:id="@+id/contractorHistoryFragment"
+        android:name="com.example.bottomnavigation.contractor.fragments.ContractorHistoryFragment"
+        android:label="fragment_contractor_history"
+        tools:layout="@layout/fragment_contractor_history" />
+
 </navigation>

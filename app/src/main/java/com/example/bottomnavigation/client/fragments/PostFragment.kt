@@ -73,6 +73,7 @@ class PostFragment : Fragment() {
                         .addOnFailureListener {
                             Toast.makeText(requireContext(), it.message.toString(), Toast.LENGTH_SHORT)
                                 .show()
+
                         }
                 }
             } else {

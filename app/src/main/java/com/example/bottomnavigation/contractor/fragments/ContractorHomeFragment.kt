@@ -2,12 +2,18 @@ package com.example.bottomnavigation.contractor.fragments
 
 
 import android.app.Activity
+import android.app.DirectAction
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.navigation.NavController
+import androidx.navigation.Navigation
+import com.example.bottomnavigation.R
+import androidx.navigation.Navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.bottomnavigation.contractor.adapter.ContractorPostAdapter
 import com.example.bottomnavigation.models.ClientPosts
@@ -28,11 +34,24 @@ class ContractorHomeFragment : Fragment() {
     ): View {
         // Inflate the layout for this fragment
         binding = FragmentHome2Binding.inflate(inflater)
+
+        return binding.root
+    }
+
+
+
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
         retrievedPosts =  ArrayList()
         prepareContractorPostRecyclerView()
         showingPostsToContractor()
-        return binding.root
+
+
+
     }
+
 
     private fun showingPostsToContractor() {
         databaseReference = FirebaseDatabase.getInstance().getReference("All Posts")
@@ -53,11 +72,16 @@ class ContractorHomeFragment : Fragment() {
     }
 
     private fun prepareContractorPostRecyclerView() {
-        contractorPostAdapter = ContractorPostAdapter(requireContext())
+        contractorPostAdapter = ContractorPostAdapter(requireContext(),::onChatOptionClicked)
         binding.rvContractorPost.apply {
             layoutManager  = LinearLayoutManager(context,LinearLayoutManager.VERTICAL,false)
             adapter = contractorPostAdapter
         }
+    }
+    private fun onChatOptionClicked(name : String){
+        val bundle = Bundle()
+        bundle.putString("clientName",name)
+        findNavController().navigate(R.id.action_homeFragment3_to_contractorChatFragment,bundle)
     }
 
 

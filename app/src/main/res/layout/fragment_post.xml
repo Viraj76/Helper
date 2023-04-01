@@ -6,7 +6,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".client.fragments.PostFragment">
 
-
     <LinearLayout
         android:id="@+id/llHeader"
         android:layout_width="match_parent"
@@ -60,7 +59,7 @@
         android:textColor="@color/HardGreen"
         />
 
-    <ScrollView
+    <androidx.core.widget.NestedScrollView
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:overScrollMode="never"
@@ -319,11 +318,10 @@
                     android:textSize="@dimen/_15sdp"
                     android:textStyle="bold"
                     app:cornerRadius="@dimen/_8sdp"
-
                     >
 
                 </com.google.android.material.button.MaterialButton>
             </LinearLayout>
         </LinearLayout>
-    </ScrollView>
+    </androidx.core.widget.NestedScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

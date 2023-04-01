@@ -37,7 +37,6 @@ android {
 }
 
 dependencies {
-    def nav_version = "2.5.3"
 
     implementation 'com.google.firebase:firebase-database-ktx:20.1.0'
     implementation 'com.google.gms:google-services:4.3.15'
@@ -51,6 +50,7 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
 
     //Navigation
+    def nav_version = "2.5.3"
     implementation("androidx.navigation:navigation-fragment-ktx:$nav_version")
     implementation("androidx.navigation:navigation-ui-ktx:$nav_version")
 
@@ -65,5 +65,10 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-extensions:2.2.0"
     implementation "androidx.lifecycle:lifecycle-common-java8:2.6.1"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1"
+
+
+
+    //fragment manager
+    implementation "androidx.fragment:fragment:1.5.6"
 
 }
