@@ -22,8 +22,8 @@
         android:layout_height="0dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="@id/messageLL"
         app:layout_constraintTop_toBottomOf="@id/chatToolBar"
+       app:layout_constraintBottom_toTopOf="@id/messageLL"
         />
 
     <LinearLayout

@@ -71,4 +71,7 @@ dependencies {
     //fragment manager
     implementation "androidx.fragment:fragment:1.5.6"
 
+    //circle image view
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
+
 }

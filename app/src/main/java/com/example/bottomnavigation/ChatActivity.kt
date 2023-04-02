@@ -62,9 +62,14 @@ class ChatActivity : AppCompatActivity() {
         }
     }
     private fun settingUpToolBar() {
-        binding.chatToolBar.title = clientName
-        binding.chatToolBar.setTitleTextColor(resources.getColor(R.color.white))
-        setSupportActionBar(binding.chatToolBar)
+
+        binding.chatToolBar.apply {
+            title = clientName
+            setTitleTextColor(resources.getColor(R.color.white))
+            setSupportActionBar(this)
+        }
+
+
         supportActionBar?.apply {
             setDisplayHomeAsUpEnabled(true)
             setHomeAsUpIndicator(R.drawable.back) // replace with your own back button icon
