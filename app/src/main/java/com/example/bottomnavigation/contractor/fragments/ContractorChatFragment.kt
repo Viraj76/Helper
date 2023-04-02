@@ -11,6 +11,12 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.bottomnavigation.ClientViewAdapter
 import com.example.bottomnavigation.contractor.viewModels.ContractorChatViewModel
 import com.example.bottomnavigation.databinding.FragmentContractorChatBinding
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
+import com.google.firebase.ktx.Firebase
 
 class ContractorChatFragment : Fragment() {
 
@@ -49,13 +55,35 @@ class ContractorChatFragment : Fragment() {
         addingClient()
         observeClientsListLiveData()
 
-//        clientName = arguments?.getString("clientName").toString()
-//        clientList.add(clientName)
-//        clientViewAdapter.setClientInfo(clientList)
-//        clientName?.let {
-//            clientList.add(it)
-//            clientViewAdapter.setClientInfo(clientList)
-//        }
+        gettingClientWithWhomTheContractorHasChatted()
+
+    }
+
+    private fun gettingClientWithWhomTheContractorHasChatted() {
+
+        val currentUserId = FirebaseAuth.getInstance().currentUser?.uid
+        FirebaseDatabase.getInstance().getReference("Clients Id's")
+            .addValueEventListener(object : ValueEventListener{
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    val clientsIdList = ArrayList<String>()
+                    val chatRoom = ArrayList<String>()
+
+                    for(chatIds in snapshot.children){
+                        if(chatIds.key!!.contains(currentUserId!!)){
+                            chatRoom.add(chatIds.key!!)
+                            clientsIdList.add(chatIds.key!!.replace(currentUserId,""))
+                        }
+                    }
+
+                    
+
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                    TODO("Not yet implemented")
+                }
+
+            })
     }
 
     private fun observeClientsListLiveData() {
