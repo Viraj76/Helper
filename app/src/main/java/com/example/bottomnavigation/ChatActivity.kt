@@ -132,7 +132,7 @@ class ChatActivity : AppCompatActivity() {
 
     private fun settingUpToolBar() {
         binding.chatToolBar.apply {
-            title = clientName
+            title = "Message"
             setTitleTextColor(resources.getColor(R.color.white))
             setSupportActionBar(this)
         }
