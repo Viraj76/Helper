@@ -9,6 +9,7 @@ import android.widget.RadioButton
 import android.widget.RadioGroup
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.bottomnavigation.client.activity.ClientMainActivity
 import com.example.bottomnavigation.contractor.activity.ContractorMainActivity
 import com.example.bottomnavigation.databinding.ActivitySignUpBinding
 import com.example.bottomnavigation.models.ClientID
@@ -129,12 +130,5 @@ class SignUpActivity : AppCompatActivity() {
 
     }
 
-    override fun onStart() {
-        val currentUser = FirebaseAuth.getInstance().currentUser
-        if(currentUser == null){
-            super.onStart()
-        }
-        else
-            startActivity(Intent(this,ContractorMainActivity::class.java))
-    }
+
 }

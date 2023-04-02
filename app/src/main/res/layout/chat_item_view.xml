@@ -16,16 +16,15 @@
             android:id="@+id/userImage"
             android:layout_width="@dimen/_50sdp"
             android:layout_height="@dimen/_50sdp"
-            android:src="@drawable/card_image"
+            android:src="@drawable/ic_baseline_account_circle_24"
             />
         <TextView
             android:id="@+id/userName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:text="Viraj Gutpa"
             android:textSize="@dimen/_22sdp"
-            android:textColor="@color/hardBlue"
+            android:textColor="@color/HardGreen"
             android:layout_marginStart="@dimen/_15sdp"
             />
 

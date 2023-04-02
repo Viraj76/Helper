@@ -5,6 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.bottomnavigation.models.ClientPosts
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 
 class HomeViewModel : ViewModel() {
@@ -21,8 +22,9 @@ class HomeViewModel : ViewModel() {
                      val allClientsDataList= ArrayList<ClientPosts>()
                     for (allClientsData in snapshot.children) {
                         val clientsData = allClientsData.getValue(ClientPosts::class.java)
-                        if (clientsData != null) {
-                            allClientsDataList.add(clientsData)
+                        val currentUser = FirebaseAuth.getInstance().currentUser?.uid
+                        if (currentUser != clientsData?.userId) {
+                            allClientsDataList.add(clientsData!!)
                         }
                     }
                     allClientPostsLiveData.postValue(allClientsDataList)
