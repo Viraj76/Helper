@@ -72,14 +72,12 @@ class ContractorChatFragment : Fragment() {
                 override fun onDataChange(snapshot: DataSnapshot) {
                     val clientsIdList = ArrayList<String>()
                     val chatRoomList = ArrayList<String>()
-
                     for(chatIds in snapshot.children){
                         if(chatIds.key!!.contains(currentUserId!!)){
                             chatRoomList.add(chatIds.key!!)
                             clientsIdList.add(chatIds.key!!.replace(currentUserId,""))
                         }
                     }
-
                     chatFragmentAdapter.setClientIdList(clientsIdList)
                     chatFragmentAdapter.setChatRoom(chatRoomList)
 

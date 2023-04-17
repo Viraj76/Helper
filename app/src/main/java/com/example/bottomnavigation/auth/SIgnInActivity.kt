@@ -1,4 +1,4 @@
-package com.example.bottomnavigation.activity.auth
+package com.example.bottomnavigation.auth
 
 import android.content.Intent
 import android.os.Bundle
@@ -29,6 +29,11 @@ class SIgnInActivity : AppCompatActivity() {
         progressBar = binding.progressBar
         binding.btnLogin.setOnClickListener { loggingUser() }
         binding.tvSignUp.setOnClickListener { goingToSignUpActivity() }
+        binding.tvForgotPassword.setOnClickListener {
+            startActivity(Intent(this,ForgotPasswordActivity::class.java))
+            finish()
+        }
+
     }
 
     private fun goingToSignUpActivity() {
@@ -37,8 +42,6 @@ class SIgnInActivity : AppCompatActivity() {
     }
 
     private fun loggingUser() {
-
-
         firebaseAuth = FirebaseAuth.getInstance()
         val email = binding.etEmail.text.toString()
         val password = binding.etPassword.text.toString()
@@ -50,14 +53,15 @@ class SIgnInActivity : AppCompatActivity() {
                 .addOnCompleteListener { task ->
                     if (task.isSuccessful) {
 
-                        // just current user id who wants to log in
-                        val currentUserId = firebaseAuth.currentUser?.uid
-                        //initializing existedClientId and existedContractorId
-                        existedClientId = "random"
-                        existedContractorId = "random"
-
-                        val clientDatabaseReference = FirebaseDatabase.getInstance().getReference("Clients Id's")
-                        clientDatabaseReference.addListenerForSingleValueEvent(object : ValueEventListener{
+                        val verifyEmail = firebaseAuth.currentUser?.isEmailVerified
+                        if(verifyEmail == true){
+                            // just current user id who wants to log in
+                            val currentUserId = firebaseAuth.currentUser?.uid
+                            //initializing existedClientId and existedContractorId
+                            existedClientId = "random"
+                            existedContractorId = "random"
+                            val clientDatabaseReference = FirebaseDatabase.getInstance().getReference("Clients Id's")
+                            clientDatabaseReference.addListenerForSingleValueEvent(object : ValueEventListener{
                                 override fun onDataChange(snapshot: DataSnapshot) {
                                     for(childrenSnapshot in snapshot.children){
                                         val clientsIds = childrenSnapshot.child("clientId").value.toString()
@@ -69,6 +73,7 @@ class SIgnInActivity : AppCompatActivity() {
                                     if(existedClientId == currentUserId) {
                                         val intent = Intent(this@SIgnInActivity, ClientMainActivity::class.java)
                                         startActivity(intent)
+                                        finish()
                                         progressBar.visibility = View.GONE
                                         Toast.makeText(this@SIgnInActivity, "Signed In Successfully!", Toast.LENGTH_SHORT).show()
                                     }
@@ -77,28 +82,33 @@ class SIgnInActivity : AppCompatActivity() {
                                     TODO("Not yet implemented")
                                 }
                             })
-
-                        val contractorsRef = FirebaseDatabase.getInstance().getReference("Contractor Id's")
-                        contractorsRef.addListenerForSingleValueEvent(object : ValueEventListener {
-                            override fun onDataChange(dataSnapshot: DataSnapshot) {
-                                for (childSnapshot in dataSnapshot.children) {
-                                    val contractorIds = childSnapshot.child("contractorId").value.toString()
-                                    if(contractorIds == currentUserId){
-                                        existedContractorId=contractorIds
-                                        break
+                            val contractorsRef = FirebaseDatabase.getInstance().getReference("Contractor Id's")
+                            contractorsRef.addListenerForSingleValueEvent(object : ValueEventListener {
+                                override fun onDataChange(dataSnapshot: DataSnapshot) {
+                                    for (childSnapshot in dataSnapshot.children) {
+                                        val contractorIds = childSnapshot.child("contractorId").value.toString()
+                                        if(contractorIds == currentUserId){
+                                            existedContractorId=contractorIds
+                                            break
+                                        }
+                                    }
+                                    if( existedContractorId== currentUserId){
+                                        val intent = Intent(this@SIgnInActivity, ContractorMainActivity::class.java)
+                                        startActivity(intent)
+                                        finish()
+                                        progressBar.visibility = View.GONE
+                                        Toast.makeText(this@SIgnInActivity, "Signed In Successfully!", Toast.LENGTH_SHORT).show()
                                     }
                                 }
-                                if( existedContractorId== currentUserId){
-                                    val intent = Intent(this@SIgnInActivity, ContractorMainActivity::class.java)
-                                    startActivity(intent)
-                                    progressBar.visibility = View.GONE
-                                    Toast.makeText(this@SIgnInActivity, "Signed In Successfully!", Toast.LENGTH_SHORT).show()
+                                override fun onCancelled(databaseError: DatabaseError) {
+                                    TODO("Not yet implemented")
                                 }
-                            }
-                            override fun onCancelled(databaseError: DatabaseError) {
-                                TODO("Not yet implemented")
-                            }
-                        })
+                            })
+                        }
+                        else{
+                            progressBar.visibility = View.GONE
+                            Toast.makeText(this, "Email is not verified", Toast.LENGTH_SHORT).show()
+                        }
                     }
                     else{
                         progressBar.visibility = View.GONE
@@ -106,7 +116,11 @@ class SIgnInActivity : AppCompatActivity() {
                     }
                 }
         }
-        else Toast.makeText(this, "Empty fields are not allowed", Toast.LENGTH_SHORT).show()
+
+        else {
+            progressBar.visibility = View.GONE
+            Toast.makeText(this, "Empty fields are not allowed", Toast.LENGTH_SHORT).show()
+        }
     } }
 
 

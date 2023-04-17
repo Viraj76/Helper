@@ -40,8 +40,8 @@ dependencies {
 
     implementation 'com.google.firebase:firebase-database-ktx:20.1.0'
     implementation 'com.google.gms:google-services:4.3.15'
-    implementation 'com.google.firebase:firebase-auth-ktx:21.1.0'
-    implementation 'androidx.core:core-ktx:1.9.0'
+    implementation 'com.google.firebase:firebase-auth-ktx:21.2.0'
+    implementation 'androidx.core:core-ktx:1.10.0'
     implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'com.google.android.material:material:1.8.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
@@ -55,8 +55,8 @@ dependencies {
     implementation("androidx.navigation:navigation-ui-ktx:$nav_version")
 
     //intuit , it will manage the changes in the size of the screen
-    implementation 'com.intuit.sdp:sdp-android:1.0.6'
-    implementation 'com.intuit.ssp:ssp-android:1.0.6'
+    implementation 'com.intuit.sdp:sdp-android:1.1.0'
+    implementation 'com.intuit.ssp:ssp-android:1.1.0'
 
     //shimmer effects
     implementation 'com.facebook.shimmer:shimmer:0.5.0'
