@@ -39,6 +39,7 @@ class SIgnInActivity : AppCompatActivity() {
     private fun goingToSignUpActivity() {
         val intent = Intent(this, SignUpActivity::class.java)
         startActivity(intent)
+        finish()
     }
 
     private fun loggingUser() {

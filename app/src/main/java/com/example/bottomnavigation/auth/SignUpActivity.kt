@@ -54,6 +54,7 @@ class SignUpActivity : AppCompatActivity() {
     private fun goingToSignInActivity() {
         val intent = Intent(this, SIgnInActivity::class.java)
         startActivity(intent)
+        finish()
     }
 
     private fun createNewUser() {
@@ -73,10 +74,13 @@ class SignUpActivity : AppCompatActivity() {
                    firebaseAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener { task->
                        if(task.isSuccessful){
                            firebaseAuth.currentUser?.sendEmailVerification()?.addOnSuccessListener {
-                               Toast.makeText(this,"Please check your mail to verify (spam also)",Toast.LENGTH_SHORT).show()
+                               Toast.makeText(this,"Please check your mail to VERIFY (spam also)",Toast.LENGTH_SHORT).show()
                                val uId = task.result.user?.uid.toString()
                                val userClient = ClientID(name,email,password,uId)
                                databaseReference.child(uId).setValue(userClient)
+                               val intent = Intent(this, SIgnInActivity::class.java)
+                               startActivity(intent)
+                               finish()
                            }
                                ?.addOnFailureListener {
                                    Toast.makeText(this,it.message.toString(),Toast.LENGTH_SHORT).show()
@@ -107,13 +111,17 @@ class SignUpActivity : AppCompatActivity() {
                     firebaseAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener { task->
                         if(task.isSuccessful){
                             firebaseAuth.currentUser?.sendEmailVerification()?.addOnSuccessListener{
-                                Toast.makeText(this,"Please check your mail to verify (spam also)",Toast.LENGTH_LONG).show()
+                                Toast.makeText(this,"Please check your mail to VERIFY (spam also)",Toast.LENGTH_LONG).show()
                                 val uId = task.result.user?.uid.toString()
                                 val userContractor = ContractorID(name,email,password,uId)
                                 databaseReference.child(uId).setValue(userContractor)
-                                    val intent = Intent(this, SIgnInActivity::class.java)
-                                    startActivity(intent)
+                                val intent = Intent(this, SIgnInActivity::class.java)
+                                startActivity(intent)
+                                finish()
                             }
+                                ?.addOnFailureListener {
+                                    Toast.makeText(this,it.message.toString(),Toast.LENGTH_SHORT).show()
+                                }
                         }
                         else{
                             Toast.makeText(this,task.exception.toString(),Toast.LENGTH_SHORT).show()
