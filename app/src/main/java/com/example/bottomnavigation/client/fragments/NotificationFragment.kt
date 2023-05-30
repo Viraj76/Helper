@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.bottomnavigation.ChatFragmentAdapter
@@ -27,8 +28,10 @@ class NotificationFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View{
         binding = FragmentNotificationBinding.inflate(layoutInflater)
-
-
+        binding.notificationToolbar.apply {
+            title = "Notification"
+            (activity as AppCompatActivity).setSupportActionBar(this)
+        }
         prepareChatFragmentAdapterForShowingContractors()
 
         showingContractors()

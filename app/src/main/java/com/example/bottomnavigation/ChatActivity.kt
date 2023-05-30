@@ -33,11 +33,7 @@ class ChatActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityChatBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
         initializations()
-
-        settingUpToolBar()
-
         prepareRvForChatActivity()
 
         showingMessages()
@@ -130,35 +126,12 @@ class ChatActivity : AppCompatActivity() {
 
 
 
-    private fun settingUpToolBar() {
-        binding.chatToolBar.apply {
-            title = "Message"
-            setTitleTextColor(resources.getColor(R.color.white))
-            setSupportActionBar(this)
-        }
 
 
-        supportActionBar?.apply {
-            setDisplayHomeAsUpEnabled(true)
-            setHomeAsUpIndicator(R.drawable.back) // replace with your own back button icon
-            // Set the color filter to change the color of the icon
-            val color = ContextCompat.getColor(this@ChatActivity, R.color.white)
-            val backArrow = ContextCompat.getDrawable(this@ChatActivity, R.drawable.back)
-            backArrow?.setColorFilter(color, PorterDuff.Mode.SRC_ATOP)
-            setHomeAsUpIndicator(backArrow)
-        }
-    }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when(item.itemId){
-            android.R.id.home ->{
-                val intent  = Intent(this,ContractorMainActivity::class.java)
-                startActivity(intent)
-                finish()
-                true
-            }
-            else ->super.onOptionsItemSelected(item)
-        }
-    }
+
+
+
+
 
 }

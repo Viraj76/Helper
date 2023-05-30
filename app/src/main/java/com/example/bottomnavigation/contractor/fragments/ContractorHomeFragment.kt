@@ -10,6 +10,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.example.bottomnavigation.R
@@ -17,9 +18,11 @@ import androidx.navigation.Navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.bottomnavigation.ChatActivity
+import com.example.bottomnavigation.auth.SIgnInActivity
 import com.example.bottomnavigation.contractor.adapter.ContractorPostAdapter
 import com.example.bottomnavigation.models.ClientPosts
 import com.example.bottomnavigation.databinding.FragmentHome2Binding
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 
 class ContractorHomeFragment : Fragment() {
@@ -45,13 +48,34 @@ class ContractorHomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         retrievedPosts =  ArrayList()
         prepareContractorPostRecyclerView()
         showingPostsToContractor()
-
-
-
+        binding.contractorHomeToolbar.inflateMenu(R.menu.client_main_activity)
+        binding.contractorHomeToolbar.setOnMenuItemClickListener(){
+            when(it.itemId){
+                R.id.logOut ->{
+                    val builder = AlertDialog.Builder(requireContext())
+                    val alertDialog = builder.create()
+                    builder
+                        .setTitle("Log Out")
+                        .setMessage("Are you sure you want to log out?")
+                        .setPositiveButton("Yes"){dialogInterface,which->
+                            FirebaseAuth.getInstance().signOut()
+                            val intent = Intent(requireContext(), SIgnInActivity::class.java)
+                            startActivity(intent)
+                            requireActivity().finish()
+                        }
+                        .setNegativeButton("No"){dialogInterface, which->
+                            alertDialog.dismiss()
+                        }
+                        .show()
+                        .setCancelable(false)
+                    true
+                }
+                else -> {false}
+            }
+        }
     }
 
 

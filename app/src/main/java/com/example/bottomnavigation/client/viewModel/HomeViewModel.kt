@@ -24,6 +24,7 @@ class HomeViewModel : ViewModel() {
                         val clientsData = allClientsData.getValue(ClientPosts::class.java)
                         val currentUser = FirebaseAuth.getInstance().currentUser?.uid
                         if (currentUser != clientsData?.userId) {
+                            Log.d("lll",clientsData.toString())
                             allClientsDataList.add(clientsData!!)
                         }
                     }
