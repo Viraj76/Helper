@@ -20,7 +20,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-
+            style="@style/CustomProgressBar"
             />
         <TextView
             android:layout_width="wrap_content"
@@ -29,7 +29,7 @@
             android:textSize="@dimen/_12ssp"
             android:textStyle="bold"
             android:layout_marginTop="@dimen/_8sdp"
-            android:textColor="@color/blue"
+            android:textColor="@color/HardGreen"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/progressBar"

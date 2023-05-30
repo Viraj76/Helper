@@ -37,4 +37,11 @@
         <item name="android:textSize">14sp</item>
         <item name="android:singleLine">true</item>
     </style>
+    <!-- progress_bar_style.xml -->
+
+        <style name="CustomProgressBar" parent="Widget.AppCompat.ProgressBar">
+            <item name="android:indeterminateTint">@color/HardGreen</item>
+        </style>
+
+
 </resources>

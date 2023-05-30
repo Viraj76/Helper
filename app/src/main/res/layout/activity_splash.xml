@@ -4,6 +4,31 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/HardGreen"
     tools:context=".SplashActivity">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/ivIllus"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:text="Welcome to Kaam Karao"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_19ssp"
+        android:lineSpacingExtra="1.01dp"
+        android:textStyle="bold"
+        android:layout_marginBottom="@dimen/_10sdp"
+        />
+   <ImageView
+       android:id="@+id/ivIllus"
+       android:layout_width="@dimen/_200sdp"
+       android:layout_height="@dimen/_200sdp"
+       android:src="@drawable/splash"
+       app:layout_constraintStart_toStartOf="parent"
+       app:layout_constraintEnd_toEndOf="parent"
+       app:layout_constraintTop_toTopOf="parent"
+       app:layout_constraintBottom_toBottomOf="parent"
+       android:scaleType="fitCenter"
+       />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

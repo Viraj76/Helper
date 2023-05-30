@@ -7,13 +7,15 @@
     tools:context=".ChatActivity">
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/chatToolBar"
+        android:id="@+id/tbMessage"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/HardGreen"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:background="@color/status"
+        app:titleTextColor="@color/white"
+        app:title="Message"
         />
 
     <androidx.recyclerview.widget.RecyclerView
@@ -22,7 +24,7 @@
         android:layout_height="0dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/chatToolBar"
+        app:layout_constraintTop_toBottomOf="@id/tbMessage"
        app:layout_constraintBottom_toTopOf="@id/messageLL"
         />
 

@@ -214,7 +214,7 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/_50sdp"
         android:layout_marginTop="@dimen/_20sdp"
-        android:text="Resiter"
+        android:text="Regiter"
         android:textAllCaps="false"
         android:letterSpacing="0.1"
         android:textSize="@dimen/_15sdp"

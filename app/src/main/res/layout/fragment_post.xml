@@ -5,33 +5,16 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".client.fragments.PostFragment">
-
-    <LinearLayout
-        android:id="@+id/llHeader"
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/postToolbar"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_50sdp"
-        android:background="@drawable/top_ll_bgk"
-        android:orientation="horizontal"
-        android:layout_marginBottom="@dimen/_10sdp"
+        android:layout_height="wrap_content"
+        android:background="@color/HardGreen"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        >
-        <TextView
-            android:id="@+id/tvHome"
-            android:layout_weight="3"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/_10sdp"
-            android:layout_gravity="center"
-            android:fontFamily="@font/myfont"
-            android:text="Post"
-            android:textColor="#FFFFFF"
-            android:textStyle="bold"
-            android:textSize="@dimen/_23ssp"
-            />
-    </LinearLayout>
-
+        app:titleTextColor="@color/white"
+        />
 <!--    <ImageView-->
 <!--        android:id="@+id/ivPost"-->
 <!--        android:layout_width="@dimen/_280sdp"-->
@@ -47,12 +30,12 @@
         android:id="@+id/tvWelcomeClient"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/llHeader"
+        app:layout_constraintTop_toBottomOf="@id/postToolbar"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginStart="@dimen/_10sdp"
         android:layout_marginTop="@dimen/_10sdp"
         android:letterSpacing="0.03"
-        android:text="Welcome CLIENTNAME Post your Need!"
+        android:text="Post your Need!"
         android:textSize="@dimen/_15sdp"
         android:textStyle="bold"
 
@@ -77,7 +60,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -87,12 +69,11 @@
                 android:textColor="@color/HardGreen"
                 android:textSize="@dimen/_18ssp"
                 android:textStyle="bold" />
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginStart="@dimen/_10sdp"
-                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_1sdp"
                 android:layout_marginEnd="@dimen/_10sdp"
                 android:orientation="vertical">
                 <!--                First name-->
@@ -104,7 +85,7 @@
                     android:clickable="true"
                     android:focusable="true"
                     app:boxStrokeColor="@color/HardGreen"
-                    android:hint="First Name(Required)*"
+                    android:hint="Full Name(Required)*"
                     android:touchscreenBlocksFocus="false"
                     app:endIconMode="clear_text"
                     app:endIconTint="@color/HardGreen"
@@ -116,54 +97,10 @@
                         android:layout_height="wrap_content"
                         android:background="@drawable/text_fields_bkg" />
                 </com.google.android.material.textfield.TextInputLayout>
-                <!--                middle Name-->
-                <com.google.android.material.textfield.TextInputLayout
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginBottom="@dimen/_10sdp"
-                    android:focusable="true"
-                    android:focusableInTouchMode="false"
-                    android:hint="Middle Name"
-                    android:touchscreenBlocksFocus="false"
-                    app:endIconMode="clear_text"
-                    app:endIconTint="@color/HardGreen"
-                    app:hintAnimationEnabled="true"
-                    app:hintTextColor="@color/HardGreen">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/tvMiddleName"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/text_fields_bkg" />
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <com.google.android.material.textfield.TextInputLayout
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:focusable="true"
-                    android:focusableInTouchMode="false"
-                    android:hint="Last Name(Required)*"
-                    android:touchscreenBlocksFocus="false"
-                    app:endIconMode="clear_text"
-                    app:endIconTint="@color/HardGreen"
-                    app:hintTextColor="@color/HardGreen"
-
-                    >
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/tvLastName"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/text_fields_bkg" />
-                </com.google.android.material.textfield.TextInputLayout>
-
-
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_20sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
                     android:text="Address:"
                     android:textColor="@color/HardGreen"
                     android:textSize="@dimen/_18ssp"
@@ -174,7 +111,6 @@
                     android:layout_height="match_parent"
                     android:layout_marginTop="@dimen/_10sdp"
                     android:orientation="horizontal">
-
                     <com.google.android.material.textfield.TextInputLayout
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                         android:layout_width="match_parent"
@@ -196,7 +132,6 @@
                             android:layout_height="wrap_content"
                             android:background="@drawable/text_fields_bkg" />
                     </com.google.android.material.textfield.TextInputLayout>
-
                 </LinearLayout>
 
                 <LinearLayout
@@ -263,6 +198,7 @@
                     android:hint="Road Number, Area Colony(Required)*"
                     android:touchscreenBlocksFocus="false"
                     app:endIconMode="clear_text"
+                    app:counterMaxLength="4"
                     app:endIconTint="@color/HardGreen"
                     app:hintAnimationEnabled="true"
                     app:hintTextColor="@color/HardGreen">
@@ -270,14 +206,15 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/tvBriefDetail"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
+                        android:maxLines="2"
                         android:background="@drawable/text_fields_bkg" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_1sdp"
                     android:text="Description of Your Requirements:"
                     android:textColor="@color/HardGreen"
                     android:textSize="@dimen/_18ssp"
@@ -302,11 +239,74 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/tvDescription"
                         android:layout_width="match_parent"
-                        android:layout_height="@dimen/_100sdp"
+                        android:layout_height="@dimen/_70sdp"
                         android:background="@drawable/text_fields_bkg"
                         android:gravity="top" />
                 </com.google.android.material.textfield.TextInputLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_1sdp"
+                    android:text="Please provide some images:"
+                    android:textColor="@color/HardGreen"
+                    android:textSize="@dimen/_18ssp"
+                    android:textStyle="bold" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:weightSum="5"
+                    >
+                    <ImageView
+                        android:id="@+id/ivPic1"
+                        android:layout_width="@dimen/_40sdp"
+                        android:layout_height="@dimen/_40sdp"
+                        android:src="@drawable/img"
+                        android:layout_weight="1"
+                        android:scaleType="fitCenter"
+                        android:background="@drawable/image_back"
+                        />
+                    <ImageView
+                        android:id="@+id/ivPic2"
+                        android:layout_width="@dimen/_40sdp"
+                        android:layout_height="@dimen/_40sdp"
+                        android:src="@drawable/img"
+                        android:layout_weight="1"
+                        android:scaleType="fitCenter"
+                        android:background="@drawable/image_back"
+                        android:layout_marginStart="@dimen/_2sdp"
+                        android:layout_marginEnd="@dimen/_2sdp"
+                        />
+                    <ImageView
+                        android:id="@+id/ivPic3"
+                        android:layout_width="@dimen/_40sdp"
+                        android:layout_height="@dimen/_40sdp"
+                        android:src="@drawable/img"
+                        android:layout_weight="1"
+                        android:scaleType="fitCenter"
+                        android:background="@drawable/image_back"
+                        />
+                    <ImageView
+                        android:id="@+id/ivPic4"
+                        android:layout_width="@dimen/_40sdp"
+                        android:layout_height="@dimen/_40sdp"
+                        android:src="@drawable/img"
+                        android:layout_weight="1"
+                        android:scaleType="fitCenter"
+                        android:background="@drawable/image_back"
+                        android:layout_marginStart="@dimen/_2sdp"
+                        android:layout_marginEnd="@dimen/_2sdp"
+                        />
+                    <Button
+                        android:id="@+id/btnPickImages"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Select "
+                        android:textAllCaps="false"
+                        android:layout_weight="1"
 
+                        />
+                </LinearLayout>
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btnPost"
                     android:layout_width="match_parent"
@@ -319,7 +319,6 @@
                     android:textStyle="bold"
                     app:cornerRadius="@dimen/_8sdp"
                     >
-
                 </com.google.android.material.button.MaterialButton>
             </LinearLayout>
         </LinearLayout>
