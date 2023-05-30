@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="@dimen/_7sdp"
+    app:cardUseCompatPadding="true"
+    app:cardElevation="@dimen/_7sdp">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:padding="@dimen/_5sdp"
+        android:layout_height="wrap_content">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/_5sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <LinearLayout
+                android:id="@+id/titleLL"
+                android:layout_width="@dimen/_210sdp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintTop_toTopOf="parent"
+                android:padding="@dimen/_7sdp"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:layout_editor_absoluteY="8dp">
+
+                <TextView
+                    android:id="@+id/cvTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLines="1"
+                    android:text="Notes"
+                    android:textColor="@color/HardGreen"
+                    android:textSize="@dimen/_17ssp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/cvSubtitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLines="1"
+                    android:text="Notes"
+                    android:textColor="#99590D22"
+                    android:textSize="@dimen/_12ssp"
+                    android:textStyle="bold" />
+                <LinearLayout
+                    android:id="@+id/ll"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Last Date-: "
+                        android:textColor="@color/lightGreen"
+                        android:textSize="@dimen/_10ssp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/cvDate"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="12-12-2023"
+                        android:textColor="@color/lightGreen"
+                        android:textSize="@dimen/_12ssp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <LinearLayout
+            android:id="@+id/worksLL"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/constraintLayout"
+            >
+            <TextView
+                android:id="@+id/workDescT"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Work Description :-"
+                android:layout_marginStart="@dimen/_6sdp"
+                android:padding="@dimen/_1sdp"
+                android:textStyle="bold"
+                android:textSize="@dimen/_15ssp"
+                android:textColor="@color/lightGreen"
+
+                />
+            <TextView
+                android:id="@+id/workDesc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/_1sdp"
+                android:textColor="@color/lightGreen"
+                android:layout_marginStart="@dimen/_6sdp"
+                android:text="Java is a high-level, class-based, object-oriented programming language that is designed to have as few implementation dependencies as possible."
+                />
+        </LinearLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/workDone"
+            android:layout_width="@dimen/_120sdp"
+            android:layout_height="match_parent"
+            android:textColor="@color/white"
+            android:text="Completed"
+            android:textAllCaps="false"
+            app:layout_constraintTop_toBottomOf="@id/worksLL"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:cornerRadius="@dimen/_20sdp"
+            />
+
+        <!--        <androidx.appcompat.widget.AppCompatButton-->
+        <!--            android:layout_width="@dimen/_200sdp"-->
+        <!--            android:layout_height="match_parent"-->
+        <!--            android:text="Completed"-->
+        <!--            android:textAllCaps="false"-->
+        <!--            android:background="@color/hard"-->
+        <!--            android:textColor="@color/white"-->
+        <!--            app:layout_constraintTop_toBottomOf="@id/worksLL"-->
+        <!--            app:layout_constraintStart_toStartOf="parent"-->
+        <!--            -->
+        <!--            app:layout_constraintEnd_toEndOf="parent"/>-->
+
+        <!--        <ImageView-->
+        <!--            android:id="@+id/workDone"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:src="@drawable/check_circle_white_24dp"-->
+        <!--           -->
+        <!--            android:layout_marginTop="@dimen/_10sdp"-->
+        <!--            android:layout_marginStart="@dimen/_10sdp"-->
+        <!--            />-->
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>
