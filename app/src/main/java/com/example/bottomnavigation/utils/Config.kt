@@ -1,8 +1,8 @@
-package com.example.facedetection.utils
+package com.example.bottomnavigation.utils
 
 import android.content.Context
 import androidx.appcompat.app.AlertDialog
-import com.example.facedetection.R
+import com.example.bottomnavigation.R
 
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
