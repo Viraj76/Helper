@@ -1,5 +1,6 @@
 package com.example.bottomnavigation.chat
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -16,14 +17,11 @@ import kotlin.collections.ArrayList
 class ChatActivity : AppCompatActivity() {
 
     private lateinit var binding:ActivityChatBinding
-    private lateinit var chatToolbar: Toolbar
     private lateinit var clientName : String
     private lateinit var clientId : String
     private lateinit var messageList : ArrayList<Message>
     private lateinit var chatActivityAdapter: ChatActivityAdapter
-
     override fun onCreate(savedInstanceState: Bundle?) {
-
         super.onCreate(savedInstanceState)
         binding = ActivityChatBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -36,7 +34,6 @@ class ChatActivity : AppCompatActivity() {
             if(message.isEmpty()) Toast.makeText(this,"Enter a message please",Toast.LENGTH_SHORT).show()
             else storingMessage(message)
         }
-
     }
     private var contractorId : String? = null
     private var chatRoomId : String? = null

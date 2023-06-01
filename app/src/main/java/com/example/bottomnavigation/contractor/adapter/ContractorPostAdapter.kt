@@ -74,7 +74,7 @@ class ContractorPostAdapter(val context: Context):RecyclerView.Adapter<Contracto
                 val chatRoomId = contractorId + clientId
                 Log.d("cc",chatRoomId)
                 FirebaseDatabase.getInstance().getReference("Chatbase")
-                    .addValueEventListener(object : ValueEventListener{
+                    .addListenerForSingleValueEvent(object : ValueEventListener{     //this very important we dont want to check again and again i.e. single EL
                         override fun onDataChange(snapshot: DataSnapshot) {
                             for (roomId in snapshot.children){
                                 Log.d("cc", roomId.toString())
