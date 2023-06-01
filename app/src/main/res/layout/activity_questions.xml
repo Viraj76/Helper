@@ -6,4 +6,203 @@
     android:layout_height="match_parent"
     tools:context=".contractor.activity.QuestionsActivity">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/contractorHomeToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/HardGreen"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:titleTextColor="@color/white"
+        app:title="Contractor Assessment"
+        />
+    <TextView
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginHorizontal="@dimen/_10sdp"
+        app:layout_constraintTop_toBottomOf="@id/contractorHomeToolbar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Any Statement**"
+        android:textColor="@color/HardGreen"
+        android:textSize="@dimen/_15ssp"
+        android:textStyle="bold" />
+    <LinearLayout
+        android:id="@+id/questionsAnswerLL"
+        app:layout_constraintTop_toBottomOf="@id/contractorHomeToolbar"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginHorizontal="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_50sdp"
+        >
+        <TextView
+            android:id="@+id/ques1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/question_1"
+            android:textColor="@color/HardGreen"
+            android:textSize="@dimen/_15ssp"
+            android:textStyle="bold" />
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:focusableInTouchMode="true"
+            android:clickable="true"
+            android:focusable="true"
+            app:boxStrokeColor="@color/HardGreen"
+            android:hint="Answer"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:touchscreenBlocksFocus="false"
+            app:endIconMode="clear_text"
+            app:endIconTint="@color/HardGreen"
+            app:hintAnimationEnabled="true"
+            app:hintTextColor="@color/HardGreen">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/tvAnswer1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/text_fields_bkg" />
+        </com.google.android.material.textfield.TextInputLayout>
+        <TextView
+            android:id="@+id/ques2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Question 2:"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:textColor="@color/HardGreen"
+            android:textSize="@dimen/_15ssp"
+            android:textStyle="bold" />
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:focusableInTouchMode="true"
+            android:clickable="true"
+            android:focusable="true"
+            app:boxStrokeColor="@color/HardGreen"
+            android:hint="Answer"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:touchscreenBlocksFocus="false"
+            app:endIconMode="clear_text"
+            app:endIconTint="@color/HardGreen"
+            app:hintAnimationEnabled="true"
+            app:hintTextColor="@color/HardGreen">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/tvAnswer2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/text_fields_bkg" />
+        </com.google.android.material.textfield.TextInputLayout>
+        <TextView
+            android:id="@+id/ques3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Question 3:"
+            android:textColor="@color/HardGreen"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:textSize="@dimen/_15ssp"
+            android:textStyle="bold" />
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:focusableInTouchMode="true"
+            android:clickable="true"
+            android:focusable="true"
+            app:boxStrokeColor="@color/HardGreen"
+            android:hint="Answer"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:touchscreenBlocksFocus="false"
+            app:endIconMode="clear_text"
+            app:endIconTint="@color/HardGreen"
+            app:hintAnimationEnabled="true"
+            app:hintTextColor="@color/HardGreen">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/tvAnswer3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/text_fields_bkg" />
+        </com.google.android.material.textfield.TextInputLayout>
+        <TextView
+            android:id="@+id/ques4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Question 4:"
+            android:textColor="@color/HardGreen"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:textSize="@dimen/_15ssp"
+            android:textStyle="bold" />
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:focusableInTouchMode="true"
+            android:clickable="true"
+            android:focusable="true"
+            app:boxStrokeColor="@color/HardGreen"
+            android:hint="Answer"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:touchscreenBlocksFocus="false"
+            app:endIconMode="clear_text"
+            app:endIconTint="@color/HardGreen"
+            app:hintAnimationEnabled="true"
+            app:hintTextColor="@color/HardGreen">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/tvAnswer4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/text_fields_bkg" />
+        </com.google.android.material.textfield.TextInputLayout>
+        <TextView
+            android:id="@+id/ques5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Question 5:"
+            android:textColor="@color/HardGreen"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:textSize="@dimen/_15ssp"
+            android:textStyle="bold" />
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:focusableInTouchMode="true"
+            android:clickable="true"
+            android:focusable="true"
+            app:boxStrokeColor="@color/HardGreen"
+            android:hint="Answer"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:touchscreenBlocksFocus="false"
+            app:endIconMode="clear_text"
+            app:endIconTint="@color/HardGreen"
+            app:hintAnimationEnabled="true"
+            app:hintTextColor="@color/HardGreen">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/tvAnswer5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/text_fields_bkg" />
+        </com.google.android.material.textfield.TextInputLayout>
+    </LinearLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnSubmit"
+        android:layout_width="match_parent"
+        app:layout_constraintTop_toBottomOf="@id/questionsAnswerLL"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_height="@dimen/_50sdp"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:text="Submit"
+        android:layout_marginHorizontal="@dimen/_10sdp"
+        android:textAllCaps="false"
+        android:letterSpacing="0.1"
+        android:textSize="@dimen/_15sdp"
+        android:textStyle="bold"
+        app:cornerRadius="@dimen/_8sdp"
+        />
 </androidx.constraintlayout.widget.ConstraintLayout>
