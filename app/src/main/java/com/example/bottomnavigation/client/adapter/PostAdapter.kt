@@ -1,10 +1,13 @@
 package com.example.bottomnavigation.client.adapter
 import android.content.Context
+import android.media.Image
 import jp.wasabeef.glide.transformations.RoundedCornersTransformation
 
 import android.net.Uri
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.bumptech.glide.Glide
@@ -36,24 +39,34 @@ class PostAdapter(val context: Context):RecyclerView.Adapter<PostAdapter.PostVie
 
     override fun onBindViewHolder(holder: PostViewHolder, position: Int) {
         val  data = clientsPostLists[position]
-        holder.binding.apply {
-                ivImg1.clipToOutline = true
-                ivImg2.clipToOutline = true
-                ivImg3.clipToOutline = true
-                ivImg4.clipToOutline = true
+        val imageUris = data.imageUrls
+        if(imageUris.isNullOrEmpty()){
+            holder.binding.ivImages.visibility = View.GONE
+            holder.binding.tvNoImage.visibility = View.VISIBLE
         }
-        holder.binding.tvTitle.text = data.name
-        holder.binding.tvAddress.text = data.address
-        holder.binding.workDesc.text = data.description
-        holder.binding.tvDate.text = data.postTime
+        else{
+            holder.binding.ivImages.visibility = View.VISIBLE
+            holder.binding.tvNoImage.visibility = View.GONE
+            val imageViewList = listOf(holder.binding.ivImg1, holder.binding.ivImg2, holder.binding.ivImg3, holder.binding.ivImg4)
+            for (i in 0 until minOf(imageUris.size, imageViewList.size)) {
+                val currentImageView = imageViewList[i]
+                Glide.with(holder.itemView)
+                    .load(imageUris[i])
+                    .into(currentImageView)
+            }
+        }
+
         holder.binding.apply {
-            Glide.with(holder.itemView).load(data.imageUrls?.get(0)).into(ivImg1)
-            Glide.with(holder.itemView).load(data.imageUrls?.get(1)).into(ivImg2)
-            Glide.with(holder.itemView).load(data.imageUrls?.get(2)).into(ivImg3)
-            Glide.with(holder.itemView).load(data.imageUrls?.get(3)).into(ivImg4)
+            ivImg1.clipToOutline = true
+            ivImg2.clipToOutline = true
+            ivImg3.clipToOutline = true
+            ivImg4.clipToOutline = true
+            tvTitle.text = data.name
+            workDesc.text = data.description
+            tvAddress.text = data.address
+            tvDate.text = data.postTime
         }
     }
-
     override fun getItemCount(): Int {
         return clientsPostLists.size
     }

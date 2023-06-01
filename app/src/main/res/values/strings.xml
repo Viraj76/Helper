@@ -5,4 +5,16 @@
     <string name="home">Home</string>
     <string name="favourite">Favourite</string>
     <string name="settings">Settings</string>
+    <string name="post_your_need">Post your Need!</string>
+    <string name="name">Name:</string>
+    <string name="full_name_required">Full Name(Required)*</string>
+    <string name="address">Address:</string>
+    <string name="state_required">State(Required)*</string>
+    <string name="city_required">City(Required)*</string>
+    <string name="description_of_your_requirements">Description of Your Requirements:</string>
+    <string name="specify_your_needs_in_brief_required">Specify your needs in Brief(Required)*</string>
+    <string name="please_provide_some_images">Please provide some images:</string>
+    <string name="select">Select</string>
+    <string name="post">Post</string>
+    <string name="question_1">Question 1:</string>
 </resources>

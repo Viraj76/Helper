@@ -13,7 +13,6 @@ class HomeViewModel : ViewModel() {
     private lateinit var databaseReference: DatabaseReference
     private  var allClientPostsLiveData =MutableLiveData<List<ClientPosts>>()
 
-
     fun getAllClientPosts() {
         databaseReference = FirebaseDatabase.getInstance().getReference("All Posts")
         databaseReference.addValueEventListener(object : ValueEventListener {
@@ -24,7 +23,6 @@ class HomeViewModel : ViewModel() {
                         val clientsData = allClientsData.getValue(ClientPosts::class.java)
                         val currentUser = FirebaseAuth.getInstance().currentUser?.uid
                         if (currentUser != clientsData?.userId) {
-                            Log.d("lll",clientsData.toString())
                             allClientsDataList.add(clientsData!!)
                         }
                     }
@@ -39,5 +37,9 @@ class HomeViewModel : ViewModel() {
 
     fun observeAllClientPostLiveData(): LiveData<List<ClientPosts>>{
         return allClientPostsLiveData
+    }
+
+    fun logoutToSignUpActivity(){
+        FirebaseAuth.getInstance().signOut()
     }
 }

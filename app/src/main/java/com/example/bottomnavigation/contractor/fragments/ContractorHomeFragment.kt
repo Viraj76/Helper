@@ -2,7 +2,6 @@ package com.example.bottomnavigation.contractor.fragments
 
 
 import android.app.Activity
-import android.app.DirectAction
 import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -11,13 +10,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
-import androidx.navigation.NavController
-import androidx.navigation.Navigation
 import com.example.bottomnavigation.R
-import androidx.navigation.Navigation.findNavController
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.bottomnavigation.ChatActivity
 import com.example.bottomnavigation.auth.SIgnInActivity
 import com.example.bottomnavigation.contractor.adapter.ContractorPostAdapter
 import com.example.bottomnavigation.models.ClientPosts

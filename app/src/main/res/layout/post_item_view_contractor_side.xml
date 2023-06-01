@@ -4,13 +4,6 @@
     android:layout_height="wrap_content"
     android:padding="@dimen/_8sdp"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        >
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
     <LinearLayout
         android:id="@+id/titleLL"
         android:layout_width="match_parent"
@@ -103,7 +96,8 @@
         />
 
     <View
-        app:layout_constraintTop_toBottomOf="@id/workDesc"
+        android:id="@+id/view"
+        app:layout_constraintTop_toBottomOf="@id/ivImages"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_width="match_parent"
@@ -112,5 +106,63 @@
         android:layout_marginTop="@dimen/_10sdp"
         />
 
-
+    <LinearLayout
+        android:id="@+id/ivImages"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/workDesc"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:weightSum="4"
+        android:visibility="visible"
+        android:layout_marginTop="@dimen/_10sdp"
+        >
+        <ImageView
+            android:id="@+id/ivImg1"
+            android:layout_width="@dimen/_60sdp"
+            android:layout_height="@dimen/_60sdp"
+            android:background="@drawable/image_back"
+            android:layout_weight="1"
+            android:layout_marginEnd="@dimen/_2sdp"
+            />
+        <ImageView
+            android:id="@+id/ivImg2"
+            android:layout_width="@dimen/_60sdp"
+            android:layout_height="@dimen/_60sdp"
+            android:background="@drawable/image_back"
+            android:layout_weight="1"
+            />
+        <ImageView
+            android:id="@+id/ivImg3"
+            android:layout_width="@dimen/_60sdp"
+            android:layout_height="@dimen/_60sdp"
+            android:background="@drawable/image_back"
+            android:layout_weight="1"
+            android:layout_marginStart="@dimen/_2sdp"
+            android:layout_marginEnd="@dimen/_2sdp"
+            />
+        <ImageView
+            android:id="@+id/ivImg4"
+            android:layout_width="@dimen/_60sdp"
+            android:layout_height="@dimen/_60sdp"
+            android:background="@drawable/image_back"
+            android:layout_weight="1"
+            />
+    </LinearLayout>
+    <TextView
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/workDesc"
+        android:id="@+id/tvNoImage"
+        android:textSize="@dimen/_10ssp"
+        android:layout_marginBottom="@dimen/_15sdp"
+        app:layout_constraintBottom_toTopOf="@id/view"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="No image provided"
+        android:layout_gravity="center"
+        android:visibility="visible"
+        android:layout_weight="1"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

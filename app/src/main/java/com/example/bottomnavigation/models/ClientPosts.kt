@@ -1,6 +1,5 @@
 package com.example.bottomnavigation.models
 
-import android.net.Uri
 
 data class ClientPosts(
     val userId: String ?=null,

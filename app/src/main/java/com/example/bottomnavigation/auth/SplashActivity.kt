@@ -1,4 +1,4 @@
-package com.example.bottomnavigation
+package com.example.bottomnavigation.auth
 
 import android.content.Intent
 import android.os.Build
@@ -8,7 +8,7 @@ import android.os.Handler
 import android.os.Looper
 import android.view.WindowInsets
 import android.widget.Toast
-import com.example.bottomnavigation.auth.SIgnInActivity
+import com.example.bottomnavigation.R
 import com.example.bottomnavigation.client.activity.ClientMainActivity
 import com.example.bottomnavigation.contractor.activity.ContractorMainActivity
 import com.google.firebase.auth.FirebaseAuth

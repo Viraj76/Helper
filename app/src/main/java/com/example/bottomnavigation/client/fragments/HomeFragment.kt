@@ -31,13 +31,7 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentHomeBinding.inflate(inflater)
-//
-        binding.homeToolbar.apply {
-            title = "Home"
-//            (activity as AppCompatActivity).setSupportActionBar(this)
-        }
-//        val customAppBar: Toolbar = requireView().findViewById(R.id.homeToolbar)
-//        (requireActivity() as AppCompatActivity).setSupportActionBar(customAppBar)
+
         initializations()
 
         prepareClientPostsRecyclerView()
@@ -45,7 +39,6 @@ class HomeFragment : Fragment() {
         getAllClientPost()
 
         observeClientPostLivedata()
-
 
         return binding.root
     }
@@ -61,7 +54,6 @@ class HomeFragment : Fragment() {
             postAdapter.setPostList(clientsPosts as ArrayList<ClientPosts>)
         }
     }
-
 
     private fun getAllClientPost() {
         viewModel.getAllClientPosts()
@@ -85,7 +77,7 @@ class HomeFragment : Fragment() {
                             .setTitle("Log Out")
                             .setMessage("Are you sure you want to log out?")
                             .setPositiveButton("Yes"){dialogInterface,which->
-                                FirebaseAuth.getInstance().signOut()
+                                viewModel.logoutToSignUpActivity()
                                 val intent = Intent(requireContext(), SIgnInActivity::class.java)
                                 startActivity(intent)
                                 requireActivity().finish()

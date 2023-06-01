@@ -1,11 +1,10 @@
-package com.example.bottomnavigation
+package com.example.bottomnavigation.chat
 
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
-import com.example.bottomnavigation.contractor.adapter.ContractorChatAdapter
 import com.example.bottomnavigation.databinding.ReceiveMessageBinding
 import com.example.bottomnavigation.databinding.SendMessageBinding
 import com.example.bottomnavigation.models.Message
@@ -39,7 +38,7 @@ class ChatActivityAdapter(val recyclerView: RecyclerView, val context: Context) 
                 ReceiveViewHolder(ReceiveMessageBinding.inflate(LayoutInflater.from(parent.context),parent,false))
     }
 
-    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val message = messageList[position]
         if(holder.javaClass == SendViewHolder::class.java){
             holder as SendViewHolder

@@ -16,6 +16,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:titleTextColor="@color/white"
+            app:title="Home"
             />
 <!--        <com.facebook.shimmer.ShimmerFrameLayout-->
 <!--            android:id="@+id/shimmer_view_container"-->

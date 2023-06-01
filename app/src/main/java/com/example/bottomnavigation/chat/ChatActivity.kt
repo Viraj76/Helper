@@ -1,15 +1,10 @@
-package com.example.bottomnavigation
+package com.example.bottomnavigation.chat
 
-import android.content.Intent
-import android.graphics.PorterDuff
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.bottomnavigation.contractor.activity.ContractorMainActivity
 import com.example.bottomnavigation.databinding.ActivityChatBinding
 import com.example.bottomnavigation.models.Message
 import com.google.firebase.auth.FirebaseAuth
@@ -26,16 +21,14 @@ class ChatActivity : AppCompatActivity() {
     private lateinit var clientId : String
     private lateinit var messageList : ArrayList<Message>
     private lateinit var chatActivityAdapter: ChatActivityAdapter
-    private lateinit var databaseReference: DatabaseReference
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
         binding = ActivityChatBinding.inflate(layoutInflater)
         setContentView(binding.root)
         initializations()
         prepareRvForChatActivity()
-
         showingMessages()
         binding.ivSendChat.setOnClickListener {
             val message = binding.tvMessage.text.toString()
@@ -43,8 +36,8 @@ class ChatActivity : AppCompatActivity() {
             if(message.isEmpty()) Toast.makeText(this,"Enter a message please",Toast.LENGTH_SHORT).show()
             else storingMessage(message)
         }
-    }
 
+    }
     private var contractorId : String? = null
     private var chatRoomId : String? = null
 
@@ -64,14 +57,11 @@ class ChatActivity : AppCompatActivity() {
             }
     }
 
-
     private fun showingMessages() {
         val clientId = intent.getStringExtra("id")
         contractorId = FirebaseAuth.getInstance().currentUser?.uid
-
         chatRoomId = contractorId +clientId
         val reverseOfChatRoomId  = clientId+   contractorId     //needed for adding the respective chat of client in the same roomChatId that a contractor has created
-
         val chatbaseReference = FirebaseDatabase.getInstance().getReference("Chatbase")
         chatbaseReference.addValueEventListener(object  : ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
@@ -83,13 +73,10 @@ class ChatActivity : AppCompatActivity() {
                     getMessages(chatRoomId!!)
                 }
             }
-
             override fun onCancelled(error: DatabaseError) {
                 TODO("Not yet implemented")
             }
-
         })
-
     }
 
     private fun getMessages(chatRoomId: String) {
@@ -103,13 +90,13 @@ class ChatActivity : AppCompatActivity() {
                     }
                     chatActivityAdapter.setMessageList(messagesList)
                 }
-
                 override fun onCancelled(error: DatabaseError) {
                     TODO("Not yet implemented")
                 }
 
             })
     }
+
     private fun prepareRvForChatActivity() {
         chatActivityAdapter = ChatActivityAdapter(binding.rvChats, this)
         binding.rvChats.apply {
