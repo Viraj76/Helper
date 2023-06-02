@@ -1,8 +1,12 @@
 package com.example.bottomnavigation.chat
 
 import android.content.Intent
+import android.content.res.Resources
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
+import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -34,10 +38,34 @@ class ChatActivity : AppCompatActivity() {
             if(message.isEmpty()) Toast.makeText(this,"Enter a message please",Toast.LENGTH_SHORT).show()
             else storingMessage(message)
         }
+
+        binding.tvMessage.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+
+            override fun afterTextChanged(s: Editable?) {
+                val lines = binding.tvMessage.lineCount
+                val desiredLines = 2
+                val layoutParams = binding.tvMessage.layoutParams
+
+                if (lines <= desiredLines) {
+                    layoutParams.height = 45.dpToPx()
+                } else {
+                    layoutParams.height = ViewGroup.LayoutParams.WRAP_CONTENT
+                }
+
+                binding.tvMessage.layoutParams = layoutParams
+            }
+        })
+
     }
     private var contractorId : String? = null
     private var chatRoomId : String? = null
-
+    fun Int.dpToPx(): Int {
+        val scale = Resources.getSystem().displayMetrics.density
+        return (this * scale + 0.5f).toInt()
+    }
     private fun storingMessage(message: String) {
         val currentDate: String = SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(Date())
         val currentTime: String = SimpleDateFormat("HH:mm a", Locale.getDefault()).format(Date())

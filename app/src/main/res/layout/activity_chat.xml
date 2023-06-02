@@ -43,12 +43,16 @@
             android:id="@+id/tvMessage"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_40sdp"
-            android:hint="Message.."
+            android:hint="@string/message"
             android:background="@drawable/chat_box_back"
             android:paddingStart="@dimen/_17sdp"
+            android:paddingEnd="@dimen/_17sdp"
             android:layout_weight="90"
+            android:scrollbars="vertical"
             android:layout_marginStart="@dimen/_5sdp"
-             />
+            android:inputType="textMultiLine"
+            />
+
 
         <ImageView
             android:id="@+id/ivSendChat"
