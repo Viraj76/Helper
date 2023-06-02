@@ -50,6 +50,7 @@ class SplashActivity : AppCompatActivity() {
                         Toast.makeText(this@SplashActivity, error.message.toString(), Toast.LENGTH_SHORT).show()
                     }
                 })
+
                 val contractorsRef = FirebaseDatabase.getInstance().getReference("Contractor Id's")
                 contractorsRef.addListenerForSingleValueEvent(object : ValueEventListener {
                     override fun onDataChange(dataSnapshot: DataSnapshot) {

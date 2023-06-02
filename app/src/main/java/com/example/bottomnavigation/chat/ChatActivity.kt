@@ -6,10 +6,12 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.bottomnavigation.contractor.activity.ContractorMainActivity
 import com.example.bottomnavigation.databinding.ActivityChatBinding
 import com.example.bottomnavigation.models.Message
 import com.google.firebase.auth.FirebaseAuth
@@ -28,6 +30,7 @@ class ChatActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityChatBinding.inflate(layoutInflater)
+        showingShareProfileOption()
         setContentView(binding.root)
         initializations()
         prepareRvForChatActivity()
@@ -60,6 +63,33 @@ class ChatActivity : AppCompatActivity() {
         })
 
     }
+
+    private fun showingShareProfileOption() {
+        val currentUserId = FirebaseAuth.getInstance().currentUser?.uid
+        var existedContractorId = "random"
+        val contractorsRef = FirebaseDatabase.getInstance().getReference("Contractor Id's")
+        contractorsRef.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                for (childSnapshot in dataSnapshot.children) {
+                    val contractorIds = childSnapshot.child("contractorId").value.toString()
+                    if(contractorIds == currentUserId){
+                        existedContractorId=contractorIds
+                        break
+                    }
+                }
+                if( existedContractorId== currentUserId){
+                    binding.ivShareProfile.visibility = View.VISIBLE
+                }
+                else{
+                    binding.ivShareProfile.visibility = View.GONE
+                }
+            }
+            override fun onCancelled(databaseError: DatabaseError) {
+                Toast.makeText(this@ChatActivity, databaseError.message, Toast.LENGTH_SHORT).show()
+            }
+        })
+    }
+
     private var contractorId : String? = null
     private var chatRoomId : String? = null
     fun Int.dpToPx(): Int {
