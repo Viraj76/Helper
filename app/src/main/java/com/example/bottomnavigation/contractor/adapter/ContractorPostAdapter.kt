@@ -72,33 +72,29 @@ class ContractorPostAdapter(val context: Context):RecyclerView.Adapter<Contracto
                 val clientId = data.userId
                 val contractorId = FirebaseAuth.getInstance().currentUser?.uid
                 val chatRoomId = contractorId + clientId
-                Log.d("cc",chatRoomId)
-                FirebaseDatabase.getInstance().getReference("Chatbase")
-                    .addListenerForSingleValueEvent(object : ValueEventListener{     //this very important we dont want to check again and again i.e. single EL
-                        override fun onDataChange(snapshot: DataSnapshot) {
-                            for (roomId in snapshot.children){
-                                Log.d("cc", roomId.toString())
-                                if(roomId.key.equals(chatRoomId)){
-                                    val intent = Intent(context, ChatActivity::class.java)
-                                    intent.putExtra("id", data.userId)
-                                    context.startActivity(intent)
-                                }
-                                else{
-                                    val intent = Intent(context, QuestionsActivity::class.java)
-                                    intent.putExtra("id", data.userId)
-                                    context.startActivity(intent)
-                                }
-                            }
-                        }
-                        override fun onCancelled(error: DatabaseError) {
-                            TODO("Not yet implemented")
-                        }
+                Log.d("cc", chatRoomId)
 
-                    })
-//                val intent = Intent(context, QuestionsActivity::class.java)
-//                intent.putExtra("id", data.userId)
-//                context.startActivity(intent)
+                val chatbaseRef = FirebaseDatabase.getInstance().getReference("Chatbase")
+                chatbaseRef.addListenerForSingleValueEvent(object : ValueEventListener {
+                    override fun onDataChange(snapshot: DataSnapshot) {
+                        val roomIdExists = snapshot.hasChild(chatRoomId)  //checking if the child present
+                        if (roomIdExists) {
+                            val intent = Intent(context, ChatActivity::class.java)
+                            intent.putExtra("id", data.userId)
+                            context.startActivity(intent)
+                        } else {
+                            val intent = Intent(context, QuestionsActivity::class.java)
+                            intent.putExtra("id", data.userId)
+                            context.startActivity(intent)
+                        }
+                    }
+
+                    override fun onCancelled(error: DatabaseError) {
+                        // Handle the error if the operation is canceled
+                    }
+                })
             }
+
         }
 
     }

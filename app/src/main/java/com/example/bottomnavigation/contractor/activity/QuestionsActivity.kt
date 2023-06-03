@@ -7,6 +7,7 @@ import android.widget.Toast
 import com.example.bottomnavigation.R
 import com.example.bottomnavigation.chat.ChatActivity
 import com.example.bottomnavigation.databinding.ActivityQuestionsBinding
+import com.example.bottomnavigation.models.Message
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -51,13 +52,9 @@ class QuestionsActivity : AppCompatActivity() {
             "Hey there! hope you are doing well\n $ques1 - $ans1,\n $ques2 - $ans2,\n $ques3 - $ans3,\n $ques4 - $ans4,\n $ques5 - $ans5"
         val currentDate: String = SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(Date())
         val currentTime: String = SimpleDateFormat("HH:mm a", Locale.getDefault()).format(Date())
-        val map = hashMapOf<String, String>()
-        map["message"] = greetMessage
-        map["senderId"] = contractorId!!
-        map["currentDate"] = currentDate
-        map["currentTime"] = currentTime
+        val messageDetail = Message(currentDate,currentTime,greetMessage, contractorId,false.toString())
         FirebaseDatabase.getInstance().getReference("Chatbase").child(chatRoomId).push()
-            .setValue(map)
+            .setValue(messageDetail)
             .addOnCompleteListener {
                 if (it.isSuccessful) {
                     val intent = Intent(this, ChatActivity::class.java)

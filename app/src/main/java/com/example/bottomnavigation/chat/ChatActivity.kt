@@ -1,17 +1,16 @@
 package com.example.bottomnavigation.chat
 
-import android.content.Intent
 import android.content.res.Resources
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.appcompat.widget.Toolbar
+import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.bottomnavigation.contractor.activity.ContractorMainActivity
 import com.example.bottomnavigation.databinding.ActivityChatBinding
 import com.example.bottomnavigation.models.Message
 import com.google.firebase.auth.FirebaseAuth
@@ -22,10 +21,10 @@ import kotlin.collections.ArrayList
 
 class ChatActivity : AppCompatActivity() {
 
-    private lateinit var binding:ActivityChatBinding
-    private lateinit var clientName : String
-    private lateinit var clientId : String
-    private lateinit var messageList : ArrayList<Message>
+    private lateinit var binding: ActivityChatBinding
+    private lateinit var clientName: String
+    private lateinit var clientId: String
+    private lateinit var messageList: ArrayList<Message>
     private lateinit var chatActivityAdapter: ChatActivityAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,13 +34,37 @@ class ChatActivity : AppCompatActivity() {
         initializations()
         prepareRvForChatActivity()
         showingMessages()
-        binding.ivSendChat.setOnClickListener {
-            val message = binding.tvMessage.text.toString()
-            binding.tvMessage.text.clear()
-            if(message.isEmpty()) Toast.makeText(this,"Enter a message please",Toast.LENGTH_SHORT).show()
-            else storingMessage(message)
-        }
+        binding.apply {
 
+            ivSendChat.setOnClickListener {
+                val message = binding.tvMessage.text.toString()
+                binding.tvMessage.text.clear()
+                if (message.isEmpty()) Toast.makeText(
+                    this@ChatActivity,
+                    "Enter a message please",
+                    Toast.LENGTH_SHORT
+                ).show()
+                else storingMessage(message,"false")
+            }
+
+            ivShareProfile.setOnClickListener {
+                val builder = AlertDialog.Builder(this@ChatActivity)
+                val alertDialog = builder.create()
+                builder
+                    .setTitle("Share Profile")
+                    .setMessage("Are you sure you want to share your profile to this client?")
+                    .setPositiveButton("Yes") { dialogInterface, which ->
+                        storingMessage("Rate Me", "true")
+//                        storingMessage("Rate Me", true)
+                        showingMessages()
+                    }
+                    .setNegativeButton("No") { dialogInterface, which ->
+                        alertDialog.dismiss()
+                    }
+                    .show()
+                    .setCancelable(false)
+            }
+        }
         binding.tvMessage.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
 
@@ -61,9 +84,7 @@ class ChatActivity : AppCompatActivity() {
                 binding.tvMessage.layoutParams = layoutParams
             }
         })
-
     }
-
     private fun showingShareProfileOption() {
         val currentUserId = FirebaseAuth.getInstance().currentUser?.uid
         var existedContractorId = "random"
@@ -72,58 +93,50 @@ class ChatActivity : AppCompatActivity() {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 for (childSnapshot in dataSnapshot.children) {
                     val contractorIds = childSnapshot.child("contractorId").value.toString()
-                    if(contractorIds == currentUserId){
-                        existedContractorId=contractorIds
+                    if (contractorIds == currentUserId) {
+                        existedContractorId = contractorIds
                         break
                     }
                 }
-                if( existedContractorId== currentUserId){
+                if (existedContractorId == currentUserId) {
                     binding.ivShareProfile.visibility = View.VISIBLE
-                }
-                else{
+                } else {
                     binding.ivShareProfile.visibility = View.GONE
                 }
             }
+
             override fun onCancelled(databaseError: DatabaseError) {
                 Toast.makeText(this@ChatActivity, databaseError.message, Toast.LENGTH_SHORT).show()
             }
         })
     }
 
-    private var contractorId : String? = null
-    private var chatRoomId : String? = null
+    private var contractorId: String? = null
+    private var chatRoomId: String? = null
     fun Int.dpToPx(): Int {
         val scale = Resources.getSystem().displayMetrics.density
         return (this * scale + 0.5f).toInt()
     }
-    private fun storingMessage(message: String) {
+
+    private fun storingMessage(message: String, isProfileSharing: String) {
         val currentDate: String = SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(Date())
         val currentTime: String = SimpleDateFormat("HH:mm a", Locale.getDefault()).format(Date())
-        val map = hashMapOf<String,String>()
-        map["message"] = message
-        map["senderId"] = contractorId!!
-        map["currentDate"] = currentDate
-        map["currentTime"] = currentTime
+        val messageDetail = Message(currentDate,currentTime,message, contractorId,isProfileSharing)
+        FirebaseDatabase.getInstance().getReference("Chatbase").child(chatRoomId!!).push().setValue(messageDetail)
 
-        FirebaseDatabase.getInstance().getReference("Chatbase").child(chatRoomId!!).push().setValue(map)
-            .addOnCompleteListener {
-                if(it.isSuccessful)
-                     Toast.makeText(this,"Message Sent",Toast.LENGTH_SHORT).show()
-            }
     }
-
     private fun showingMessages() {
         val clientId = intent.getStringExtra("id")
         contractorId = FirebaseAuth.getInstance().currentUser?.uid
-        chatRoomId = contractorId +clientId
-        val reverseOfChatRoomId  = clientId+   contractorId     //needed for adding the respective chat of client in the same roomChatId that a contractor has created
+        chatRoomId = contractorId + clientId
+        val reverseOfChatRoomId =
+            clientId + contractorId     //needed for adding the respective chat of client in the same roomChatId that a contractor has created
         val chatbaseReference = FirebaseDatabase.getInstance().getReference("Chatbase")
-        chatbaseReference.addValueEventListener(object  : ValueEventListener{
+        chatbaseReference.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-                if(snapshot.hasChild(chatRoomId!!)){
+                if (snapshot.hasChild(chatRoomId!!)) {
                     getMessages(chatRoomId!!)
-                }
-                else if(snapshot.hasChild(reverseOfChatRoomId)){
+                } else if (snapshot.hasChild(reverseOfChatRoomId)) {
                     chatRoomId = reverseOfChatRoomId
                     getMessages(chatRoomId!!)
                 }
@@ -133,14 +146,14 @@ class ChatActivity : AppCompatActivity() {
             }
         })
     }
-
     private fun getMessages(chatRoomId: String) {
         FirebaseDatabase.getInstance().getReference("Chatbase").child(chatRoomId)
-            .addValueEventListener(object : ValueEventListener{
+            .addValueEventListener(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
                     val messagesList = ArrayList<Message>()
-                    for(messages in snapshot.children){
-                        val message  = messages.getValue(Message::class.java)
+                    for (messages in snapshot.children) {
+                        val message = messages.getValue(Message::class.java)
+                        Log.d("iii",message.toString())
                         messagesList.add(message!!)
                     }
                     chatActivityAdapter.setMessageList(messagesList)
@@ -151,7 +164,6 @@ class ChatActivity : AppCompatActivity() {
 
             })
     }
-
     private fun prepareRvForChatActivity() {
         chatActivityAdapter = ChatActivityAdapter(binding.rvChats, this)
         binding.rvChats.apply {
@@ -159,21 +171,11 @@ class ChatActivity : AppCompatActivity() {
             adapter = chatActivityAdapter
         }
     }
-
     private fun initializations() {
-        messageList  = ArrayList()
+        messageList = ArrayList()
         clientName = intent.getStringExtra("name").toString()
         clientId = intent.getStringExtra("id").toString()
     }
-
-
-
-
-
-
-
-
-
 
 
 }

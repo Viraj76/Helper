@@ -4,5 +4,6 @@ data class Message(
     val currentDate : String? = null,
     val currentTime : String? = null,
     val message: String?=null,
-    val senderId: String?=null
+    val senderId: String?=null,
+    val profileSharing : String? = null
 )

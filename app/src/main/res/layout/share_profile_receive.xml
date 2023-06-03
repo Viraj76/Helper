@@ -7,7 +7,7 @@
     android:id="@+id/profileCardView"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="8dp"
+    android:layout_marginEnd="@dimen/_80sdp"
     android:background="@color/lightGreen"
     android:foregroundTint="@color/black"
     android:padding="10dp"
