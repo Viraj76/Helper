@@ -1,0 +1,63 @@
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/ratingCard"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    android:layout_gravity="center"
+    app:cardCornerRadius="8dp"
+
+    app:cardElevation="4dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+
+        android:padding="16dp">
+
+        <!-- Contractor Name -->
+        <TextView
+            android:id="@+id/contractorNameTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Contractor Name"
+            android:textStyle="bold"
+            android:textSize="18sp"/>
+
+        <!-- Contractor Rating -->
+        <RatingBar
+            android:id="@+id/contractorRatingBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:numStars="5"
+            android:stepSize="1"
+            android:layout_gravity="center"
+            android:rating="0"
+            android:layout_marginTop="8dp"/>
+
+        <!-- Rating Label -->
+        <TextView
+            android:id="@+id/ratingLabelTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Rate the contractor"
+            android:textSize="14sp"
+            android:gravity="center"
+            android:layout_marginTop="8dp"/>
+
+        <!-- Submit Rating Button -->
+        <Button
+
+            android:id="@+id/submitRatingButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Submit Rating"
+            android:layout_gravity="center"
+            android:textAllCaps="false"
+            android:layout_marginTop="16dp"/>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>
