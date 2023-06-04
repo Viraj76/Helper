@@ -5,5 +5,6 @@ data class Message(
     val currentTime : String? = null,
     val message: String?=null,
     val senderId: String?=null,
-    val profileSharing : String? = null
+    val profileSharing : String? = null,
+    val contractorName : String? = null,
 )

@@ -88,7 +88,6 @@ class ChatActivity : AppCompatActivity() {
                 } else {
                     layoutParams.height = ViewGroup.LayoutParams.WRAP_CONTENT
                 }
-
                 binding.tvMessage.layoutParams = layoutParams
             }
         })

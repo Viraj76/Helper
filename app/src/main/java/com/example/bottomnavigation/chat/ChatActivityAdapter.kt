@@ -19,6 +19,7 @@ import com.example.bottomnavigation.databinding.ReceiveMessageBinding
 import com.example.bottomnavigation.databinding.SendMessageBinding
 import com.example.bottomnavigation.databinding.ShareProfileReceiveBinding
 import com.example.bottomnavigation.databinding.ShareProfileSendBinding
+import com.example.bottomnavigation.models.ContractorID
 
 import com.example.bottomnavigation.models.Message
 import com.example.bottomnavigation.models.RatedContractor
@@ -81,19 +82,19 @@ class ChatActivityAdapter(val recyclerView: RecyclerView, val context: Context) 
         else if (holder.javaClass == ShareProfileSend::class.java){
             holder as ShareProfileSend
             holder.binding.btnRateMe.text = message.message
+            gettingContractorName(message.senderId!!,object : ContractorNameCallBack{
+                override fun onGettingContractorName(name: String) {
+                    holder.binding.profileNameTextView.text = name
+                }
 
+            })
         }
         else{
             holder as ShareProfileReceive
             holder.binding.btnRateMe.text = message.message
-//            holder.binding.btnRateMe.setOnClickListener {
-//                val intent = Intent(context,ContractorProfileActivity::class.java)
-//                context.startActivity(intent)
-//            }
             holder.binding.btnRateMe.setOnClickListener {
                 val currentUser = FirebaseAuth.getInstance().currentUser?.uid
                 val contractorId = message.senderId!!
-
                 val ratedContractorRef = FirebaseDatabase.getInstance().getReference("Rated Contractor")
                     .child(contractorId)
                     .orderByChild("clientId")
@@ -136,8 +137,12 @@ class ChatActivityAdapter(val recyclerView: RecyclerView, val context: Context) 
                     }
                 })
             }
+            gettingContractorName(message.senderId!!, object :ContractorNameCallBack{
+                override fun onGettingContractorName(name: String) {
+                    holder.binding.profileNameTextView.text = name
+                }
 
-
+            })
         }
     }
     override fun getItemCount(): Int {
@@ -159,15 +164,22 @@ class ChatActivityAdapter(val recyclerView: RecyclerView, val context: Context) 
         }
     }
 
-
-    fun checkContractorRated(callback : RatedContractorCallBack){
-        val currentUser = FirebaseAuth.getInstance().currentUser?.uid
-
+    private fun gettingContractorName(contractorId : String, callBack : ContractorNameCallBack){
+        FirebaseDatabase.getInstance().getReference("Contractor Id's").child(contractorId)
+            .addValueEventListener(object : ValueEventListener{
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    val contractorDetails = snapshot.getValue(ContractorID::class.java)
+                    callBack.onGettingContractorName(contractorDetails?.name!!)
+                }
+                override fun onCancelled(error: DatabaseError) {
+                    TODO("Not yet implemented")
+                }
+            })
+    }
+    interface ContractorNameCallBack{
+        fun onGettingContractorName(name : String)
     }
 
-    interface RatedContractorCallBack{
-        fun onAlreadyRatedContractor(status : Boolean)
-    }
     }
 
 
