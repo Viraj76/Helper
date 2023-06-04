@@ -1,13 +1,19 @@
 package com.example.bottomnavigation.chat
 
+import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.RatingBar
+import android.widget.Toast
+import androidx.core.os.bundleOf
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
+import com.example.bottomnavigation.R
 import com.example.bottomnavigation.contractor.activity.ContractorProfileActivity
 import com.example.bottomnavigation.databinding.ReceiveMessageBinding
 import com.example.bottomnavigation.databinding.SendMessageBinding
@@ -75,10 +81,32 @@ class ChatActivityAdapter(val recyclerView: RecyclerView, val context: Context) 
         else{
             holder as ShareProfileReceive
             holder.binding.btnRateMe.text = message.message
+//            holder.binding.btnRateMe.setOnClickListener {
+//                val intent = Intent(context,ContractorProfileActivity::class.java)
+//                context.startActivity(intent)
+//            }
             holder.binding.btnRateMe.setOnClickListener {
-                val intent = Intent(context,ContractorProfileActivity::class.java)
-                context.startActivity(intent)
+                val builder = AlertDialog.Builder(context)
+                val customRateLayout = LayoutInflater.from(context).inflate(R.layout.card_view_rate,null)
+                builder.setView(customRateLayout)
+                builder.setCancelable(false)
+                val rateAlertDialogue = builder.create()
+                val submitButton = customRateLayout.findViewById<Button>(R.id.submitRatingButton)
+                val ratingBar = customRateLayout.findViewById<RatingBar>(R.id.contractorRatingBar)
+
+
+                submitButton.setOnClickListener {
+                    ratingBar.onRatingBarChangeListener = RatingBar.OnRatingBarChangeListener { ratingBar, rating, fromUser ->
+                        // The 'rating' parameter represents the number of stars clicked by the user
+                        // You can perform any required logic based on the selected rating
+                        Toast.makeText(context, "Selected rating: $rating", Toast.LENGTH_SHORT).show()
+                    }
+                    Toast.makeText(context,"Rated successfully: $", Toast.LENGTH_SHORT).show()
+                    rateAlertDialogue.dismiss()
+                }
+                rateAlertDialogue.show()
             }
+
         }
     }
 

@@ -26,6 +26,8 @@ class ChatActivity : AppCompatActivity() {
     private lateinit var clientId: String
     private lateinit var messageList: ArrayList<Message>
     private lateinit var chatActivityAdapter: ChatActivityAdapter
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityChatBinding.inflate(layoutInflater)
@@ -46,23 +48,31 @@ class ChatActivity : AppCompatActivity() {
                 ).show()
                 else storingMessage(message,"false")
             }
-
             ivShareProfile.setOnClickListener {
-                val builder = AlertDialog.Builder(this@ChatActivity)
-                val alertDialog = builder.create()
-                builder
-                    .setTitle("Share Profile")
-                    .setMessage("Are you sure you want to share your profile to this client?")
-                    .setPositiveButton("Yes") { dialogInterface, which ->
-                        storingMessage("Rate Me", "true")
-//                        storingMessage("Rate Me", true)
-                        showingMessages()
+                checkProfileSentStatus(object : ProfileSentCallback {
+                    override fun onProfileSent(status: Boolean) {
+                        if (!status) {
+                            val builder = AlertDialog.Builder(this@ChatActivity)
+                            val alertDialog = builder.create()
+                            builder
+                                .setTitle("Share Profile")
+                                .setMessage("Are you sure you want to share your profile with this client?")
+                                .setPositiveButton("Yes") { dialogInterface, which ->
+                                    storingMessage("Rate Me", "true")
+                                    FirebaseDatabase.getInstance().getReference("Rating Status")
+                                        .child(clientId).setValue(true)
+                                    showingMessages()
+                                }
+                                .setNegativeButton("No") { dialogInterface, which ->
+                                    alertDialog.dismiss()
+                                }
+                                .show()
+                                .setCancelable(false)
+                        } else {
+                            Toast.makeText(this@ChatActivity, "Profile already sent", Toast.LENGTH_SHORT).show()
+                        }
                     }
-                    .setNegativeButton("No") { dialogInterface, which ->
-                        alertDialog.dismiss()
-                    }
-                    .show()
-                    .setCancelable(false)
+                })
             }
         }
         binding.tvMessage.addTextChangedListener(object : TextWatcher {
@@ -84,6 +94,21 @@ class ChatActivity : AppCompatActivity() {
                 binding.tvMessage.layoutParams = layoutParams
             }
         })
+    }
+    private fun checkProfileSentStatus(callback: ProfileSentCallback) {
+        val ratingStatusRef = FirebaseDatabase.getInstance().getReference("Rating Status")
+        ratingStatusRef.child(clientId).addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val status = snapshot.exists()
+                callback.onProfileSent(status)
+            }
+            override fun onCancelled(error: DatabaseError) {
+                callback.onProfileSent(false)
+            }
+        })
+    }
+    interface ProfileSentCallback {
+        fun onProfileSent(status: Boolean)
     }
     private fun showingShareProfileOption() {
         val currentUserId = FirebaseAuth.getInstance().currentUser?.uid
