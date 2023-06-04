@@ -43,7 +43,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/profileContractor"
-        android:text="Viraj Gupta"
         android:textSize="@dimen/_15ssp"
         android:textColor="@color/HardGreen"
         android:textStyle="bold"/>
@@ -55,15 +54,27 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/contractorProfile"
         android:background="@color/HardGreen"
-        app:layout_constraintBottom_toTopOf="@id/ratingRv"
+        app:layout_constraintBottom_toTopOf="@id/insText"
         />
+    <TextView
+        android:id="@+id/insText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Clients who rated you -:"
+        android:layout_margin="@dimen/_5sdp"
+        app:layout_constraintStart_toStartOf="parent"
+        android:textSize="@dimen/_12ssp"
+        app:layout_constraintBottom_toTopOf="@id/ratingRv"
+        android:textColor="@color/HardGreen"
+        app:layout_constraintTop_toBottomOf="@id/lineView"/>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/ratingRv"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/lineView"
+        app:layout_constraintTop_toBottomOf="@id/insText"
         app:layout_constraintBottom_toBottomOf="parent"/>
 
 

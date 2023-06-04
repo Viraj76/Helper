@@ -28,6 +28,9 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import java.text.SimpleDateFormat
+import java.util.*
+import kotlin.collections.ArrayList
 
 
 class ChatActivityAdapter(val recyclerView: RecyclerView, val context: Context) : RecyclerView.Adapter<ViewHolder>() {
@@ -120,9 +123,10 @@ class ChatActivityAdapter(val recyclerView: RecyclerView, val context: Context) 
                                     selectedRating = rating
                                 }
                             submitButton.setOnClickListener {
-                                val ratedContractor = RatedContractor(currentUser, selectedRating.toString())
-                                FirebaseDatabase.getInstance().getReference("Rated Contractor")
-                                    .child(contractorId)
+                                val currentDate: String = SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(Date()
+                                )
+                                val ratedContractor = RatedContractor(currentUser, selectedRating.toString(),currentDate)
+                                FirebaseDatabase.getInstance().getReference("Rated Contractor").child(contractorId)
                                     .push()
                                     .setValue(ratedContractor)
                                 Toast.makeText(context, "Rated successfully", Toast.LENGTH_SHORT).show()
