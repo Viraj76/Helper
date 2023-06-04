@@ -21,7 +21,12 @@ import com.example.bottomnavigation.databinding.ShareProfileReceiveBinding
 import com.example.bottomnavigation.databinding.ShareProfileSendBinding
 
 import com.example.bottomnavigation.models.Message
+import com.example.bottomnavigation.models.RatedContractor
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 
 
 class ChatActivityAdapter(val recyclerView: RecyclerView, val context: Context) : RecyclerView.Adapter<ViewHolder>() {
@@ -86,34 +91,58 @@ class ChatActivityAdapter(val recyclerView: RecyclerView, val context: Context) 
 //                context.startActivity(intent)
 //            }
             holder.binding.btnRateMe.setOnClickListener {
-                val builder = AlertDialog.Builder(context)
-                val customRateLayout = LayoutInflater.from(context).inflate(R.layout.card_view_rate,null)
-                builder.setView(customRateLayout)
-                builder.setCancelable(false)
-                val rateAlertDialogue = builder.create()
-                val submitButton = customRateLayout.findViewById<Button>(R.id.submitRatingButton)
-                val ratingBar = customRateLayout.findViewById<RatingBar>(R.id.contractorRatingBar)
+                val currentUser = FirebaseAuth.getInstance().currentUser?.uid
+                val contractorId = message.senderId!!
 
+                val ratedContractorRef = FirebaseDatabase.getInstance().getReference("Rated Contractor")
+                    .child(contractorId)
+                    .orderByChild("clientId")
+                    .equalTo(currentUser)
 
-                submitButton.setOnClickListener {
-                    ratingBar.onRatingBarChangeListener = RatingBar.OnRatingBarChangeListener { ratingBar, rating, fromUser ->
-                        // The 'rating' parameter represents the number of stars clicked by the user
-                        // You can perform any required logic based on the selected rating
-                        Toast.makeText(context, "Selected rating: $rating", Toast.LENGTH_SHORT).show()
+                ratedContractorRef.addListenerForSingleValueEvent(object : ValueEventListener {
+                    override fun onDataChange(dataSnapshot: DataSnapshot) {
+                        if (dataSnapshot.exists()) {
+                            // The client has already rated this contractor
+                            Toast.makeText(context, "You have already rated this contractor.", Toast.LENGTH_SHORT).show()
+                        } else {
+                            // The client has not rated the contractor, allow rating
+                            val builder = AlertDialog.Builder(context)
+                            val customRateLayout = LayoutInflater.from(context).inflate(R.layout.card_view_rate, null)
+                            builder.setView(customRateLayout)
+                            builder.setCancelable(false)
+                            val rateAlertDialogue = builder.create()
+                            val submitButton = customRateLayout.findViewById<Button>(R.id.submitRatingButton)
+                            val ratingBar = customRateLayout.findViewById<RatingBar>(R.id.contractorRatingBar)
+                            var selectedRating = 0.0f
+                            ratingBar.onRatingBarChangeListener =
+                                RatingBar.OnRatingBarChangeListener { _, rating, _ ->
+                                    selectedRating = rating
+                                }
+                            submitButton.setOnClickListener {
+                                val ratedContractor = RatedContractor(currentUser, selectedRating.toString())
+                                FirebaseDatabase.getInstance().getReference("Rated Contractor")
+                                    .child(contractorId)
+                                    .push()
+                                    .setValue(ratedContractor)
+                                Toast.makeText(context, "Rated successfully", Toast.LENGTH_SHORT).show()
+                                rateAlertDialogue.dismiss()
+                            }
+                            rateAlertDialogue.show()
+                        }
                     }
-                    Toast.makeText(context,"Rated successfully: $", Toast.LENGTH_SHORT).show()
-                    rateAlertDialogue.dismiss()
-                }
-                rateAlertDialogue.show()
+
+                    override fun onCancelled(databaseError: DatabaseError) {
+                        // Handle the error
+                    }
+                })
             }
+
 
         }
     }
-
     override fun getItemCount(): Int {
         return messageList.size
     }
-
     override fun getItemViewType(position: Int): Int {
         val currentUser = FirebaseAuth.getInstance().currentUser?.uid
         val currentMessage = messageList[position]
@@ -128,6 +157,16 @@ class ChatActivityAdapter(val recyclerView: RecyclerView, val context: Context) 
             if (currentUser == currentMessage.senderId) SENT_MESSAGE
             else RECEIVED_MESSAGE
         }
+    }
+
+
+    fun checkContractorRated(callback : RatedContractorCallBack){
+        val currentUser = FirebaseAuth.getInstance().currentUser?.uid
+
+    }
+
+    interface RatedContractorCallBack{
+        fun onAlreadyRatedContractor(status : Boolean)
     }
     }
 

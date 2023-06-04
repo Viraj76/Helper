@@ -73,7 +73,6 @@ class ContractorPostAdapter(val context: Context):RecyclerView.Adapter<Contracto
                 val contractorId = FirebaseAuth.getInstance().currentUser?.uid
                 val chatRoomId = contractorId + clientId
                 Log.d("cc", chatRoomId)
-
                 val chatbaseRef = FirebaseDatabase.getInstance().getReference("Chatbase")
                 chatbaseRef.addListenerForSingleValueEvent(object : ValueEventListener {
                     override fun onDataChange(snapshot: DataSnapshot) {
@@ -96,10 +95,11 @@ class ContractorPostAdapter(val context: Context):RecyclerView.Adapter<Contracto
             }
 
         }
-
     }
 
     override fun getItemCount(): Int {
        return contractorPostList.size
     }
+
+
 }
