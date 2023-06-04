@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".contractor.fragments.ContractorHistoryFragment">
+
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/contractorHistoryToolbar"
         android:layout_width="match_parent"
@@ -16,8 +17,54 @@
         app:titleTextColor="@color/white"
         app:title="History"
         />
+    <ImageView
+        android:id="@+id/contractorProfile"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_200sdp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/contractorHistoryToolbar"
+        android:background="@color/lightGreen"
+        />
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/profileContractor"
+        android:layout_width="@dimen/_100sdp"
+        android:layout_height="@dimen/_100sdp"
+        android:background="@drawable/ic_baseline_account_circle_24"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/contractorProfile"
+        android:layout_marginTop="-200dp"
+        />
+    <TextView
+        android:id="@+id/contractorName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/profileContractor"
+        android:text="Viraj Gupta"
+        android:textSize="@dimen/_15ssp"
+        android:textColor="@color/HardGreen"
+        android:textStyle="bold"/>
+    <View
+        android:id="@+id/lineView"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_3sdp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/contractorProfile"
+        android:background="@color/HardGreen"
+        app:layout_constraintBottom_toTopOf="@id/ratingRv"
+        />
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/ratingRv"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/lineView"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
 
-
-
-</FrameLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -13,8 +13,8 @@
         android:id="@+id/contractorChatFragment"
         />
     <item
-        android:title="History"
-        android:icon="@drawable/ic_baseline_history_24"
+        android:title="Profile"
+        android:icon="@drawable/profile"
         android:id="@+id/contractorHistoryFragment"
         />
 </menu>
