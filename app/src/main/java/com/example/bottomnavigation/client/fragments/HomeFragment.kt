@@ -36,7 +36,7 @@ class HomeFragment : Fragment() {
 
         prepareClientPostsRecyclerView()
 
-        getAllClientPost()
+//        getAllClientPost()
 
         observeClientPostLivedata()
 

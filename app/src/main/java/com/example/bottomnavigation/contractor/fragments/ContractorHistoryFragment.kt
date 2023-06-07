@@ -17,6 +17,7 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 class ContractorHistoryFragment : Fragment() {
+
     private lateinit var binding : FragmentContractorHistoryBinding
     private lateinit var ratingHistoryAdapter : RatingHistoryAdapter
 
@@ -45,12 +46,10 @@ class ContractorHistoryFragment : Fragment() {
                     Config.hideDialog()
                     ratingHistoryAdapter.setClientWhoRated(clientList)
                 }
-
                 override fun onCancelled(error: DatabaseError) {
                     Config.hideDialog()
                     TODO("Not yet implemented")
                 }
-
             })
 //        clientListWhoRated(currentUser!!, object : ClientWhoRatedListCallBack{
 //            override fun onGettingClientListWhoRated(clientList: ArrayList<RatedContractor>) {
@@ -59,7 +58,6 @@ class ContractorHistoryFragment : Fragment() {
 //
 //        })
     }
-
     private fun prepareRatingHistoryAdapterRv() {
         ratingHistoryAdapter = RatingHistoryAdapter()
         binding.ratingRv.apply {

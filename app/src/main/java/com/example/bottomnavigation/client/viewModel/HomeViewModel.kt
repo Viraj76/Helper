@@ -17,23 +17,23 @@ class HomeViewModel : ViewModel() {
         databaseReference = FirebaseDatabase.getInstance().getReference("All Posts")
         databaseReference.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-                if (snapshot.exists()) {
-                     val allClientsDataList= ArrayList<ClientPosts>()
-                    for (allClientsData in snapshot.children) {
-                        val clientsData = allClientsData.getValue(ClientPosts::class.java)
-                        val currentUser = FirebaseAuth.getInstance().currentUser?.uid
-                        if (currentUser != clientsData?.userId) {
-                            allClientsDataList.add(clientsData!!)
-                        }
+                val allClientsDataList = ArrayList<ClientPosts>()
+                for (allClientsData in snapshot.children) {
+                    val clientsData = allClientsData.getValue(ClientPosts::class.java)
+                    val currentUser = FirebaseAuth.getInstance().currentUser?.uid
+                    if (currentUser != clientsData?.userId) {
+                        allClientsDataList.add(clientsData!!)
                     }
-                    allClientPostsLiveData.postValue(allClientsDataList)
                 }
+                allClientPostsLiveData.postValue(allClientsDataList)
             }
+
             override fun onCancelled(error: DatabaseError) {
-                Log.d("Error",error.message)
+                Log.d("Error", error.message)
             }
         })
     }
+
 
     fun observeAllClientPostLiveData(): LiveData<List<ClientPosts>>{
         return allClientPostsLiveData

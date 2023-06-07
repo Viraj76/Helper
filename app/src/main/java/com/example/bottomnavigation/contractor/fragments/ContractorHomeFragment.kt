@@ -24,7 +24,7 @@ class ContractorHomeFragment : Fragment() {
     private lateinit var binding:FragmentHome2Binding
     private lateinit var contractorPostAdapter: ContractorPostAdapter
     private lateinit var databaseReference: DatabaseReference
-    private lateinit var  retrievedPosts : ArrayList<ClientPosts>
+
     private lateinit var context:Activity
 
     override fun onCreateView(
@@ -42,7 +42,6 @@ class ContractorHomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        retrievedPosts =  ArrayList()
         prepareContractorPostRecyclerView()
         showingPostsToContractor()
         binding.contractorHomeToolbar.inflateMenu(R.menu.client_main_activity)
@@ -77,6 +76,7 @@ class ContractorHomeFragment : Fragment() {
         databaseReference = FirebaseDatabase.getInstance().getReference("All Posts")
         databaseReference.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
+                val  retrievedPosts = ArrayList<ClientPosts>()
                 if (snapshot.exists()) {
                     for (allClientsData in snapshot.children) {
                         val clientsData = allClientsData.getValue(ClientPosts::class.java)
