@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.DecodeFormat
 import com.bumptech.glide.request.RequestOptions
+import com.example.bottomnavigation.R
 import com.example.bottomnavigation.models.ClientPosts
 import com.example.bottomnavigation.databinding.PostCardBinding
 import com.example.bottomnavigation.databinding.PostItemViewClientSideBinding
@@ -52,6 +53,8 @@ class PostAdapter(val context: Context):RecyclerView.Adapter<PostAdapter.PostVie
                 val currentImageView = imageViewList[i]
                 Glide.with(holder.itemView)
                     .load(imageUris[i])
+                    .override(800, 600)
+                    .placeholder(R.drawable.loading)
                     .into(currentImageView)
             }
         }
