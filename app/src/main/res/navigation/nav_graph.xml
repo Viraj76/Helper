@@ -28,4 +28,9 @@
             android:id="@+id/action_postFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/chatFragment2"
+        android:name="com.example.bottomnavigation.client.fragments.ChatFragment"
+        android:label="fragment_chat"
+        tools:layout="@layout/fragment_chat" />
 </navigation>
