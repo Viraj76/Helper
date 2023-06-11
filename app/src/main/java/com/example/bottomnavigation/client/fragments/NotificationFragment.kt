@@ -24,7 +24,12 @@ class NotificationFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View{
         binding = FragmentNotificationBinding.inflate(layoutInflater)
+        showingTheQuotations()
         return binding.root
     }
 
+    private fun showingTheQuotations() {
+        val currentUser = FirebaseAuth.getInstance().currentUser?.uid
+
+    }
 }
