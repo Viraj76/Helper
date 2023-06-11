@@ -27,7 +27,4 @@ class NotificationFragment : Fragment() {
         return binding.root
     }
 
-
-
-
 }

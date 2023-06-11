@@ -73,14 +73,12 @@ class ContractorPostAdapter(val context: Context):RecyclerView.Adapter<Contracto
                 val contractorId = FirebaseAuth.getInstance().currentUser?.uid
                 val chatRoomId = contractorId + clientId
                 Log.d("cc", chatRoomId)
-                val chatbaseRef = FirebaseDatabase.getInstance().getReference("Chatbase")
+                val chatbaseRef = FirebaseDatabase.getInstance().getReference("Quotations")
                 chatbaseRef.addListenerForSingleValueEvent(object : ValueEventListener {
                     override fun onDataChange(snapshot: DataSnapshot) {
                         val roomIdExists = snapshot.hasChild(chatRoomId)  //checking if the child present
                         if (roomIdExists) {
-                            val intent = Intent(context, ChatActivity::class.java)
-                            intent.putExtra("id", data.userId)
-                            context.startActivity(intent)
+                            Toast.makeText(context,"Client will contact you!",Toast.LENGTH_SHORT).show()
                         } else {
                             val intent = Intent(context, QuestionsActivity::class.java)
                             intent.putExtra("id", data.userId)
