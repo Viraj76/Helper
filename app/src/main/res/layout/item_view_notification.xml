@@ -14,7 +14,7 @@
         android:padding="@dimen/_5sdp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/constraintLayout"
+            android:id="@+id/visibleConstraintLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="@dimen/_5sdp"
@@ -29,10 +29,9 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:padding="@dimen/_7sdp"
-
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
-
+                
                 <TextView
                     android:id="@+id/tvContractorName"
                     android:layout_width="wrap_content"
@@ -60,7 +59,7 @@
                     android:id="@+id/tvDate"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/_80sdp"
+                    android:layout_marginStart="@dimen/_50sdp"
                     android:text="12-12-2023"
                     android:textColor="@color/HardGreen"
                     android:textSize="@dimen/_12ssp"
@@ -78,10 +77,10 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/constraintLayout">
+            app:layout_constraintTop_toBottomOf="@id/visibleConstraintLayout">
 
             <TextView
-                android:id="@+id/workDescT"
+                android:id="@+id/quotationTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_6sdp"
@@ -140,29 +139,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/worksLL" />
         </LinearLayout>
-
-
-        <!--        <androidx.appcompat.widget.AppCompatButton-->
-        <!--            android:layout_width="@dimen/_200sdp"-->
-        <!--            android:layout_height="match_parent"-->
-        <!--            android:text="Completed"-->
-        <!--            android:textAllCaps="false"-->
-        <!--            android:background="@color/hard"-->
-        <!--            android:textColor="@color/white"-->
-        <!--            app:layout_constraintTop_toBottomOf="@id/worksLL"-->
-        <!--            app:layout_constraintStart_toStartOf="parent"-->
-        <!--            -->
-        <!--            app:layout_constraintEnd_toEndOf="parent"/>-->
-
-        <!--        <ImageView-->
-        <!--            android:id="@+id/workDone"-->
-        <!--            android:layout_width="wrap_content"-->
-        <!--            android:layout_height="wrap_content"-->
-        <!--            android:src="@drawable/check_circle_white_24dp"-->
-        <!--           -->
-        <!--            android:layout_marginTop="@dimen/_10sdp"-->
-        <!--            android:layout_marginStart="@dimen/_10sdp"-->
-        <!--            />-->
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

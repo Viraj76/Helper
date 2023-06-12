@@ -45,20 +45,19 @@ class NotificationFragment : Fragment() {
         FirebaseDatabase.getInstance().getReference("Quotations")
             .addValueEventListener(object : ValueEventListener{
                 override fun onDataChange(snapshot: DataSnapshot) {
-
+                    val quotationsList = ArrayList<Quotations>()
                     for (quotationsSnapshot in snapshot.children) {
-                        Log.d("aa",quotationsSnapshot.toString())
                         val room = quotationsSnapshot.key
-                        Log.d("aa",room.toString())
                         FirebaseDatabase.getInstance().getReference("Quotations").child(room!!)
                             .addValueEventListener(object : ValueEventListener{
                                 override fun onDataChange(snapshot: DataSnapshot) {
-                                    val quotationsList = ArrayList<Quotations>()
+
                                     for(data in snapshot.children){
                                         val hh = data.getValue(Quotations::class.java)
                                         quotationsList.add(hh!!)
                                         Log.d("bb",hh.toString())
                                     }
+                                    Log.d("vv",quotationsList.toString())
                                     quotationsAdapter.setQuotationsLists(quotationsList)
                                 }
                                 override fun onCancelled(error: DatabaseError) {
@@ -67,9 +66,7 @@ class NotificationFragment : Fragment() {
 
                             })
                     }
-
                 }
-
                 override fun onCancelled(error: DatabaseError) {
                     TODO("Not yet implemented")
                 }

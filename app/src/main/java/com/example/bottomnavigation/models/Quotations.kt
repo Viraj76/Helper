@@ -5,4 +5,6 @@ data class Quotations(
     val quotationMessage : String? = null,
     val currentDate : String? = null,
     val contractorRating : String? = null,
-)
+    var isExpandable : Boolean=false,
+
+    )
