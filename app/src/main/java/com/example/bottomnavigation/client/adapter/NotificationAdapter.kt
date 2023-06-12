@@ -9,7 +9,10 @@ import com.example.bottomnavigation.client.fragments.NotificationFragment
 import com.example.bottomnavigation.databinding.ItemViewNotificationBinding
 import com.example.bottomnavigation.models.Quotations
 
-class NotificationAdapter(val notificationFragment: NotificationFragment) : RecyclerView.Adapter<NotificationAdapter.QuotationsViewHolder>() {
+class NotificationAdapter(
+    val notificationFragment: NotificationFragment,
+    private val onRejectButtonClick:((Quotations) -> Unit)? = null
+) : RecyclerView.Adapter<NotificationAdapter.QuotationsViewHolder>() {
     private var quotationsList = ArrayList<Quotations>()
     fun setQuotationsLists(quotations : ArrayList<Quotations>){
         this.quotationsList = quotations
@@ -28,6 +31,7 @@ class NotificationAdapter(val notificationFragment: NotificationFragment) : Recy
             tvAverageRating.text = quotations.contractorRating
             tvDate.text = quotations.currentDate
             tvQuotation.text = quotations.quotationMessage
+            btnReject.setOnClickListener { onRejectButtonClick?.invoke(quotations) }
         }
 //        handling expandability
         val isExpandable:Boolean  = quotations.isExpandable

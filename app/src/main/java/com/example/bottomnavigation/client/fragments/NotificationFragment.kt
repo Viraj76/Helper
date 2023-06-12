@@ -6,8 +6,11 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.bottomnavigation.R
 import com.example.bottomnavigation.client.adapter.NotificationAdapter
 import com.example.bottomnavigation.databinding.FragmentNotificationBinding
 import com.example.bottomnavigation.models.Quotations
@@ -32,7 +35,7 @@ class NotificationFragment : Fragment() {
     }
 
     private fun prepareRvForQuotationAdapter() {
-        quotationsAdapter = NotificationAdapter(this)
+        quotationsAdapter = NotificationAdapter(this,::onRejectButtonClick)
         binding.rvQuotations.apply {
             layoutManager = LinearLayoutManager(context,LinearLayoutManager.VERTICAL,false)
             adapter = quotationsAdapter
@@ -51,7 +54,6 @@ class NotificationFragment : Fragment() {
                         FirebaseDatabase.getInstance().getReference("Quotations").child(room!!)
                             .addValueEventListener(object : ValueEventListener{
                                 override fun onDataChange(snapshot: DataSnapshot) {
-
                                     for(data in snapshot.children){
                                         val hh = data.getValue(Quotations::class.java)
                                         quotationsList.add(hh!!)
@@ -67,6 +69,47 @@ class NotificationFragment : Fragment() {
                             })
                     }
                 }
+                override fun onCancelled(error: DatabaseError) {
+                    TODO("Not yet implemented")
+                }
+
+            })
+    }
+    private fun onRejectButtonClick(quotations : Quotations){
+        val builder = AlertDialog.Builder(requireContext())
+        val alertDialog = builder.create()
+        builder.apply {
+            setTitle("Reject Quotation")
+            setMessage("Are you sure you want to reject this quotation?")
+            setPositiveButton("Yes") { dialogInterface, which ->
+                deleteQuotation(quotations)
+            }
+            setNegativeButton("No") { dialogInterface, which ->
+                alertDialog.dismiss()
+            }
+            show()
+            setCancelable(false)
+        }
+
+
+    }
+
+    private fun deleteQuotation(quotations: Quotations) {
+        val currentUserId = FirebaseAuth.getInstance().currentUser?.uid
+        val contractorId = quotations.contractorUserId.toString()
+        val deletingRoom = contractorId + currentUserId
+        FirebaseDatabase.getInstance().getReference("Quotations")
+            .addValueEventListener(object : ValueEventListener{
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    for(allRooms in snapshot.children){
+                        if(deletingRoom == allRooms.key){
+                            allRooms.ref.removeValue().addOnCompleteListener {
+                                Toast.makeText(requireContext(),"Rejected request",Toast.LENGTH_LONG).show()
+                            }
+                        }
+                    }
+                }
+
                 override fun onCancelled(error: DatabaseError) {
                     TODO("Not yet implemented")
                 }

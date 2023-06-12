@@ -71,12 +71,11 @@ class QuestionsActivity : AppCompatActivity() {
                                         ratingCount++
                                     }
                                 }
-
                                 if (ratingCount > 0) {
                                     contractorRating /= ratingCount
                                     contractorRating = contractorRating.toBigDecimal().setScale(1, RoundingMode.HALF_UP).toFloat()
                                 }
-                                val notificationDetail = Quotations(contractName,greetMessage,currentDate,contractorRating.toString())
+                                val notificationDetail = Quotations(currentUserId,contractName,greetMessage,currentDate,contractorRating.toString())
 
                                 FirebaseDatabase.getInstance().getReference("Quotations").child(chatRoomId).push()
                                     .setValue(notificationDetail)
