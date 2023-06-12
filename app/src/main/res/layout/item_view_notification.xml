@@ -25,46 +25,51 @@
 
             <LinearLayout
                 android:id="@+id/titleLL"
-                android:layout_width="match_parent"
+                android:layout_width="@dimen/_195sdp"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:padding="@dimen/_7sdp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-                
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/tvDate"
+                >
                 <TextView
                     android:id="@+id/tvContractorName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Viraj Gupta"
+                    android:maxLines="2"
                     android:textColor="@color/HardGreen"
-                    android:textSize="@dimen/_17ssp"
+                    android:textSize="@dimen/_15ssp"
                     android:textStyle="bold" />
                 <TextView
                     android:id="@+id/tvAverageRating"
                     android:layout_width="wrap_content"
-                    android:layout_marginStart="@dimen/_4sdp"
-                    android:layout_marginBottom="@dimen/_5sdp"
+                   android:layout_gravity="center"
+                    android:layout_marginStart="@dimen/_3sdp"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/_10sdp"
                     android:text="3.2" />
                 <ImageView
                     android:layout_width="@dimen/_10sdp"
                     android:layout_height="@dimen/_10sdp"
-                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_gravity="center"
                     android:src="@drawable/ic_baseline_star_rate_24"
                     />
-
+            </LinearLayout>
                 <TextView
                     android:id="@+id/tvDate"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/_50sdp"
+                    android:padding="@dimen/_7sdp"
                     android:text="12-12-2023"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/titleLL"
                     android:textColor="@color/HardGreen"
                     android:textSize="@dimen/_12ssp"
                     android:textStyle="bold" />
-            </LinearLayout>
+
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -121,6 +126,7 @@
                 android:textAllCaps="false"
                 android:textColor="@color/white"
                 app:cornerRadius="@dimen/_20sdp"
+                android:backgroundTint="@color/red"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/worksLL" />
@@ -131,6 +137,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginStart="@dimen/_5sdp"
                 android:layout_weight="0.5"
+                android:backgroundTint="#0EF224"
                 android:text="Accept"
                 android:textAllCaps="false"
                 android:textColor="@color/white"
