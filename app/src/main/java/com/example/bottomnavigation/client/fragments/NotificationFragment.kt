@@ -1,5 +1,6 @@
 package com.example.bottomnavigation.client.fragments
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 
@@ -10,7 +11,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.bottomnavigation.R
+import com.example.bottomnavigation.chat.ChatActivity
 import com.example.bottomnavigation.client.adapter.NotificationAdapter
 import com.example.bottomnavigation.databinding.FragmentNotificationBinding
 import com.example.bottomnavigation.models.Quotations
@@ -35,7 +36,7 @@ class NotificationFragment : Fragment() {
     }
 
     private fun prepareRvForQuotationAdapter() {
-        quotationsAdapter = NotificationAdapter(this,::onRejectButtonClick)
+        quotationsAdapter = NotificationAdapter(this,::onRejectButtonClick, ::onAcceptButtonClick)
         binding.rvQuotations.apply {
             layoutManager = LinearLayoutManager(context,LinearLayoutManager.VERTICAL,false)
             adapter = quotationsAdapter
@@ -75,6 +76,30 @@ class NotificationFragment : Fragment() {
 
             })
     }
+    private fun onAcceptButtonClick(quotations : Quotations){
+        val builder = AlertDialog.Builder(requireContext())
+        val alertDialog = builder.create()
+        builder.apply {
+            setTitle("Accept Quotation")
+            setMessage("Are you sure you want to accept this quotation?")
+            setPositiveButton("Yes") { dialogInterface, which ->
+                setARoomForChat(quotations)
+            }
+            setNegativeButton("No") { dialogInterface, which ->
+                alertDialog.dismiss()
+            }
+            show()
+            setCancelable(false)
+        }
+    }
+
+    private fun setARoomForChat(quotations: Quotations) {
+        val intent = Intent(requireContext(), ChatActivity::class.java)
+        intent.putExtra("id",quotations.contractorUserId)
+        startActivity(intent)
+        
+    }
+
     private fun onRejectButtonClick(quotations : Quotations){
         val builder = AlertDialog.Builder(requireContext())
         val alertDialog = builder.create()
@@ -90,8 +115,6 @@ class NotificationFragment : Fragment() {
             show()
             setCancelable(false)
         }
-
-
     }
 
     private fun deleteQuotation(quotations: Quotations) {

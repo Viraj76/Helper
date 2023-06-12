@@ -11,7 +11,8 @@ import com.example.bottomnavigation.models.Quotations
 
 class NotificationAdapter(
     val notificationFragment: NotificationFragment,
-    private val onRejectButtonClick:((Quotations) -> Unit)? = null
+    private val onRejectButtonClick:((Quotations) -> Unit)? = null,
+    private val onAcceptButtonClick:((Quotations) -> Unit)? = null
 ) : RecyclerView.Adapter<NotificationAdapter.QuotationsViewHolder>() {
     private var quotationsList = ArrayList<Quotations>()
     fun setQuotationsLists(quotations : ArrayList<Quotations>){
@@ -32,6 +33,7 @@ class NotificationAdapter(
             tvDate.text = quotations.currentDate
             tvQuotation.text = quotations.quotationMessage
             btnReject.setOnClickListener { onRejectButtonClick?.invoke(quotations) }
+            btnAccept.setOnClickListener { onAcceptButtonClick?.invoke(quotations) }
         }
 //        handling expandability
         val isExpandable:Boolean  = quotations.isExpandable
