@@ -51,23 +51,26 @@ class NotificationFragment : Fragment() {
                 override fun onDataChange(snapshot: DataSnapshot) {
                     val quotationsList = ArrayList<Quotations>()
                     for (quotationsSnapshot in snapshot.children) {
-                        val room = quotationsSnapshot.key
-                        FirebaseDatabase.getInstance().getReference("Quotations").child(room!!)
-                            .addValueEventListener(object : ValueEventListener{
-                                override fun onDataChange(snapshot: DataSnapshot) {
-                                    for(data in snapshot.children){
-                                        val hh = data.getValue(Quotations::class.java)
-                                        quotationsList.add(hh!!)
-                                        Log.d("bb",hh.toString())
+                        if(quotationsSnapshot.key!!.contains(currentUser!!)){
+                             val room = quotationsSnapshot.key
+                            FirebaseDatabase.getInstance().getReference("Quotations").child(room!!)
+                                .addValueEventListener(object : ValueEventListener{
+                                    override fun onDataChange(snapshot: DataSnapshot) {
+                                        for(data in snapshot.children){
+                                            val hh = data.getValue(Quotations::class.java)
+                                            quotationsList.add(hh!!)
+                                            Log.d("bb",hh.toString())
+                                        }
+                                        Log.d("vv",quotationsList.toString())
+                                        quotationsAdapter.setQuotationsLists(quotationsList)
                                     }
-                                    Log.d("vv",quotationsList.toString())
-                                    quotationsAdapter.setQuotationsLists(quotationsList)
-                                }
-                                override fun onCancelled(error: DatabaseError) {
-                                    TODO("Not yet implemented")
-                                }
+                                    override fun onCancelled(error: DatabaseError) {
+                                        TODO("Not yet implemented")
+                                    }
 
-                            })
+                                })
+                        }
+
                     }
                 }
                 override fun onCancelled(error: DatabaseError) {
@@ -97,7 +100,7 @@ class NotificationFragment : Fragment() {
         val intent = Intent(requireContext(), ChatActivity::class.java)
         intent.putExtra("id",quotations.contractorUserId)
         startActivity(intent)
-        
+        deleteQuotation(quotations)
     }
 
     private fun onRejectButtonClick(quotations : Quotations){
