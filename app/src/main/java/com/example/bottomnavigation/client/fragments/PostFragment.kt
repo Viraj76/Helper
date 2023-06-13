@@ -80,11 +80,13 @@ class PostFragment : Fragment() {
 
     private fun postingNeed(uploadedImages: MutableList<String>) {
         Log.d("hh", uploadedImages.toString())
-        val firstName = binding.tvIFirstName.text.toString()
+        val needType = binding.tvIFirstName.text.toString()
+        val budget  = binding.tvBudget.text.toString()
+        val size = binding.tvSize.text.toString()
         val state = binding.tvState.text.toString()
         val city = binding.tvCity.text.toString()
         val address = "$city, ($state)"
-        val name = firstName.trim()
+        val name = needType.trim()
         val description = binding.tvDescription.text.toString()
         val currentUserId = firebaseAuth.currentUser?.uid
         val currentDate: String = SimpleDateFormat(
@@ -92,10 +94,8 @@ class PostFragment : Fragment() {
         ).format(Date())  //here dont keep date as dd/MM/yyyy ow firebase will break the date while storing
         val currentTime: String = SimpleDateFormat("HH:mm a", Locale.getDefault()).format(Date())
         databaseReference = FirebaseDatabase.getInstance().getReference("All Posts")
-        val clientDetail = ClientPosts(
-            currentUserId!!, name, address, description, "$currentDate($currentTime)", uploadedImages
-        )
-        if (firstName.isNotEmpty() && state.isNotEmpty() && city.isNotEmpty() && description.isNotEmpty() && description.isNotEmpty()) {
+        val clientDetail = ClientPosts(currentUserId!!, name,budget,size, address, description, "$currentDate($currentTime)", uploadedImages)
+        if (needType.isNotEmpty() && state.isNotEmpty() && city.isNotEmpty() && description.isNotEmpty() && description.isNotEmpty()) {
             databaseReference.push().setValue(clientDetail).addOnSuccessListener {
                 binding.tvIFirstName.text?.clear()
                 binding.tvState.text?.clear()

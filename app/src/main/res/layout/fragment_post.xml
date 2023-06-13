@@ -23,7 +23,7 @@
         app:layout_constraintTop_toBottomOf="@id/postToolbar"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginStart="@dimen/_10sdp"
-        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginVertical="@dimen/_20sdp"
         app:layout_constraintEnd_toEndOf="parent"
         android:letterSpacing="0.03"
         android:text="@string/post_your_need"
@@ -32,24 +32,15 @@
         android:textColor="@color/HardGreen"
         />
 
-    <androidx.core.widget.NestedScrollView
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:overScrollMode="never"
-        android:scrollbars="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="@dimen/_10sdp"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvWelcomeClient"
-        app:layout_constraintVertical_bias="0.0">
+
 
         <LinearLayout
             android:id="@+id/llDetail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            app:layout_constraintTop_toBottomOf="@id/tvWelcomeClient"
+            >
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -68,10 +59,11 @@
                     android:focusable="true"
                     app:boxStrokeColor="@color/HardGreen"
                     app:hintTextAppearance="@style/HintTextAppearance"
-                    android:hint="Enter need type(ex. Electronics, Furniture)"
+                    android:hint="Enter need type(ex. Electronics, Furniture)*"
                     android:touchscreenBlocksFocus="false"
                     app:endIconMode="clear_text"
                     app:endIconTint="@color/HardGreen"
+                    android:layout_marginEnd="@dimen/_5sdp"
                     app:hintAnimationEnabled="true"
                     app:hintTextColor="@color/HardGreen">
                     <com.google.android.material.textfield.TextInputEditText
@@ -80,15 +72,58 @@
                         android:layout_height="wrap_content"
                         android:background="@drawable/text_fields_bkg" />
                 </com.google.android.material.textfield.TextInputLayout>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_5sdp"
-                    android:text="@string/address"
-                    android:textColor="@color/HardGreen"
-                    android:textSize="@dimen/_18ssp"
-                    android:textStyle="bold" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:baselineAligned="false">
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginEnd="@dimen/_5sdp"
+                        android:layout_marginBottom="@dimen/_10sdp"
+                        android:layout_weight="0.5"
+                        android:focusable="true"
+                        android:focusableInTouchMode="false"
+                        android:hint="Budget*"
+                        android:touchscreenBlocksFocus="false"
+                        app:endIconMode="clear_text"
+                        app:endIconTint="@color/HardGreen"
+                        app:hintAnimationEnabled="true"
+                        app:hintTextColor="@color/HardGreen">
 
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/tvBudget"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/text_fields_bkg" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginEnd="@dimen/_5sdp"
+                        android:layout_marginBottom="@dimen/_10sdp"
+                        android:layout_weight="0.5"
+                        android:focusable="true"
+                        android:focusableInTouchMode="false"
+
+                        android:hint="Size/Dimension"
+                        android:touchscreenBlocksFocus="false"
+                        app:endIconMode="clear_text"
+                        app:endIconTint="@color/HardGreen"
+                        app:hintAnimationEnabled="true"
+                        app:hintTextColor="@color/HardGreen">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/tvSize"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/text_fields_bkg" />
+                    </com.google.android.material.textfield.TextInputLayout>
+                </LinearLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -141,14 +176,7 @@
                             android:background="@drawable/text_fields_bkg" />
                     </com.google.android.material.textfield.TextInputLayout>
                 </LinearLayout>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_1sdp"
-                    android:text="@string/description_of_your_requirements"
-                    android:textColor="@color/HardGreen"
-                    android:textSize="@dimen/_18ssp"
-                    android:textStyle="bold" />
+
 
                 <com.google.android.material.textfield.TextInputLayout
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -173,14 +201,7 @@
                         android:background="@drawable/text_fields_bkg"
                         android:gravity="top" />
                 </com.google.android.material.textfield.TextInputLayout>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_1sdp"
-                    android:text="@string/please_provide_some_images"
-                    android:textColor="@color/HardGreen"
-                    android:textSize="@dimen/_18ssp"
-                    android:textStyle="bold" />
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -234,7 +255,7 @@
                         android:text="@string/select"
                         android:textAllCaps="false"
                         android:layout_weight="1"
-
+                        android:layout_marginEnd="@dimen/_5sdp"
                         />
                 </LinearLayout>
                 <com.google.android.material.button.MaterialButton
@@ -252,5 +273,4 @@
                 </com.google.android.material.button.MaterialButton>
             </LinearLayout>
         </LinearLayout>
-    </androidx.core.widget.NestedScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

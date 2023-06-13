@@ -68,6 +68,8 @@ class PostAdapter(val context: Context):RecyclerView.Adapter<PostAdapter.PostVie
             workDesc.text = data.description
             tvAddress.text = data.address
             tvDate.text = data.postTime
+            tvBudget.text = data.budget +"\\"+"-"
+            tvSize.text = data.size
         }
     }
     override fun getItemCount(): Int {
