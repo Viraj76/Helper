@@ -11,6 +11,7 @@ import androidx.lifecycle.findViewTreeViewModelStoreOwner
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.bumptech.glide.Glide
+import com.example.bottomnavigation.R
 import com.example.bottomnavigation.chat.ChatActivity
 import com.example.bottomnavigation.contractor.activity.QuestionsActivity
 import com.example.bottomnavigation.models.ClientPosts
@@ -55,6 +56,7 @@ class ContractorPostAdapter(val context: Context):RecyclerView.Adapter<Contracto
                 val currentImageView = imageViewList[i]
                 Glide.with(holder.itemView)
                     .load(imageUris[i])
+                    .placeholder(R.drawable.loading_bar)
                     .into(currentImageView)
             }
         }

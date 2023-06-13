@@ -54,7 +54,7 @@ class PostAdapter(val context: Context):RecyclerView.Adapter<PostAdapter.PostVie
                 Glide.with(holder.itemView)
                     .load(imageUris[i])
                     .override(800, 600)
-                    .placeholder(R.drawable.loading)
+                    .placeholder(R.drawable.loading_bar)
                     .into(currentImageView)
             }
         }

@@ -78,9 +78,7 @@ class ContractorChatFragment : Fragment() {
                     }
                     chatFragmentAdapter.setClientIdList(clientsIdList)
                     chatFragmentAdapter.setChatRoom(chatRoomList)
-
                 }
-
                 override fun onCancelled(error: DatabaseError) {
                     TODO("Not yet implemented")
                 }

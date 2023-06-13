@@ -129,9 +129,7 @@ class NotificationFragment : Fragment() {
                 override fun onDataChange(snapshot: DataSnapshot) {
                     for(allRooms in snapshot.children){
                         if(deletingRoom == allRooms.key){
-                            allRooms.ref.removeValue().addOnCompleteListener {
-                                Toast.makeText(requireContext(),"Rejected request",Toast.LENGTH_LONG).show()
-                            }
+                            allRooms.ref.removeValue()
                         }
                     }
                 }
