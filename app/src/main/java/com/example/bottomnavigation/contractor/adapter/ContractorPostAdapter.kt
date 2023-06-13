@@ -69,6 +69,8 @@ class ContractorPostAdapter(val context: Context):RecyclerView.Adapter<Contracto
             workDesc.text = data.description
             tvAddress.text = data.address
             tvDate.text = data.postTime
+            tvBudget.text = data.budget +"\\"+"-"
+            tvSize.text = data.size
             ivFav.setOnClickListener { Toast.makeText(context, "Soon!", Toast.LENGTH_SHORT).show() }
             ivMessage.setOnClickListener {
                 val clientId = data.userId

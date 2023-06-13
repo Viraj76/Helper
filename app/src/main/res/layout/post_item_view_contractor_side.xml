@@ -38,8 +38,34 @@
             />
     </LinearLayout>
     <LinearLayout
-        android:id="@+id/timeLL"
+        android:id="@+id/budget"
         android:layout_marginTop="@dimen/_2sdp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintTop_toBottomOf="@id/titleLL"
+        app:layout_constraintStart_toStartOf="@id/titleLL"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:orientation="horizontal"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Budget - "
+            android:textStyle="bold"
+            android:textSize="@dimen/_9ssp"
+            android:textColor="@color/HardGreen"/>
+        <TextView
+            android:id="@+id/tvBudget"
+            android:layout_width="wrap_content"
+            android:textColor="@color/HardGreen"
+            android:layout_height="wrap_content"
+            android:text="2000"
+            android:textStyle="bold"
+            android:textSize="@dimen/_15ssp"/>
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/timeLL"
+        android:layout_marginTop="@dimen/_23sdp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintTop_toBottomOf="@id/titleLL"
@@ -79,13 +105,37 @@
         <TextView
             android:id="@+id/tvAddress"
             android:layout_width="wrap_content"
+            android:layout_height="@dimen/_20sdp"
+            android:text="496332, Raipur(C.G.), Coloman mandir"
+            android:textSize="@dimen/_9ssp"/>
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/sizeLL"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintTop_toBottomOf="@id/addressLL"
+        app:layout_constraintStart_toStartOf="@id/addressLL"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/workDesc"
+        android:orientation="horizontal"
+        >
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="496332, Raipur(C.G.), Colony Number - 23, Near Hanuman mandir"
+            android:text="Size/Dimension - "
+            android:textSize="@dimen/_13ssp"
+            android:textColor="@color/black"/>
+        <TextView
+            android:id="@+id/tvSize"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/_30sdp"
+            android:text="anakd "
             android:textSize="@dimen/_9ssp"/>
     </LinearLayout>
     <TextView
         android:id="@+id/workDesc"
-        android:layout_marginTop="@dimen/_6sdp"
+        android:layout_marginTop="@dimen/_20sdp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="@id/addressLL"
