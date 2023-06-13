@@ -17,6 +17,7 @@
     <style name="messageBackground">
         <item name="colorSecondary">@color/HardGreen</item>
     </style>
+
     <style name="messageBackgroundForShimmer">
         <item name="colorSecondary">@color/lightGreen</item>
     </style>
@@ -39,9 +40,13 @@
     </style>
     <!-- progress_bar_style.xml -->
 
-        <style name="CustomProgressBar" parent="Widget.AppCompat.ProgressBar">
-            <item name="android:indeterminateTint">@color/HardGreen</item>
-        </style>
+    <style name="CustomProgressBar" parent="Widget.AppCompat.ProgressBar">
+        <item name="android:indeterminateTint">@color/HardGreen</item>
+    </style>
+
+    <style name="HintTextAppearance" parent="TextAppearance.Design.Hint">
+        <item name="android:textSize">@dimen/_10sdp</item> <!-- Adjust the text size as per your requirement -->
+    </style>
 
 
 </resources>

@@ -100,7 +100,6 @@ class NotificationFragment : Fragment() {
         val intent = Intent(requireContext(), ChatActivity::class.java)
         intent.putExtra("id",quotations.contractorUserId)
         startActivity(intent)
-        deleteQuotation(quotations)
     }
 
     private fun onRejectButtonClick(quotations : Quotations){

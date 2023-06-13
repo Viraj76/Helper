@@ -24,6 +24,7 @@
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginStart="@dimen/_10sdp"
         android:layout_marginTop="@dimen/_10sdp"
+        app:layout_constraintEnd_toEndOf="parent"
         android:letterSpacing="0.03"
         android:text="@string/post_your_need"
         android:textSize="@dimen/_15sdp"
@@ -49,20 +50,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_10sdp"
-                android:layout_marginTop="@dimen/_20sdp"
-                android:text="@string/name"
-                android:textColor="@color/HardGreen"
-                android:textSize="@dimen/_18ssp"
-                android:textStyle="bold" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginStart="@dimen/_10sdp"
-                android:layout_marginTop="@dimen/_1sdp"
+                android:layout_marginTop="@dimen/_20sdp"
                 android:layout_marginEnd="@dimen/_10sdp"
                 android:orientation="vertical">
                 <!--                First name-->
@@ -74,7 +67,8 @@
                     android:clickable="true"
                     android:focusable="true"
                     app:boxStrokeColor="@color/HardGreen"
-                    android:hint="@string/full_name_required"
+                    app:hintTextAppearance="@style/HintTextAppearance"
+                    android:hint="Enter need type(ex. Electronics, Furniture)"
                     android:touchscreenBlocksFocus="false"
                     app:endIconMode="clear_text"
                     app:endIconTint="@color/HardGreen"
