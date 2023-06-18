@@ -1,13 +1,17 @@
 package com.example.bottomnavigation.auth
 
 import android.Manifest
+import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.location.Address
+import android.location.Geocoder
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.util.Log
 import android.view.WindowInsets
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
@@ -22,12 +26,11 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import java.io.IOException
+import java.util.*
 
 class SplashActivity : AppCompatActivity() {
 
-    private companion object {
-        private const val REQUEST_LOCATION_PERMISSION = 1001
-    }
 
     private lateinit var fusedLocationProviderClient: FusedLocationProviderClient
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -85,53 +88,8 @@ class SplashActivity : AppCompatActivity() {
                 })
             }
             else{
-                // New user
-                if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
-                    fusedLocationProviderClient.lastLocation.addOnSuccessListener { location ->
-                        if (location != null) {
-                            // Store the new user's location in the database
-                            val latitude = location.latitude
-                            val longitude = location.longitude
-                            val locationData = LocationData(latitude, longitude)
-                            val databaseReference =
-                                FirebaseDatabase.getInstance().getReference("New Users Location")
-                            val key = databaseReference.push().key
-                            if (key != null) {
-                                databaseReference.child(key).setValue(locationData)
-                                    .addOnSuccessListener {
-                                        // Location data stored successfully
-                                        // Proceed with your desired logic
-                                        // ...
-                                        startActivity(Intent(this,SIgnInActivity::class.java))
-                                        finish()
-                                    }
-                                    .addOnFailureListener { e ->
-                                        // Failed to store location data
-                                        Toast.makeText(
-                                            this@SplashActivity,
-                                            "Failed to store location data: ${e.message}",
-                                            Toast.LENGTH_SHORT
-                                        ).show()
-                                    }
-                            }
-                        } else {
-                            // Failed to get location
-                            Toast.makeText(
-                                this@SplashActivity,
-                                "Failed to get location",
-                                Toast.LENGTH_SHORT
-                            ).show()
-                        }
-                    }
-                } else {
-                    // Location permission not granted
-                    // Request the permission from the user
-                    ActivityCompat.requestPermissions(
-                        this,
-                        arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
-                        REQUEST_LOCATION_PERMISSION
-                    )
-                }
+                startActivity(Intent(this,SIgnInActivity::class.java))
+                finish()
             }
         },1000)
     }
@@ -141,5 +99,20 @@ class SplashActivity : AppCompatActivity() {
             val decorView = this.window.decorView
             decorView.windowInsetsController?.hide(WindowInsets. Type.statusBars())
         }
+    }
+    private fun getLocationName(context: Context, latitude: Double, longitude: Double): String? {
+        val geocoder = Geocoder(context, Locale.getDefault())
+
+        try {
+            val addresses: List<Address> = geocoder.getFromLocation(latitude, longitude, 1) as List<Address>
+            if (addresses.isNotEmpty()) {
+                val address: Address = addresses[0]
+                return address.getAddressLine(0)
+            }
+        } catch (e: IOException) {
+            Log.e("Geocoding", "Error getting location name: ${e.message}")
+        }
+
+        return null
     }
 }
