@@ -34,7 +34,6 @@ class NotificationFragment : Fragment() {
         showingTheQuotations()
         return binding.root
     }
-
     private fun prepareRvForQuotationAdapter() {
         quotationsAdapter = NotificationAdapter(this,::onRejectButtonClick, ::onAcceptButtonClick)
         binding.rvQuotations.apply {
@@ -79,6 +78,7 @@ class NotificationFragment : Fragment() {
 
             })
     }
+
     private fun onAcceptButtonClick(quotations : Quotations){
         val builder = AlertDialog.Builder(requireContext())
         val alertDialog = builder.create()
@@ -86,7 +86,9 @@ class NotificationFragment : Fragment() {
             setTitle("Accept Quotation")
             setMessage("Are you sure you want to accept this quotation?")
             setPositiveButton("Yes") { dialogInterface, which ->
+                deleteQuotation(quotations)
                 setARoomForChat(quotations)
+//
             }
             setNegativeButton("No") { dialogInterface, which ->
                 alertDialog.dismiss()
@@ -100,6 +102,7 @@ class NotificationFragment : Fragment() {
         val intent = Intent(requireContext(), ChatActivity::class.java)
         intent.putExtra("id",quotations.contractorUserId)
         startActivity(intent)
+//        requireActivity().finish()
     }
 
     private fun onRejectButtonClick(quotations : Quotations){
