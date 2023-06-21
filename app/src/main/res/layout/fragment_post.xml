@@ -193,7 +193,6 @@
                     app:endIconTint="@color/HardGreen"
                     app:hintAnimationEnabled="true"
                     app:hintTextColor="@color/HardGreen">
-
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/tvDescription"
                         android:layout_width="match_parent"
@@ -202,62 +201,150 @@
                         android:gravity="top" />
                 </com.google.android.material.textfield.TextInputLayout>
 
+
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="@dimen/_50sdp"
                     android:orientation="horizontal"
-                    android:weightSum="5"
-                    >
-                    <ImageView
-                        android:id="@+id/ivPic1"
-                        android:layout_width="@dimen/_40sdp"
-                        android:layout_height="@dimen/_40sdp"
-                        android:src="@drawable/img"
-                        android:layout_weight="1"
-                        android:scaleType="fitCenter"
-                        android:background="@drawable/image_back"
-                        />
-                    <ImageView
-                        android:id="@+id/ivPic2"
-                        android:layout_width="@dimen/_40sdp"
-                        android:layout_height="@dimen/_40sdp"
-                        android:src="@drawable/img"
-                        android:layout_weight="1"
-                        android:scaleType="fitCenter"
-                        android:background="@drawable/image_back"
-                        android:layout_marginStart="@dimen/_2sdp"
-                        android:layout_marginEnd="@dimen/_2sdp"
-                        />
-                    <ImageView
-                        android:id="@+id/ivPic3"
-                        android:layout_width="@dimen/_40sdp"
-                        android:layout_height="@dimen/_40sdp"
-                        android:src="@drawable/img"
-                        android:layout_weight="1"
-                        android:scaleType="fitCenter"
-                        android:background="@drawable/image_back"
-                        />
-                    <ImageView
-                        android:id="@+id/ivPic4"
-                        android:layout_width="@dimen/_40sdp"
-                        android:layout_height="@dimen/_40sdp"
-                        android:src="@drawable/img"
-                        android:layout_weight="1"
-                        android:scaleType="fitCenter"
-                        android:background="@drawable/image_back"
-                        android:layout_marginStart="@dimen/_2sdp"
-                        android:layout_marginEnd="@dimen/_2sdp"
-                        />
+                    android:weightSum="5">
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1">
+
+                        <ImageView
+                            android:id="@+id/ivPic1"
+                            android:layout_width="@dimen/_40sdp"
+                            android:layout_height="@dimen/_40sdp"
+                            android:scaleType="fitCenter"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            android:src="@drawable/ic_baseline_image_24"
+                            android:background="@drawable/image_back" />
+
+                        <ImageButton
+                            android:id="@+id/btnCut1"
+                            android:layout_width="@dimen/_15sdp"
+                            android:layout_height="@dimen/_15sdp"
+                            android:src="@drawable/ic_baseline_close_24"
+                            app:layout_constraintEnd_toEndOf="@id/ivPic1"
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:layout_marginTop="@dimen/_8sdp"
+                            android:layout_marginEnd="@dimen/_2sdp"
+                            android:background="@drawable/close_button_back"
+                            android:padding="8dp" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1">
+
+                        <ImageView
+                            android:id="@+id/ivPic2"
+                            android:layout_width="@dimen/_40sdp"
+                            android:layout_height="@dimen/_40sdp"
+                            android:scaleType="fitCenter"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            android:src="@drawable/ic_baseline_image_24"
+                            android:background="@drawable/image_back" />
+
+                        <ImageButton
+                            android:id="@+id/btnCut2"
+                            android:layout_width="@dimen/_15sdp"
+                            android:layout_height="@dimen/_15sdp"
+                            android:src="@drawable/ic_baseline_close_24"
+                            app:layout_constraintEnd_toEndOf="@id/ivPic2"
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:layout_marginTop="@dimen/_8sdp"
+                            android:layout_marginEnd="@dimen/_2sdp"
+                            android:background="@drawable/close_button_back"
+                            android:padding="8dp" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1">
+
+                        <ImageView
+                            android:id="@+id/ivPic3"
+                            android:layout_width="@dimen/_40sdp"
+                            android:layout_height="@dimen/_40sdp"
+                            android:scaleType="fitCenter"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            android:src="@drawable/ic_baseline_image_24"
+                            android:background="@drawable/image_back" />
+
+                        <ImageButton
+                            android:id="@+id/btnCut3"
+                            android:layout_width="@dimen/_15sdp"
+                            android:layout_height="@dimen/_15sdp"
+                            android:src="@drawable/ic_baseline_close_24"
+                            app:layout_constraintEnd_toEndOf="@id/ivPic3"
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:layout_marginTop="@dimen/_8sdp"
+                            android:layout_marginEnd="@dimen/_2sdp"
+                            android:background="@drawable/close_button_back"
+                            android:padding="8dp" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1">
+
+                        <ImageView
+                            android:id="@+id/ivPic4"
+                            android:layout_width="@dimen/_40sdp"
+                            android:layout_height="@dimen/_40sdp"
+                            android:scaleType="fitCenter"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            android:src="@drawable/ic_baseline_image_24"
+                            android:background="@drawable/image_back" />
+
+                        <ImageButton
+                            android:id="@+id/btnCut4"
+                            android:layout_width="@dimen/_15sdp"
+                            android:layout_height="@dimen/_15sdp"
+                            android:src="@drawable/ic_baseline_close_24"
+                            app:layout_constraintEnd_toEndOf="@id/ivPic4"
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:layout_marginTop="@dimen/_8sdp"
+                            android:layout_marginEnd="@dimen/_2sdp"
+                            android:background="@drawable/close_button_back"
+                            android:padding="8dp" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
                     <Button
                         android:id="@+id/btnPickImages"
-                        android:layout_width="wrap_content"
+                        android:layout_width="@dimen/_30sdp"
                         android:layout_height="wrap_content"
                         android:text="@string/select"
                         android:textAllCaps="false"
+                        android:layout_gravity="center"
                         android:layout_weight="1"
-                        android:layout_marginEnd="@dimen/_5sdp"
-                        />
+                        android:layout_marginEnd="@dimen/_5sdp" />
+
                 </LinearLayout>
+
+
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btnPost"
                     android:layout_width="match_parent"
