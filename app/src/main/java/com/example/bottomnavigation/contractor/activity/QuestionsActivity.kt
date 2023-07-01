@@ -34,6 +34,9 @@ class QuestionsActivity : AppCompatActivity() {
                 finish()
             }
         }
+        binding.ivSelectFile.setOnClickListener {
+
+        }
         binding.btnSubmit.setOnClickListener { creatingChatBase() }
     }
 
@@ -44,14 +47,14 @@ class QuestionsActivity : AppCompatActivity() {
         val ques2 = binding.ques2.text.toString()
         val ques3 = binding.ques3.text.toString()
         val ques4 = binding.ques4.text.toString()
-        val ques5 = binding.ques5.text.toString()
+//        val ques5 = binding.ques5.text.toString()
         val ans1 = binding.tvAnswer1.text.toString()
         val ans2 = binding.tvAnswer2.text.toString()
         val ans3 = binding.tvAnswer3.text.toString()
         val ans4 = binding.tvAnswer4.text.toString()
-        val ans5 = binding.tvAnswer5.text.toString()
+//        val ans5 = binding.tvAnswer5.text.toString()
         val greetMessage =
-            "Hey there! hope you are doing well\n $ques1 - $ans1,\n $ques2 - $ans2,\n $ques3 - $ans3,\n $ques4 - $ans4,\n $ques5 - $ans5"
+            "Hey there! hope you are doing well\n $ques1 - $ans1,\n $ques2 - $ans2,\n $ques3 - $ans3,\n $ques4 - $ans4"
         val currentDate: String = SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(Date())
 
         val currentUserId = FirebaseAuth.getInstance().currentUser?.uid

@@ -41,7 +41,6 @@ class PostFragment : Fragment() {
 
 
     private val selectImages =
-
         registerForActivityResult(ActivityResultContracts.GetMultipleContents()) { uris ->
             imageUris.clear()
             imageUris.addAll(uris)
