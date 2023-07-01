@@ -47,9 +47,6 @@ class NotificationAdapter(
                     }
                 }
             }
-            else{
-                ivQuotation.setImageResource(R.drawable.ima)
-            }
             btnReject.setOnClickListener { onRejectButtonClick?.invoke(quotations) }
             btnAccept.setOnClickListener { onAcceptButtonClick?.invoke(quotations) }
         }
