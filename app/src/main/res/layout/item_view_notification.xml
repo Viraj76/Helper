@@ -105,7 +105,13 @@
                 android:padding="@dimen/_1sdp"
                 android:text="Java is a high-level, class-based, object-oriented programming language that is designed to have as few implementation dependencies as possible."
                 android:textColor="@color/HardGreen" />
-            <i
+            <ImageView
+                android:id="@+id/ivQuotation"
+                android:layout_width="@dimen/_60sdp"
+                android:layout_height="@dimen/_60sdp"
+                android:src="@drawable/ic_baseline_image_24"
+                />
+
 
         </LinearLayout>
 

@@ -35,7 +35,7 @@ class NotificationFragment : Fragment() {
         return binding.root
     }
     private fun prepareRvForQuotationAdapter() {
-        quotationsAdapter = NotificationAdapter(this,::onRejectButtonClick, ::onAcceptButtonClick)
+        quotationsAdapter = NotificationAdapter(requireContext(),::onRejectButtonClick, ::onAcceptButtonClick)
         binding.rvQuotations.apply {
             layoutManager = LinearLayoutManager(context,LinearLayoutManager.VERTICAL,false)
             adapter = quotationsAdapter

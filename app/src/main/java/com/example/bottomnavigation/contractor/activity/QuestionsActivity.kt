@@ -50,25 +50,30 @@ class QuestionsActivity : AppCompatActivity() {
 
     private fun uploadQuotationImage() {
         Config.showDialog(this)
-        val currentUser = FirebaseAuth.getInstance().currentUser?.uid
-        val storageReference = FirebaseStorage.getInstance().getReference("Quotation Image")
-            .child(currentUser!!)
-        storageReference.putFile(quotationImageURI!!).addOnSuccessListener {
-            storageReference.downloadUrl
-                .addOnSuccessListener {
-                    creatingChatBase(it)
-                }
-                .addOnFailureListener {
+        if (quotationImageURI?.equals(null) == true){
+            val currentUser = FirebaseAuth.getInstance().currentUser?.uid
+            val storageReference = FirebaseStorage.getInstance().getReference("Quotation Image")
+                .child(currentUser!!)
+            storageReference.putFile(quotationImageURI!!).addOnSuccessListener {
+                storageReference.downloadUrl
+                    .addOnSuccessListener {
+                        creatingChatBase(it.toString())
+                    }
+                    .addOnFailureListener {
+                        Config.hideDialog()
+                    }
+            }
+                .addOnFailureListener{
                     Config.hideDialog()
+                    Toast.makeText(this,it.message.toString(),Toast.LENGTH_SHORT).show()
                 }
         }
-            .addOnFailureListener{
-                Config.hideDialog()
-                Toast.makeText(this,it.message.toString(),Toast.LENGTH_SHORT).show()
-            }
+        else{
+            creatingChatBase("")
+        }
     }
 
-    private fun creatingChatBase(quotationImageURI: Uri) {
+    private fun creatingChatBase(quotationImageURI: String) {
         val clientId = intent.getStringExtra("id")
         val chatRoomId = contractorId + clientId
         val ques1 = binding.ques1.text.toString()
@@ -82,56 +87,62 @@ class QuestionsActivity : AppCompatActivity() {
         val greetMessage = "Hey there! hope you are doing well\n $ques1 - $ans1,\n $ques2 - $ans2,\n $ques3 - $ans3,\n $ques4 - $ans4"
         val currentDate: String = SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(Date())
         val currentUserId = FirebaseAuth.getInstance().currentUser?.uid
-        FirebaseDatabase.getInstance().getReference("Contractor Id's").child(currentUserId!!).child("name")
-            .addListenerForSingleValueEvent(object : ValueEventListener{
-                override fun onDataChange(snapshot: DataSnapshot) {
-                    val contractName = snapshot.getValue(String::class.java)
-                    FirebaseDatabase.getInstance().getReference("Rated Contractor").child(currentUserId)
-                        .addListenerForSingleValueEvent(object : ValueEventListener{
-                            override fun onDataChange(snapshot: DataSnapshot) {
-                                var contractorRating: Float = 0f
-                                var ratingCount: Int = 0
-                                for (ratingSnapshot in snapshot.children) {
-                                    val ratingValue = ratingSnapshot.child("rating").getValue(String::class.java)
-                                    if (ratingValue != null) {
-                                        contractorRating += ratingValue.toFloat()
-                                        ratingCount++
-                                    }
-                                }
-                                if (ratingCount > 0) {
-                                    contractorRating /= ratingCount
-                                    contractorRating = contractorRating.toBigDecimal().setScale(1, RoundingMode.HALF_UP).toFloat()
-                                }
-                                val notificationDetail = Quotations(currentUserId,contractName,greetMessage,currentDate,contractorRating.toString(), quotationImage = quotationImageURI.toString())
-
-                                FirebaseDatabase.getInstance().getReference("Quotations").child(chatRoomId).push()
-                                    .setValue(notificationDetail)
-                                    .addOnCompleteListener {
-                                        if (it.isSuccessful) {
-                                            Config.hideDialog()
-                                            val intent = Intent(this@QuestionsActivity, ContractorMainActivity::class.java)
-                                            intent.putExtra("id", clientId)
-                                            startActivity(intent)
-                                            finish()
-                                            Toast.makeText(this@QuestionsActivity, "Client will contact you soon!", Toast.LENGTH_SHORT).show()
+        if(ans1.isNotEmpty() && ans2.isNotEmpty() && ans3.isNotEmpty() && ans4.isNotEmpty()){
+            FirebaseDatabase.getInstance().getReference("Contractor Id's").child(currentUserId!!).child("name")
+                .addListenerForSingleValueEvent(object : ValueEventListener{
+                    override fun onDataChange(snapshot: DataSnapshot) {
+                        val contractName = snapshot.getValue(String::class.java)
+                        FirebaseDatabase.getInstance().getReference("Rated Contractor").child(currentUserId)
+                            .addListenerForSingleValueEvent(object : ValueEventListener{
+                                override fun onDataChange(snapshot: DataSnapshot) {
+                                    var contractorRating: Float = 0f
+                                    var ratingCount: Int = 0
+                                    for (ratingSnapshot in snapshot.children) {
+                                        val ratingValue = ratingSnapshot.child("rating").getValue(String::class.java)
+                                        if (ratingValue != null) {
+                                            contractorRating += ratingValue.toFloat()
+                                            ratingCount++
                                         }
                                     }
-                            }
+                                    if (ratingCount > 0) {
+                                        contractorRating /= ratingCount
+                                        contractorRating = contractorRating.toBigDecimal().setScale(1, RoundingMode.HALF_UP).toFloat()
+                                    }
+                                    val notificationDetail = Quotations(currentUserId,contractName,greetMessage,currentDate,contractorRating.toString(), quotationImage = quotationImageURI.toString())
 
-                            override fun onCancelled(error: DatabaseError) {
-                                Config.hideDialog()
-                                TODO("Not yet implemented")
-                            }
+                                    FirebaseDatabase.getInstance().getReference("Quotations").child(chatRoomId).push()
+                                        .setValue(notificationDetail)
+                                        .addOnCompleteListener {
+                                            if (it.isSuccessful) {
+                                                Config.hideDialog()
+                                                val intent = Intent(this@QuestionsActivity, ContractorMainActivity::class.java)
+                                                intent.putExtra("id", clientId)
+                                                startActivity(intent)
+                                                finish()
+                                                Toast.makeText(this@QuestionsActivity, "Client will contact you soon!", Toast.LENGTH_SHORT).show()
+                                            }
+                                        }
+                                }
 
-                        })
-                }
+                                override fun onCancelled(error: DatabaseError) {
+                                    Config.hideDialog()
+                                    TODO("Not yet implemented")
+                                }
 
-                override fun onCancelled(error: DatabaseError) {
-                    Config.hideDialog()
-                    TODO("Not yet implemented")
-                }
+                            })
+                    }
 
-            })
+                    override fun onCancelled(error: DatabaseError) {
+                        Config.hideDialog()
+                        TODO("Not yet implemented")
+                    }
+
+                })
+        }
+        else{
+            Toast.makeText(this,"Please fill all the fields",Toast.LENGTH_SHORT).show()
+        }
+
 
 
     }

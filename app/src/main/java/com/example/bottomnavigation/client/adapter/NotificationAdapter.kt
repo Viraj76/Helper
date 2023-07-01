@@ -1,16 +1,22 @@
 package com.example.bottomnavigation.client.adapter
 
+import android.app.Dialog
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.Window
+import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
+import com.bumptech.glide.Glide
+import com.example.bottomnavigation.R
 import com.example.bottomnavigation.client.fragments.NotificationFragment
 import com.example.bottomnavigation.databinding.ItemViewNotificationBinding
 import com.example.bottomnavigation.models.Quotations
 
 class NotificationAdapter(
-    val notificationFragment: NotificationFragment,
+    val notificationFragment: Context,
     private val onRejectButtonClick:((Quotations) -> Unit)? = null,
     private val onAcceptButtonClick:((Quotations) -> Unit)? = null
 ) : RecyclerView.Adapter<NotificationAdapter.QuotationsViewHolder>() {
@@ -32,6 +38,18 @@ class NotificationAdapter(
             tvAverageRating.text = quotations.contractorRating
             tvDate.text = quotations.currentDate
             tvQuotation.text = quotations.quotationMessage
+            if(quotations.quotationImage != ""){
+                Glide.with(holder.itemView).load(quotations.quotationImage).into(ivQuotation)
+                holder.binding.ivQuotation.setOnClickListener {
+                    val imageUri = quotations.quotationImage
+                    imageUri?.let {
+                        showFullScreenImageDialog(it)
+                    }
+                }
+            }
+            else{
+                ivQuotation.setImageResource(R.drawable.ima)
+            }
             btnReject.setOnClickListener { onRejectButtonClick?.invoke(quotations) }
             btnAccept.setOnClickListener { onAcceptButtonClick?.invoke(quotations) }
         }
@@ -42,6 +60,7 @@ class NotificationAdapter(
             tvQuotation.visibility = if(isExpandable) View.VISIBLE else View.GONE
             btnAccept.visibility = if(isExpandable) View.VISIBLE else View.GONE
             btnReject.visibility = if(isExpandable) View.VISIBLE else View.GONE
+            ivQuotation.visibility = if(isExpandable) View.VISIBLE else View.GONE
 
             visibleConstraintLayout.setOnClickListener {
                 isAnyItemExpanded(position)
@@ -64,6 +83,7 @@ class NotificationAdapter(
                 tvQuotation.visibility = View.GONE
                 btnAccept.visibility = View.GONE
                 btnReject.visibility = View.GONE
+                ivQuotation.visibility = View.GONE
             }
         } else {
             super.onBindViewHolder(holder, position, payloads)
@@ -72,5 +92,18 @@ class NotificationAdapter(
     }
     override fun getItemCount(): Int {
         return quotationsList.size
+    }
+    private fun showFullScreenImageDialog(imageUri: String) {
+        val dialog = Dialog(notificationFragment)
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        dialog.setContentView(R.layout.activity_full_screen)
+        dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
+
+        val imageView = dialog.findViewById<ImageView>(R.id.imageViewFullScreen)
+        Glide.with(notificationFragment)
+            .load(imageUri)
+            .into(imageView)
+
+        dialog.show()
     }
 }

@@ -58,7 +58,7 @@ class HomeFragment : Fragment() {
 
         initializations()
 
-        getUserLocation()
+//        getUserLocation()
 
         prepareClientPostsRecyclerView()
 
