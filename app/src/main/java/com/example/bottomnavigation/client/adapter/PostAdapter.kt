@@ -69,6 +69,24 @@ class PostAdapter(val context: Context):RecyclerView.Adapter<PostAdapter.PostVie
                 showFullScreenImageDialog(it)
             }
         }
+        holder.binding.ivImg2.setOnClickListener {
+            val imageUri = data.imageUrls?.getOrNull(1)
+            imageUri?.let {
+                showFullScreenImageDialog(it)
+            }
+        }
+        holder.binding.ivImg3.setOnClickListener {
+            val imageUri = data.imageUrls?.getOrNull(2)
+            imageUri?.let {
+                showFullScreenImageDialog(it)
+            }
+        }
+        holder.binding.ivImg4.setOnClickListener {
+            val imageUri = data.imageUrls?.getOrNull(3)
+            imageUri?.let {
+                showFullScreenImageDialog(it)
+            }
+        }
         holder.binding.apply {
             ivImg1.clipToOutline = true
             ivImg2.clipToOutline = true

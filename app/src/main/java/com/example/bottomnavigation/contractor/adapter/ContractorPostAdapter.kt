@@ -1,11 +1,14 @@
 package com.example.bottomnavigation.contractor.adapter
 
+import android.app.Dialog
 import android.content.Context
 import android.content.Intent
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.Window
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.lifecycle.findViewTreeViewModelStoreOwner
 import androidx.recyclerview.widget.RecyclerView
@@ -60,6 +63,30 @@ class ContractorPostAdapter(val context: Context):RecyclerView.Adapter<Contracto
                     .into(currentImageView)
             }
         }
+        holder.binding.ivImg1.setOnClickListener {
+            val imageUri = data.imageUrls?.getOrNull(0)
+            imageUri?.let {
+                showFullScreenImageDialog(it)
+            }
+        }
+        holder.binding.ivImg2.setOnClickListener {
+            val imageUri = data.imageUrls?.getOrNull(1)
+            imageUri?.let {
+                showFullScreenImageDialog(it)
+            }
+        }
+        holder.binding.ivImg3.setOnClickListener {
+            val imageUri = data.imageUrls?.getOrNull(2)
+            imageUri?.let {
+                showFullScreenImageDialog(it)
+            }
+        }
+        holder.binding.ivImg4.setOnClickListener {
+            val imageUri = data.imageUrls?.getOrNull(3)
+            imageUri?.let {
+                showFullScreenImageDialog(it)
+            }
+        }
         holder.binding.apply {
             ivImg1.clipToOutline = true
             ivImg2.clipToOutline = true
@@ -102,6 +129,18 @@ class ContractorPostAdapter(val context: Context):RecyclerView.Adapter<Contracto
     override fun getItemCount(): Int {
        return contractorPostList.size
     }
+    private fun showFullScreenImageDialog(imageUri: String) {
+        val dialog = Dialog(context)
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        dialog.setContentView(R.layout.activity_full_screen)
+        dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
 
+        val imageView = dialog.findViewById<ImageView>(R.id.imageViewFullScreen)
+        Glide.with(context)
+            .load(imageUri)
+            .into(imageView)
+
+        dialog.show()
+    }
 
 }
