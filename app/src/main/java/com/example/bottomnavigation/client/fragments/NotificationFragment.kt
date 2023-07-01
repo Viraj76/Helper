@@ -127,14 +127,11 @@ class NotificationFragment : Fragment() {
         val contractorId = quotations.contractorUserId.toString()
         val deletingRoom = contractorId + currentUserId
         FirebaseDatabase.getInstance().getReference("Quotations")
-            .addValueEventListener(object : ValueEventListener{
+            .addListenerForSingleValueEvent(object : ValueEventListener{
                 override fun onDataChange(snapshot: DataSnapshot) {
                     for(allRooms in snapshot.children){
                         if(deletingRoom == allRooms.key){
                             allRooms.ref.removeValue()
-                                .addOnCompleteListener {
-                                    quotationsAdapter.notifyDataSetChanged()
-                                }
                         }
                     }
                 }
