@@ -7,4 +7,5 @@ data class Quotations(
     val currentDate : String? = null,
     val contractorRating : String? = null,
     var isExpandable : Boolean=false,
+    val quotationImage : String? = null
     )

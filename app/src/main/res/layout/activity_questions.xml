@@ -165,19 +165,21 @@
             android:orientation="horizontal"
             android:weightSum="2"
             >
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="No file selected"
+            <ImageView
+                android:id="@+id/ivQuotationImageView"
+                android:layout_width="@dimen/_50sdp"
+                android:layout_height="@dimen/_50sdp"
+                android:src="@drawable/ic_baseline_image_24"
                 android:layout_weight="1"
-                android:layout_gravity="center"
+                android:layout_gravity="start"
                 />
             <ImageView
                 android:id="@+id/ivSelectFile"
-                android:layout_width="@dimen/_60sdp"
-                android:layout_height="@dimen/_50sdp"
+                android:layout_width="@dimen/_30sdp"
+                android:layout_height="@dimen/_40sdp"
                 android:layout_weight="1"
                 android:src="@drawable/ic_baseline_attachment_24"
+                android:layout_gravity="center"
                 />
         </LinearLayout>
     </LinearLayout>
