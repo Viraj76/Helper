@@ -132,14 +132,15 @@ class NotificationFragment : Fragment() {
                     for(allRooms in snapshot.children){
                         if(deletingRoom == allRooms.key){
                             allRooms.ref.removeValue()
+                                .addOnCompleteListener {
+                                    quotationsAdapter.notifyDataSetChanged()
+                                }
                         }
                     }
                 }
-
                 override fun onCancelled(error: DatabaseError) {
                     TODO("Not yet implemented")
                 }
-
             })
     }
 }

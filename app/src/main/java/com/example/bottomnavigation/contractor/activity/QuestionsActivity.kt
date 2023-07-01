@@ -50,27 +50,29 @@ class QuestionsActivity : AppCompatActivity() {
 
     private fun uploadQuotationImage() {
         Config.showDialog(this)
-        if (quotationImageURI?.equals(null) == true){
+        if (quotationImageURI == null) {
+            // No image selected
+            creatingChatBase("")
+        } else {
             val currentUser = FirebaseAuth.getInstance().currentUser?.uid
             val storageReference = FirebaseStorage.getInstance().getReference("Quotation Image")
                 .child(currentUser!!)
+
             storageReference.putFile(quotationImageURI!!).addOnSuccessListener {
                 storageReference.downloadUrl
-                    .addOnSuccessListener {
-                        creatingChatBase(it.toString())
+                    .addOnSuccessListener { downloadUri ->
+                        creatingChatBase(downloadUri.toString())
                     }
                     .addOnFailureListener {
                         Config.hideDialog()
                     }
             }
-                .addOnFailureListener{
+                .addOnFailureListener {
                     Config.hideDialog()
-                    Toast.makeText(this,it.message.toString(),Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, it.message.toString(), Toast.LENGTH_SHORT).show()
                 }
         }
-        else{
-            creatingChatBase("")
-        }
+
     }
 
     private fun creatingChatBase(quotationImageURI: String) {
@@ -140,6 +142,7 @@ class QuestionsActivity : AppCompatActivity() {
                 })
         }
         else{
+            Config.hideDialog()
             Toast.makeText(this,"Please fill all the fields",Toast.LENGTH_SHORT).show()
         }
 
