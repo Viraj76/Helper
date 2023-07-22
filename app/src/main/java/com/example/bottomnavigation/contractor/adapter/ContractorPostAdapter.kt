@@ -8,31 +8,41 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.Window
+import android.widget.Filter
+import android.widget.Filterable
 import android.widget.ImageView
 import android.widget.Toast
-import androidx.lifecycle.findViewTreeViewModelStoreOwner
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.bumptech.glide.Glide
 import com.example.bottomnavigation.R
-import com.example.bottomnavigation.chat.ChatActivity
+import com.example.bottomnavigation.contractor.FilteringPosts
 import com.example.bottomnavigation.contractor.activity.QuestionsActivity
+import com.example.bottomnavigation.contractor.fragments.ContractorHomeFragment
 import com.example.bottomnavigation.models.ClientPosts
 import com.example.bottomnavigation.databinding.PostItemViewContractorSideBinding
-import com.google.firebase.FirebaseException
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 
-class ContractorPostAdapter(val context: Context):RecyclerView.Adapter<ContractorPostAdapter.ContractorPostViewHolder>() {
-    private  var contractorPostList=ArrayList<ClientPosts>()
+class ContractorPostAdapter(val context: Context, private val OnCategorySelect: ((ContractorHomeFragment) -> Unit)? = null):RecyclerView.Adapter<ContractorPostAdapter.ContractorPostViewHolder>() ,Filterable{
 
+    var contractorPostList=ArrayList<ClientPosts>()
+    private var filterList = ArrayList<ClientPosts>()
+
+    private var filter : FilteringPosts? = null
     fun setPosts(contractorSidePostList : ArrayList<ClientPosts>){
         this.contractorPostList = contractorSidePostList
+        this.filterList = ArrayList(contractorSidePostList) // Initialize the filterList with a copy of the original list
         notifyDataSetChanged()
     }
+
+
+//    fun setFilterList(filterList : ArrayList<ClientPosts>){
+//        this.filterList = contractorPostList
+//    }
 
     class ContractorPostViewHolder( val binding:PostItemViewContractorSideBinding):ViewHolder(binding.root)
 
@@ -141,6 +151,13 @@ class ContractorPostAdapter(val context: Context):RecyclerView.Adapter<Contracto
             .into(imageView)
 
         dialog.show()
+    }
+
+    override fun getFilter(): Filter {
+        if(filter == null){
+            filter = FilteringPosts(this,filterList)
+        }
+        return filter as FilteringPosts
     }
 
 }
