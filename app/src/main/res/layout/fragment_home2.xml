@@ -18,130 +18,56 @@
         app:title="Home"
         />
 
-<!--    <com.google.android.material.card.MaterialCardView-->
-<!--        android:id="@+id/searchCv"-->
-<!--        android:backgroundTint="@color/lightGreen"-->
-<!--        android:layout_width="match_parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@id/contractorHomeToolbar"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        app:cardCornerRadius="5dp"-->
-<!--        app:cardUseCompatPadding="true">-->
-<!--        <EditText-->
-<!--            android:id="@+id/searchEt"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:background="@android:color/transparent"-->
-<!--            android:drawableStart="@drawable/ic_baseline_search_24"-->
-<!--            android:drawablePadding="10dp"-->
-<!--            android:padding="10dp"-->
-<!--            android:hint="Search"/>-->
-<!--    </com.google.android.material.card.MaterialCardView>-->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/searchCv"
+        android:backgroundTint="@color/lightGreen"
+        android:layout_width="match_parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/contractorHomeToolbar"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="5dp"
+        app:cardUseCompatPadding="true">
+        <EditText
+            android:id="@+id/searchEt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:drawableStart="@drawable/ic_baseline_search_24"
+            android:drawablePadding="10dp"
+            android:padding="10dp"
+            android:hint="Search"/>
+    </com.google.android.material.card.MaterialCardView>
 
-<!--    <LinearLayout-->
-<!--        android:id="@+id/searchLL"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:weightSum="100"-->
-<!--        android:orientation="horizontal"-->
-<!--        app:layout_constraintTop_toBottomOf="@id/contractorHomeToolbar"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintBottom_toTopOf="@id/rvContractorPost"-->
-<!--        android:layout_margin="@dimen/_4sdp"-->
-<!--        >-->
-<!--        <EditText-->
-<!--            android:id="@+id/etSearch"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="@dimen/_40sdp"-->
-<!--            android:hint="Search(locations,budgets)..."-->
-<!--            android:background="@drawable/chat_box_back"-->
-<!--            android:paddingStart="@dimen/_17sdp"-->
-<!--            android:paddingEnd="@dimen/_17sdp"-->
-<!--            android:layout_weight="90"-->
-<!--            android:scrollbars="vertical"-->
-<!--            android:layout_marginStart="@dimen/_5sdp"-->
-<!--            android:inputType="textMultiLine"-->
-<!--            android:autofillHints="postalAddress" />-->
-<!--        <ImageView-->
-<!--            android:id="@+id/ivSearchArrow"-->
-<!--            android:layout_width="@dimen/_35sdp"-->
-<!--            android:layout_height="@dimen/_35sdp"-->
-<!--            android:layout_weight="5"-->
-<!--            android:layout_gravity="center"-->
-<!--            android:layout_marginStart="@dimen/_5sdp"-->
-<!--            android:src="@drawable/rigth_arrow"-->
-<!--            android:layout_marginEnd="@dimen/_5sdp"-->
-<!--            app:tint="@color/HardGreen" />-->
+    <TextView
+        android:id="@+id/browsCategories"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/searchCv"
+        app:layout_constraintBottom_toTopOf="@id/rvCategories"
+        android:text="Brows Categories"
+        android:layout_margin="@dimen/_5sdp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        />
 
-<!--    </LinearLayout>-->
-<!--    <com.google.android.material.card.MaterialCardView-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:id="@+id/categorisCv"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@id/searchCv"-->
-<!--        app:layout_constraintBottom_toTopOf="@id/rvContractorPost"-->
-<!--        app:cardUseCompatPadding="true"-->
-<!--        app:cardCornerRadius="5dp"-->
-<!--        >-->
-<!--    <LinearLayout-->
-<!--        android:id="@+id/categoriesLL"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:orientation="horizontal"-->
-<!--        android:padding="@dimen/_4sdp"-->
-<!--        android:weightSum="5"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        >-->
-<!--        <ImageView-->
-<!--            android:layout_width="@dimen/_25sdp"-->
-<!--            android:layout_height="@dimen/_25sdp"-->
-<!--            android:src="@drawable/construction"-->
-<!--            android:layout_weight="1"-->
-<!--            />-->
-<!--        <ImageView-->
-<!--            android:layout_width="@dimen/_25sdp"-->
-<!--            android:layout_height="@dimen/_25sdp"-->
-<!--            android:src="@drawable/steels"-->
-<!--            android:layout_marginHorizontal="@dimen/_10sdp"-->
-<!--            android:layout_weight="1"-->
-
-<!--            />-->
-<!--        <ImageView-->
-<!--            android:layout_width="@dimen/_25sdp"-->
-<!--            android:layout_height="@dimen/_25sdp"-->
-<!--            android:src="@drawable/furniture"-->
-<!--            android:layout_weight="1"-->
-
-<!--            />-->
-<!--        <ImageView-->
-<!--            android:layout_width="@dimen/_25sdp"-->
-<!--            android:layout_height="@dimen/_25sdp"-->
-<!--            android:src="@drawable/electronicsss"-->
-<!--            android:layout_marginHorizontal="@dimen/_10sdp"-->
-<!--            android:layout_weight="1"-->
-
-<!--            />-->
-<!--        <ImageView-->
-<!--            android:layout_width="@dimen/_25sdp"-->
-<!--            android:layout_height="@dimen/_25sdp"-->
-<!--            android:src="@drawable/reparing"-->
-<!--            android:layout_weight="1"-->
-<!--            />-->
-
-<!--    </LinearLayout>-->
-
-
-<!--    </com.google.android.material.card.MaterialCardView>-->
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/rvCategories"
+        android:orientation="horizontal"
+        tools:listitem="@layout/row_categories_images"
+        app:layout_constraintTop_toBottomOf="@id/browsCategories"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvContractorPost"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@id/contractorHomeToolbar"
+        app:layout_constraintTop_toBottomOf="@id/rvCategories"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"

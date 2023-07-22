@@ -72,6 +72,20 @@
                         android:layout_height="wrap_content"
                         android:background="@drawable/text_fields_bkg" />
                 </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/categoryTil"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                    android:layout_width="match_parent"
+                    app:startIconDrawable="@drawable/ic_baseline_category_24"
+                    android:layout_marginEnd="@dimen/_6sdp"
+                    android:hint="Category"
+                    android:layout_height="wrap_content">
+                    <AutoCompleteTextView
+                        android:id="@+id/categoryAct"
+                        android:layout_width="match_parent"
+                        android:background="@drawable/text_fields_bkg"
+                        android:layout_height="wrap_content" />
+                </com.google.android.material.textfield.TextInputLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"

@@ -7,6 +7,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
@@ -36,10 +37,7 @@ class PostFragment : Fragment() {
     private lateinit var databaseReference: DatabaseReference
     private lateinit var firebaseAuth: FirebaseAuth
     private lateinit var imageViews: Array<ImageView>
-
     private var imageUris: MutableList<Uri> = mutableListOf()
-
-
     private val selectImages =
         registerForActivityResult(ActivityResultContracts.GetMultipleContents()) { uris ->
             imageUris.clear()
@@ -62,7 +60,6 @@ class PostFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
         binding = FragmentPostBinding.inflate(inflater)
-
         initializations()
         applyingCornerRadiusToImageViews()
         binding.btnCut1.visibility = View.GONE
@@ -122,13 +119,17 @@ class PostFragment : Fragment() {
     }
 
     private fun initializations() {
+        val adapterCategories = ArrayAdapter(requireContext(),R.layout.showing_category_layout, Config.categories)
+        binding.categoryAct.setAdapter(adapterCategories)
         firebaseAuth = FirebaseAuth.getInstance()
         imageViews = arrayOf(binding.ivPic1, binding.ivPic2, binding.ivPic3, binding.ivPic4)
     }
 
     private fun postingNeed(uploadedImages: MutableList<String>) {
         Log.d("hh", uploadedImages.toString())
+
         val needType = binding.tvIFirstName.text.toString()
+        val category = binding.categoryAct.text.toString()
         val budget  = binding.tvBudget.text.toString()
         val size = binding.tvSize.text.toString()
         val state = binding.tvState.text.toString()
@@ -142,7 +143,7 @@ class PostFragment : Fragment() {
         ).format(Date())  //here dont keep date as dd/MM/yyyy ow firebase will break the date while storing
         val currentTime: String = SimpleDateFormat("HH:mm a", Locale.getDefault()).format(Date())
         databaseReference = FirebaseDatabase.getInstance().getReference("All Posts")
-        val clientDetail = ClientPosts(currentUserId!!, name,budget,size, address, description, "$currentDate($currentTime)", uploadedImages)
+        val clientDetail = ClientPosts(currentUserId!!, name,category,budget,size, address, description, "$currentDate($currentTime)", uploadedImages)
         if (needType.isNotEmpty() && state.isNotEmpty() && city.isNotEmpty() && description.isNotEmpty() && description.isNotEmpty()) {
             databaseReference.push().setValue(clientDetail).addOnSuccessListener {
                 binding.tvIFirstName.text?.clear()

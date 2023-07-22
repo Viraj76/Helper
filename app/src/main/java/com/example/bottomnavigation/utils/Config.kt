@@ -17,7 +17,15 @@ object Config {
     fun hideDialog(){
         dialog?.dismiss()
     }
+    const val POST_STATUS_AVAILABLE="AVAILABLE"
+    const val POST_STATUS_SOLD="SOLD"
 
-
-
+    val categories = arrayOf(
+        "Bricks",
+        "Steels Bars",
+        "Cement",
+        "Electrician",
+        "Furniture",
+        "Mechanic"
+    )
 }
