@@ -27,7 +27,10 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 
-class ContractorPostAdapter(val context: Context, private val OnCategorySelect: ((ContractorHomeFragment) -> Unit)? = null):RecyclerView.Adapter<ContractorPostAdapter.ContractorPostViewHolder>() ,Filterable{
+class ContractorPostAdapter(
+    val context: Context,
+    private val onPostClick : ((ClientPosts) -> Unit)? = null
+):RecyclerView.Adapter<ContractorPostAdapter.ContractorPostViewHolder>() ,Filterable{
 
     var contractorPostList=ArrayList<ClientPosts>()
     private var filterList = ArrayList<ClientPosts>()
@@ -97,6 +100,7 @@ class ContractorPostAdapter(val context: Context, private val OnCategorySelect: 
                 showFullScreenImageDialog(it)
             }
         }
+        holder.itemView.setOnClickListener { onPostClick?.invoke(data) }
         holder.binding.apply {
             ivImg1.clipToOutline = true
             ivImg2.clipToOutline = true
