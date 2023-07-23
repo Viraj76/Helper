@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".auth.SignUpActivity">
+<!--    sign up please-->
     <TextView
         android:id="@+id/tvSignUp"
         android:layout_width="wrap_content"
@@ -21,10 +22,11 @@
         android:textColor="@color/HardGreen"
         android:textStyle="bold"
         />
+<!--    image-->
     <ImageView
         android:id="@+id/ivIllus"
         android:layout_width="@dimen/_280sdp"
-        android:layout_height="@dimen/_130sdp"
+        android:layout_height="@dimen/_70sdp"
         android:layout_marginTop="10dp"
         android:scaleType="fitCenter"
         android:src="@drawable/sign_up_illlus"
@@ -33,22 +35,21 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvSignUp"
          />
-
+<!--welcome message-->
     <TextView
         android:id="@+id/tvWelcome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_5sdp"
         android:letterSpacing="0.04"
-
         android:text="Welcome let's register yourself "
-        android:textColor="@color/HardGreen"
+        android:textColor="@color/status"
         android:textSize="@dimen/_15ssp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/ivIllus" />
-
+<!--radio group-->
     <LinearLayout
         android:id="@+id/llUserSelection"
         android:layout_width="match_parent"
@@ -57,8 +58,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:orientation="horizontal"
         app:layout_constraintTop_toBottomOf="@id/tvWelcome"
-        android:layout_marginTop="@dimen/_20sdp"
-
+        android:layout_marginTop="@dimen/_10sdp"
         >
         <TextView
             android:id="@+id/tvSelectionOfUser"
@@ -105,6 +105,15 @@
                 />
         </RadioGroup>
     </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/fieldsLL"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/llUserSelection"
+        android:orientation="vertical">
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/tvNameLL"
         style="@style/LoginTextInputOuterFieldStyle"
@@ -113,13 +122,10 @@
         android:layout_marginHorizontal="@dimen/_16sdp"
         app:boxStrokeColor="@color/HardGreen"
         app:hintTextColor="@color/black"
-        app:layout_constraintEnd_toEndOf="parent"
         app:endIconMode="clear_text"
         app:endIconTint="@color/HardGreen"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/llUserSelection"
-        app:layout_constraintBottom_toTopOf="@id/tvEmailLL"
         >
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/etName"
@@ -132,7 +138,6 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
-
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/tvEmailLL"
         style="@style/LoginTextInputOuterFieldStyle"
@@ -141,12 +146,9 @@
         android:layout_marginHorizontal="@dimen/_16sdp"
         app:boxStrokeColor="@color/HardGreen"
         app:hintTextColor="@color/black"
-        app:layout_constraintEnd_toEndOf="parent"
         app:endIconMode="clear_text"
         app:endIconTint="@color/HardGreen"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvNameLL"
+
         >
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/etEmail"
@@ -157,8 +159,113 @@
             android:hint="Enter your email"
             android:inputType="textEmailAddress" />
     </com.google.android.material.textfield.TextInputLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            android:layout_marginHorizontal="@dimen/_16sdp"
+            >
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tvState"
+                style="@style/LoginTextInputOuterFieldStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:boxStrokeColor="@color/HardGreen"
+                app:hintTextColor="@color/black"
+                android:layout_marginEnd="@dimen/_5sdp"
+                android:layout_weight="1"
+                app:endIconTint="@color/HardGreen"
+                >
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etState"
+                    style="@style/LoginTextInputInnerFieldStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="State"
+                    android:background="@drawable/login_fields"
+                    android:inputType="textEmailAddress" />
+            </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tvCity"
+                style="@style/LoginTextInputOuterFieldStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:boxStrokeColor="@color/HardGreen"
+                app:hintTextColor="@color/black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                android:layout_weight="1"
+                app:endIconTint="@color/HardGreen"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvEmailLL"
+                >
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etCity"
+                    style="@style/LoginTextInputInnerFieldStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="City"
+                    android:background="@drawable/login_fields"
+                    android:inputType="textEmailAddress" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-    <com.google.android.material.textfield.TextInputLayout
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            android:layout_marginHorizontal="@dimen/_16sdp"
+            >
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tvBusinessType"
+                style="@style/LoginTextInputOuterFieldStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:boxStrokeColor="@color/HardGreen"
+                app:hintTextColor="@color/black"
+                android:layout_marginEnd="@dimen/_5sdp"
+                android:layout_weight="1"
+                app:endIconTint="@color/HardGreen"
+                >
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etBusinessType"
+                    style="@style/LoginTextInputInnerFieldStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Business Type"
+                    android:background="@drawable/login_fields"
+                    android:inputType="textEmailAddress" />
+            </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tvMobileNumber"
+                style="@style/LoginTextInputOuterFieldStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:boxStrokeColor="@color/HardGreen"
+                app:hintTextColor="@color/black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                android:layout_weight="1"
+                app:endIconTint="@color/HardGreen"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvEmailLL"
+                >
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etMobileNumber"
+                    style="@style/LoginTextInputInnerFieldStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Mobile No."
+                    android:background="@drawable/login_fields"
+                    android:inputType="textEmailAddress" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </LinearLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/etPasswordL"
         style="@style/LoginTextInputOuterFieldStyle"
         android:layout_width="match_parent"
@@ -182,8 +289,6 @@
             android:background="@drawable/login_fields"
             android:inputType="textEmailAddress" />
     </com.google.android.material.textfield.TextInputLayout>
-
-
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/etConfirmPasswordLL"
         style="@style/LoginTextInputOuterFieldStyle"
@@ -209,11 +314,14 @@
             android:inputType="textEmailAddress" />
     </com.google.android.material.textfield.TextInputLayout>
 
+
+
+    </LinearLayout>
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnRegister"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_50sdp"
-        android:layout_marginTop="@dimen/_20sdp"
+        android:layout_marginTop="@dimen/_5sdp"
         android:text="Regiter"
         android:textAllCaps="false"
         android:letterSpacing="0.1"
@@ -222,15 +330,12 @@
         app:cornerRadius="@dimen/_8sdp"
         android:layout_marginHorizontal="@dimen/_16sdp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/etConfirmPasswordLL"
+        app:layout_constraintTop_toBottomOf="@id/fieldsLL"
         app:layout_constraintEnd_toEndOf="parent"
         />
-
-
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_5sdp"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -255,16 +360,5 @@
             android:textStyle="bold" />
     </LinearLayout>
 
-<!--    <ProgressBar-->
-<!--        android:id="@+id/progressBar"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent"-->
-<!--        android:indeterminate="true"-->
-<!--        android:indeterminateTint="@color/HardGreen"-->
-<!--        />-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

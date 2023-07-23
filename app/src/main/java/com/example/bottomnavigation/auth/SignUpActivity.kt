@@ -3,6 +3,7 @@ package com.example.bottomnavigation.auth
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.view.View
 import android.widget.RadioButton
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -21,27 +22,44 @@ class SignUpActivity : AppCompatActivity() {
     private lateinit var databaseReference: DatabaseReference
     private lateinit var sharedPreferences: SharedPreferences
     private  var userPreferences: String?=null
-
+    private lateinit var selectedUserType  : String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySignUpBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-//        progressBar.visibility = View.GONE
+        selectedUserType = ""
         firebaseAuth = FirebaseAuth.getInstance()
         binding.apply {
-            radioGroup.setOnCheckedChangeListener { _, checkedId -> storingUserTypeInSharedReferences(checkedId) }
+            radioGroup.setOnCheckedChangeListener { _, checkedId -> storingUserTypeInSharedReferences(checkedId)
+                clientOrContractor()
+            }
             btnRegister.setOnClickListener { createNewUser() }
             tvSignIn.setOnClickListener { goingToSignInActivity() }
         }
     }
 
+    private fun clientOrContractor() {
+        if(selectedUserType == "Client"){
+            binding.tvCity.visibility = View.GONE
+            binding.tvState.visibility = View.GONE
+            binding.tvBusinessType.visibility = View.GONE
+            binding.tvMobileNumber.visibility = View.GONE
+        }
+        else{
+            binding.tvCity.visibility = View.VISIBLE
+            binding.tvState.visibility = View.VISIBLE
+            binding.tvBusinessType.visibility = View.VISIBLE
+            binding.tvMobileNumber.visibility = View.VISIBLE
+        }
+    }
+
     private fun storingUserTypeInSharedReferences(checkedId:Int) {
         val radioButton = findViewById<RadioButton>(checkedId)
+        selectedUserType = radioButton.text.toString()
         val sharedPref = getSharedPreferences("MyPrefs", MODE_PRIVATE)
         val editor = sharedPref.edit()
-        editor.putString("user_preference", radioButton.text.toString())
+        editor.putString("user_preference", selectedUserType)
         editor.apply()
     }
     private fun goingToSignInActivity() {
@@ -49,13 +67,17 @@ class SignUpActivity : AppCompatActivity() {
         startActivity(intent)
         finish()
     }
-
     private fun createNewUser() {
         Config.showDialog(this)
         val name = binding.etName.text.toString()
         val email = binding.etEmail.text.toString()
         val password = binding.etPassword.text.toString()
         val confirmPassword = binding.etConfirmPassword.text.toString()
+        val city = binding.etCity.text.toString()
+        val state = binding.etState.text.toString()
+        val address = "$city ($state)"
+        val businessType = binding.etBusinessType.text.toString()
+        val phoneNumber = binding.etMobileNumber.text.toString()
         sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE)
         userPreferences = sharedPreferences.getString("user_preference","")
         if(userPreferences.equals("Client")){
@@ -104,7 +126,7 @@ class SignUpActivity : AppCompatActivity() {
                             firebaseAuth.currentUser?.sendEmailVerification()?.addOnSuccessListener{
                                 Toast.makeText(this,"Please check your mail to VERIFY (spam also)",Toast.LENGTH_LONG).show()
                                 val uId = task.result.user?.uid.toString()
-                                val userContractor = ContractorID(name,email,password,uId)
+                                val userContractor = ContractorID(name,email,address,businessType,phoneNumber,password,uId)
                                 databaseReference.child(uId).setValue(userContractor)
                                 Config.hideDialog()
                                 val intent = Intent(this, SIgnInActivity::class.java)

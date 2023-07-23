@@ -7,9 +7,9 @@
         android:icon="@drawable/ic_baseline_home_24"
         />
     <item
-        android:title="Chat"
-        android:icon="@drawable/ic_baseline_chat_24"
-        android:id="@+id/chatFragment2"
+        android:id="@+id/contractorsFragment2"
+        android:title="Contractors"
+        android:icon="@drawable/ic_baseline_account_circle_24"
         />
     <item
         android:title="Post"
@@ -17,13 +17,19 @@
         android:id="@+id/postFragment"
         />
     <item
+        android:title="Chat"
+        android:icon="@drawable/ic_baseline_chat_24"
+        android:id="@+id/chatFragment2"
+        />
+
+    <item
         android:title="Notification"
         android:icon="@drawable/ic_baseline_notifications_24"
         android:id="@+id/notificationFragment"
         />
-    <item
-        android:title="History"
-        android:icon="@drawable/ic_baseline_history_24"
-        android:id="@+id/historyFragment"
-        />
+<!--    <item-->
+<!--        android:title="History"-->
+<!--        android:icon="@drawable/ic_baseline_history_24"-->
+<!--        android:id="@+id/historyFragment"-->
+<!--        />-->
 </menu>

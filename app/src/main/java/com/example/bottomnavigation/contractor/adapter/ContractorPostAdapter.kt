@@ -34,8 +34,8 @@ class ContractorPostAdapter(
 
     var contractorPostList=ArrayList<ClientPosts>()
     private var filterList = ArrayList<ClientPosts>()
-
     private var filter : FilteringPosts? = null
+
     fun setPosts(contractorSidePostList : ArrayList<ClientPosts>){
         this.contractorPostList = contractorSidePostList
         this.filterList = ArrayList(contractorSidePostList) // Initialize the filterList with a copy of the original list

@@ -10,11 +10,6 @@
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" />
     <fragment
-        android:id="@+id/historyFragment"
-        android:name="com.example.bottomnavigation.client.fragments.HistoryFragment"
-        android:label="fragment_history"
-        tools:layout="@layout/fragment_history" />
-    <fragment
         android:id="@+id/notificationFragment"
         android:name="com.example.bottomnavigation.client.fragments.NotificationFragment"
         android:label="fragment_notification"
@@ -33,4 +28,9 @@
         android:name="com.example.bottomnavigation.client.fragments.ChatFragment"
         android:label="fragment_chat"
         tools:layout="@layout/fragment_chat" />
+    <fragment
+        android:id="@+id/contractorsFragment2"
+        android:name="com.example.bottomnavigation.client.fragments.ContractorsFragment"
+        android:label="fragment_contractors"
+        tools:layout="@layout/fragment_contractors" />
 </navigation>
