@@ -4,6 +4,213 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+
     tools:context=".contractor.activity.PostFullViewActivity">
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/detailToolBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/HardGreen"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:titleTextColor="@color/white"
+        app:title="Post Details"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/_5sdp"
+        app:layout_constraintTop_toBottomOf="@id/detailToolBar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/titleTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:text="Home construction material requiremment"
+            android:textStyle="bold"
+            android:layout_margin="@dimen/_5sdp"
+            android:textColor="@color/HardGreen"
+            android:background="@android:color/white"/>
+
+        <LinearLayout
+            android:id="@+id/budget"
+            android:layout_margin="@dimen/_3sdp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Budget - "
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_14ssp"
+                />
+            <TextView
+                android:id="@+id/tvBudget"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2000"
+                android:textStyle="bold"
+                android:textSize="@dimen/_15ssp"/>
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/timeLL"
+            android:layout_margin="@dimen/_3sdp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Posted - "
+                android:textStyle="bold"
+                android:textSize="@dimen/_14ssp"
+                android:textColor="@color/black"/>
+            <TextView
+                android:id="@+id/tvDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="17-05-2023(10:00PM)"
+                android:textStyle="bold"
+                android:textSize="@dimen/_14ssp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/addressLL"
+            android:layout_width="match_parent"
+            android:layout_margin="@dimen/_3sdp"
+            android:layout_height="wrap_content"
+
+            android:orientation="horizontal"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Address - "
+                android:textStyle="bold"
+                android:textSize="@dimen/_14ssp"
+                android:textColor="@color/black"/>
+            <TextView
+                android:id="@+id/tvAddress"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/_20sdp"
+                android:text="496332, Raipur(C.G.), Coloman mandir"
+                android:textStyle="bold"
+                android:textSize="@dimen/_14ssp"/>
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/sizeLL"
+            android:layout_margin="@dimen/_3sdp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Size/Dimension - "
+                android:textSize="@dimen/_14ssp"
+                android:textStyle="bold"
+                android:textColor="@color/black"/>
+            <TextView
+                android:id="@+id/tvSize"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/_30sdp"
+                android:text="anakd "
+                android:textStyle="bold"
+                android:textSize="@dimen/_15ssp"/>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/descriptionTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/_18ssp"
+            android:layout_margin="@dimen/_3sdp"
+            android:text="Details :-"
+            android:textStyle="bold"
+            android:textColor="@color/HardGreen"
+            android:padding="@dimen/_1sdp"
+            android:background="@android:color/white"/>
+        <TextView
+            android:id="@+id/workDesc"
+            android:layout_margin="@dimen/_5sdp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Hello, Am going to build my home and i have a requirement of some material to build my home , the details of address mentioned above. Here are my requirements (1) Cement : UltraCement, (2)Rhodes, (3) two trcuk bricks. The deal is negotiable. Please contact me, if you can provide me the ,materials"
+            android:textColor="#B3000000"
+            />
+        <TextView
+            android:id="@+id/tvImages"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/_18ssp"
+            android:layout_margin="@dimen/_3sdp"
+            android:text="Attached images :-"
+            android:textStyle="bold"
+            android:textColor="@color/HardGreen"
+            android:padding="@dimen/_1sdp"
+            android:background="@android:color/white"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:weightSum="2"
+            >
+            <ImageView
+                android:id="@+id/iv1"
+                android:layout_width="@dimen/_70sdp"
+                android:layout_height="@dimen/_70sdp"
+                android:layout_marginEnd="@dimen/_4sdp"
+                android:layout_weight="1"
+                android:src="@drawable/ic_baseline_image_24"
+                />
+            <ImageView
+                android:id="@+id/iv2"
+                android:layout_width="@dimen/_70sdp"
+                android:layout_height="@dimen/_70sdp"
+                android:layout_weight="1"
+                android:src="@drawable/ic_baseline_image_24"
+                />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            >
+            <ImageView
+                android:id="@+id/iv3"
+                android:layout_width="@dimen/_70sdp"
+                android:layout_height="@dimen/_70sdp"
+                android:layout_marginEnd="@dimen/_4sdp"
+                android:layout_weight="1"
+                android:src="@drawable/ic_baseline_image_24"
+                />
+            <ImageView
+                android:id="@+id/iv4"
+                android:layout_width="@dimen/_70sdp"
+                android:layout_height="@dimen/_70sdp"
+                android:layout_weight="1"
+                android:src="@drawable/ic_baseline_image_24"
+                />
+
+        </LinearLayout>
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
