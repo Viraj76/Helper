@@ -1,4 +1,6 @@
-package com.example.bottomnavigation.client
+import androidx.lifecycle.ViewModel
+import com.example.bottomnavigation.models.ContractorID
 
-class ContractorsViewModel {
+class ContractorsViewModel : ViewModel() {
+    var contractorList: ArrayList<ContractorID> = arrayListOf()
 }
