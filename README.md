@@ -9,8 +9,6 @@
 
 # Screenshots
 
-# Screenshots
-
 ## Contractor and Client Side
 
 | | | |
